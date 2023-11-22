@@ -6,26 +6,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.movieticket.databinding.FragmentMainMenuBinding
-import com.example.movieticket.viewmodel.AppViewModel
+import com.example.movieticket.Customer.CustomerViewModel
+import com.example.movieticket.databinding.FragmentCustomerMainMenuBinding
 
-class MainMenuFragment : Fragment() {
+class CustomerMainMenuFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainMenuFragment()
+        fun newInstance() = CustomerMainMenuFragment()
     }
 
-    private lateinit var viewModel: AppViewModel
-    private var _binding: FragmentMainMenuBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var viewModel: CustomerViewModel
+    private lateinit var binding: FragmentCustomerMainMenuBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[AppViewModel::class.java]
-        _binding = FragmentMainMenuBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[CustomerViewModel::class.java]
+        binding = FragmentCustomerMainMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
 
