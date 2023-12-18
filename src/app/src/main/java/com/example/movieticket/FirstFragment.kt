@@ -32,7 +32,7 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_firstFragment_to_customerMainMenuFragment)
         }
         binding.staffButton.setOnClickListener {
-            findNavController().navigate(R.id.action_firstFragment_to_staffMainMenuFragment)
+            findNavController().navigate(R.id.action_firstFragment_to_staffLoginFragment)
         }
     }
 

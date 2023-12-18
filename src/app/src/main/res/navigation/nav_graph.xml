@@ -11,7 +11,7 @@
         android:label="StaffMainMenuFragment" />
     <fragment
         android:id="@+id/customerMainMenuFragment"
-        android:name="com.example.movieticket.CustomerMainMenuFragment"
+        android:name="com.example.movieticket.UserMainMenuFragment"
         android:label="fragment_customer_main_menu"
         tools:layout="@layout/fragment_customer_main_menu" />
     <fragment
@@ -23,7 +23,16 @@
             android:id="@+id/action_firstFragment_to_customerMainMenuFragment"
             app:destination="@id/customerMainMenuFragment" />
         <action
-            android:id="@+id/action_firstFragment_to_staffMainMenuFragment"
+            android:id="@+id/action_firstFragment_to_staffLoginFragment"
+            app:destination="@id/staffLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffLoginFragment"
+        android:name="com.example.movieticket.staff.StaffLoginFragment"
+        android:label="fragment_staff_login"
+        tools:layout="@layout/fragment_staff_login" >
+        <action
+            android:id="@+id/action_staffLoginFragment_to_staffMainMenuFragment"
             app:destination="@id/staffMainMenuFragment" />
     </fragment>
 </navigation>
