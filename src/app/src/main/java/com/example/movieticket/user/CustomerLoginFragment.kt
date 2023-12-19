@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.UserAuthDao
 import com.example.movieticket.databinding.FragmentCustomerLoginBinding
+import com.example.movieticket.user.UserViewModel
 
 class CustomerLoginFragment : Fragment() {
 
@@ -17,7 +18,7 @@ class CustomerLoginFragment : Fragment() {
         fun newInstance() = CustomerLoginFragment()
     }
 
-    private lateinit var viewModel: CustomerViewModel
+    private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentCustomerLoginBinding
     private lateinit var userAuthDao: UserAuthDao
     private var accountList = mutableListOf< Pair< String, String > >()
@@ -27,7 +28,7 @@ class CustomerLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[CustomerViewModel::class.java]
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentCustomerLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
