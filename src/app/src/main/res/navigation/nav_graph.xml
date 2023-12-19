@@ -7,8 +7,15 @@
 
     <fragment
         android:id="@+id/staffMainMenuFragment"
-        android:name="com.example.movieticket.StaffMainMenuFragment"
-        android:label="StaffMainMenuFragment" />
+        android:name="com.example.movieticket.staff.ui.StaffMainMenuFragment"
+        android:label="StaffMainMenuFragment" >
+        <action
+            android:id="@+id/action_staffMainMenuFragment_to_accountsManagementFragment"
+            app:destination="@id/accountsManagementFragment" />
+        <action
+            android:id="@+id/action_staffMainMenuFragment_to_staffTheatersFragment"
+            app:destination="@id/staffTheatersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerMainMenuFragment"
         android:name="com.example.movieticket.UserMainMenuFragment"
@@ -28,11 +35,21 @@
     </fragment>
     <fragment
         android:id="@+id/staffLoginFragment"
-        android:name="com.example.movieticket.staff.StaffLoginFragment"
+        android:name="com.example.movieticket.staff.ui.StaffLoginFragment"
         android:label="fragment_staff_login"
         tools:layout="@layout/fragment_staff_login" >
         <action
             android:id="@+id/action_staffLoginFragment_to_staffMainMenuFragment"
             app:destination="@id/staffMainMenuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/accountsManagementFragment"
+        android:name="com.example.movieticket.staff.ui.AccountsManagementFragment"
+        android:label="fragment_accounts_management"
+        tools:layout="@layout/fragment_accounts_management" />
+    <fragment
+        android:id="@+id/staffTheatersFragment"
+        android:name="com.example.movieticket.staff.ui.StaffTheatersFragment"
+        android:label="fragment_staff_theaters"
+        tools:layout="@layout/fragment_staff_theaters" />
 </navigation>

@@ -9,3 +9,6 @@ data class StaffProfile(var name: String,
                         var email: String,
                         var phone: String,
                         var isManager: Boolean)
+
+data class Theaters(var name: String,
+                    var address: String)

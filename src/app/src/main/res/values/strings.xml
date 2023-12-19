@@ -17,4 +17,7 @@
     <string name="theaters">Theaters</string>
     <string name="movies">Movies</string>
     <string name="statistics">Statistics</string>
+    <string name="staff_accounts">Staff Accounts</string>
+    <string name="user_accounts">User Accounts</string>
+    <string name="add">Add</string>
 </resources>

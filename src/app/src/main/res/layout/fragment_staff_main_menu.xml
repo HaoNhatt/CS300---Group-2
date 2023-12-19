@@ -5,7 +5,7 @@
     android:id="@+id/staffMainMenuLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StaffMainMenuFragment" >
+    tools:context=".staff.ui.StaffMainMenuFragment" >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -34,6 +34,7 @@
             android:src="@android:drawable/btn_star" />
 
         <TextView
+            android:id="@+id/accountsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,7 +53,7 @@
         app:layout_constraintTop_toTopOf="@id/linearLayout1">
 
         <ImageButton
-            android:id="@+id/TheatersButton"
+            android:id="@+id/theatersButton"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_weight="1"
@@ -60,6 +61,7 @@
             android:src="@android:drawable/btn_star" />
 
         <TextView
+            android:id="@+id/theatersTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -86,6 +88,7 @@
             android:src="@android:drawable/btn_star" />
 
         <TextView
+            android:id="@+id/moviesTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -112,6 +115,7 @@
             android:src="@android:drawable/btn_star" />
 
         <TextView
+            android:id="@+id/statisticsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

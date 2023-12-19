@@ -1,22 +1,19 @@
-package com.example.movieticket
+package com.example.movieticket.staff.ui
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.movieticket.databinding.FragmentStaffMainMenuBinding
+import androidx.lifecycle.ViewModelProvider
+import com.example.movieticket.databinding.FragmentAccountsManagementBinding
 import com.example.movieticket.staff.data.StaffViewModel
 
-class StaffMainMenuFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = StaffMainMenuFragment()
-    }
-
+class AccountsManagementFragment : Fragment() {
     private lateinit var viewModel: StaffViewModel
-    private lateinit var binding: FragmentStaffMainMenuBinding
+    private lateinit var binding: FragmentAccountsManagementBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,13 +21,9 @@ class StaffMainMenuFragment : Fragment() {
     ): View {
 
         viewModel = ViewModelProvider(this)[StaffViewModel::class.java]
-        binding = FragmentStaffMainMenuBinding.inflate(inflater, container, false)
+        binding = FragmentAccountsManagementBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-    }
 
 }
