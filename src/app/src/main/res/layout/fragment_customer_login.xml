@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Customer.CustomerLoginFragment"
+    android:layout_marginStart="50sp"
+    android:layout_marginEnd="50sp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_icon"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:layout_gravity="end"
+        android:contentDescription="@string/profileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customer_login"
+        android:textSize="36sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="160sp"/>
+
+    <EditText
+        android:id="@+id/userInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input"
+        android:hint="@string/username"
+        android:layout_marginBottom="20sp"
+        android:paddingStart="10sp"
+        android:paddingTop="7sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="7sp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:autofillHints="Username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input"
+        android:hint="@string/password"
+        android:layout_marginTop="40sp"
+        android:paddingStart="10sp"
+        android:paddingTop="7sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="7sp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:autofillHints="Username"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/errorPopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/holo_red_light"
+        android:text="@string/error"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:layout_marginTop="100sp"/>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150sp"
+        android:text="@string/login"
+        android:paddingStart="30sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="30sp"
+        android:paddingBottom="10sp"
+        android:background="@drawable/rounded_input" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200sp"
+        android:text="@string/sign_up"
+        android:textSize="13sp"
+        android:paddingStart="10sp"
+        android:paddingTop="5sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="5sp"
+        android:textColor="@android:color/holo_blue_bright"
+        android:background="@android:color/transparent" />
+
+</FrameLayout>

@@ -10,10 +10,14 @@
         android:name="com.example.movieticket.StaffMainMenuFragment"
         android:label="StaffMainMenuFragment" />
     <fragment
-        android:id="@+id/customerMainMenuFragment"
-        android:name="com.example.movieticket.CustomerMainMenuFragment"
+        android:id="@+id/customerLoginFragment"
+        android:name="com.example.movieticket.Customer.CustomerLoginFragment"
         android:label="fragment_customer_main_menu"
-        tools:layout="@layout/fragment_customer_main_menu" />
+        tools:layout="@layout/fragment_customer_login" >
+        <action
+            android:id="@+id/action_customer_login_to_signupFragment"
+            app:destination="@id/customerSignUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.example.movieticket.FirstFragment"
@@ -21,9 +25,14 @@
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_firstFragment_to_customerMainMenuFragment"
-            app:destination="@id/customerMainMenuFragment" />
+            app:destination="@id/customerLoginFragment" />
         <action
             android:id="@+id/action_firstFragment_to_staffMainMenuFragment"
             app:destination="@id/staffMainMenuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/customerSignUpFragment"
+        android:name="com.example.movieticket.Customer.CustomerSignUpFragment"
+        android:label="fragment_customer_sign_up"
+        tools:layout="@layout/fragment_customer_sign_up"/>
 </navigation>
