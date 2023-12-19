@@ -20,7 +20,11 @@
         android:id="@+id/customerMainMenuFragment"
         android:name="com.example.movieticket.UserMainMenuFragment"
         android:label="fragment_customer_main_menu"
-        tools:layout="@layout/fragment_customer_main_menu" />
+        tools:layout="@layout/fragment_customer_main_menu" >
+        <action
+            android:id="@+id/action_customerMainMenuFragment_to_customerLoginFragment"
+            app:destination="@id/customerLoginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.example.movieticket.FirstFragment"
@@ -52,4 +56,18 @@
         android:name="com.example.movieticket.staff.ui.StaffTheatersFragment"
         android:label="fragment_staff_theaters"
         tools:layout="@layout/fragment_staff_theaters" />
+    <fragment
+        android:id="@+id/customerLoginFragment"
+        android:name="com.example.movieticket.Customer.CustomerLoginFragment"
+        android:label="fragment_customer_login"
+        tools:layout="@layout/fragment_customer_login" >
+        <action
+            android:id="@+id/action_customerLoginFragment_to_customerSignUpFragment"
+            app:destination="@id/customerSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerSignUpFragment"
+        android:name="com.example.movieticket.Customer.CustomerSignUpFragment"
+        android:label="fragment_customer_sign_up"
+        tools:layout="@layout/fragment_customer_sign_up" />
 </navigation>
