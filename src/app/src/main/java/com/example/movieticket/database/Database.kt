@@ -23,7 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun getInstance(context: Context): AppDatabase {
             if (INSTANCE == null)
                 synchronized(this) {
-                    INSTANCE = Room.databaseBuilder(context, AppDatabase::class.java, "DogDB").build()
+                    INSTANCE = Room.databaseBuilder(context, AppDatabase::class.java, "app_database").build()
                 }
 
             return INSTANCE!!

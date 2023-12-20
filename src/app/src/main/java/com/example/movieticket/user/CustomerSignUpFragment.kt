@@ -1,13 +1,27 @@
 package com.example.movieticket.Customer
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
+import com.example.movieticket.database.AppDatabase
+import com.example.movieticket.database.UserAuth
+import com.example.movieticket.database.UserAuthDao
+import com.example.movieticket.databinding.FragmentCustomerLoginBinding
+import com.example.movieticket.databinding.FragmentCustomerSignUpBinding
+import com.example.movieticket.user.UserViewModel
+import kotlinx.coroutines.launch
 
 class CustomerSignUpFragment : Fragment() {
+    private lateinit var viewModel: UserViewModel
+    private lateinit var binding: FragmentCustomerSignUpBinding
+    private lateinit var userAuthDao: UserAuthDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,11 +32,42 @@ class CustomerSignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer_sign_up, container, false)
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        binding = FragmentCustomerSignUpBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     companion object {
         fun newInstance() = CustomerSignUpFragment()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        userAuthDao = AppDatabase.getInstance(requireContext()).userDao()
+
+        binding.confirmSignUpButton.setOnClickListener {
+            val username = binding.userInput.text.toString()
+            val password = binding.passwordInput.text.toString()
+            val confirmPassword = binding.passwordReInput.text.toString()
+
+            lifecycleScope.launch {
+                val queryResult = userAuthDao.searchByUsername(username)
+
+                if (queryResult.isNotEmpty()) {
+                    binding.errorPopup.visibility = View.VISIBLE
+                    binding.errorPopup.text = "Username '$username' has already been used. Please try another username!"
+                }
+                else if (password != confirmPassword) {
+                    binding.errorPopup.visibility = View.VISIBLE
+                    binding.errorPopup.text = "Password and confirm password does not match"
+                }
+                else {
+                    binding.errorPopup.visibility = View.INVISIBLE
+                    userAuthDao.insert(UserAuth(username, password))
+                    findNavController().navigate(R.id.action_customerSignUpFragment_to_customerLoginFragment)
+                }
+            }
+        }
     }
 }

@@ -10,8 +10,11 @@ interface UserAuthDao {
     @Insert
     suspend fun insert(user: UserAuth)
 
-    @Query("SELECT * FROM userauth")
+    @Query("SELECT * FROM userAuth")
     suspend fun getAll(): List<UserAuth>
+
+    @Query("SELECT * FROM userAuth WHERE username = :username")
+    suspend fun searchByUsername(username: String): List<UserAuth>
 }
 
 @Dao

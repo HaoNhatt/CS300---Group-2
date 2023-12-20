@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".UserMainMenuFragment">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_icon"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:layout_gravity="end"
+        android:contentDescription="@string/profileImage" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

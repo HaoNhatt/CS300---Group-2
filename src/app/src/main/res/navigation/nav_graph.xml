@@ -21,9 +21,6 @@
         android:name="com.example.movieticket.UserMainMenuFragment"
         android:label="fragment_customer_main_menu"
         tools:layout="@layout/fragment_customer_main_menu" >
-        <action
-            android:id="@+id/action_customerMainMenuFragment_to_customerLoginFragment"
-            app:destination="@id/customerLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/firstFragment"
@@ -32,7 +29,7 @@
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_firstFragment_to_customerMainMenuFragment"
-            app:destination="@id/customerMainMenuFragment" />
+            app:destination="@id/customerLoginFragment" />
         <action
             android:id="@+id/action_firstFragment_to_staffLoginFragment"
             app:destination="@id/staffLoginFragment" />
@@ -62,6 +59,9 @@
         android:label="fragment_customer_login"
         tools:layout="@layout/fragment_customer_login" >
         <action
+            android:id="@+id/action_customerLoginFragment_to_customerMainMenuFragment"
+            app:destination="@id/customerMainMenuFragment" />
+        <action
             android:id="@+id/action_customerLoginFragment_to_customerSignUpFragment"
             app:destination="@id/customerSignUpFragment" />
     </fragment>
@@ -69,5 +69,9 @@
         android:id="@+id/customerSignUpFragment"
         android:name="com.example.movieticket.Customer.CustomerSignUpFragment"
         android:label="fragment_customer_sign_up"
-        tools:layout="@layout/fragment_customer_sign_up" />
+        tools:layout="@layout/fragment_customer_sign_up" >
+        <action
+            android:id="@+id/action_customerSignUpFragment_to_customerLoginFragment"
+            app:destination="@id/customerLoginFragment" />
+    </fragment>
 </navigation>

@@ -3,12 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Customer.CustomerSignUpFragment">
+    tools:context=".Customer.CustomerSignUpFragment"
+    android:layout_marginStart="50sp"
+    android:layout_marginEnd="50sp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customer_sign_up"
+        android:textSize="36sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="160sp"/>
+
+    <EditText
+        android:id="@+id/userInput"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input"
+        android:hint="@string/username"
+        android:layout_marginBottom="40sp"
+        android:paddingStart="10sp"
+        android:paddingTop="7sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="7sp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:autofillHints="Username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input"
+        android:hint="@string/password"
+        android:layout_marginTop="20sp"
+        android:paddingStart="10sp"
+        android:paddingTop="7sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="7sp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:autofillHints="Username"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/passwordReInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input"
+        android:hint="@string/confirm_password"
+        android:layout_marginTop="80sp"
+        android:paddingStart="10sp"
+        android:paddingTop="7sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="7sp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:autofillHints="Username"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/errorPopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/holo_red_light"
+        android:text="@string/error"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:layout_marginTop="140sp"/>
+
+    <Button
+        android:id="@+id/confirmSignUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200sp"
+        android:text="@string/sign_up"
+        android:paddingStart="30sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="30sp"
+        android:paddingBottom="10sp"
+        android:background="@drawable/rounded_input" />
 
 </FrameLayout>

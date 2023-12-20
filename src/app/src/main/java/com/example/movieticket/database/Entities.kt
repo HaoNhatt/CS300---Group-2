@@ -10,14 +10,12 @@ import androidx.room.PrimaryKey
 data class UserAuth(
     @PrimaryKey @NonNull @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "password") val password: String,
-    @ColumnInfo(name = "id") val id: Int,
 )
 
 @Entity(tableName = "staffAuth")
 data class StaffAuth(
     @PrimaryKey @NonNull @ColumnInfo(name = "staffName") val staffName: String,
     @ColumnInfo(name = "password") val password: String,
-    @ColumnInfo(name = "id") val id: Int,
 )
 
 @Entity(tableName = "userProfile")
@@ -28,7 +26,6 @@ data class UserProfile(
     @ColumnInfo(name = "sex") val sex: Boolean,
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "phone") val phone: String,
-    @ColumnInfo(name = "id") val id: Int,
 )
 
 @Entity(tableName = "staffProfile")
@@ -40,7 +37,6 @@ data class StaffProfile(
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "phone") val phone: String,
     @ColumnInfo(name = "isManager") val isManager: Boolean,
-    @ColumnInfo(name = "id") val id: Int,
 )
 
 @Entity(tableName = "movie")

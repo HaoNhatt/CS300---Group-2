@@ -2,15 +2,19 @@ package com.example.movieticket.Customer
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
+import com.example.movieticket.database.AppDatabase
 import com.example.movieticket.database.UserAuthDao
 import com.example.movieticket.databinding.FragmentCustomerLoginBinding
 import com.example.movieticket.user.UserViewModel
+import kotlinx.coroutines.launch
 
 class CustomerLoginFragment : Fragment() {
 
@@ -34,29 +38,34 @@ class CustomerLoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        lifecycleScope.launch {
-//            val queryResult = userAuthDao.getAll()
-//            for (account in queryResult) {
-//                accountList.add(Pair(account.username, account.password))
-//            }
-//        }
+        userAuthDao = AppDatabase.getInstance(requireContext()).userDao()
+
+        lifecycleScope.launch {
+            val queryResult = userAuthDao.getAll()
+            if (queryResult.isEmpty())
+                Log.d("HaoNhat", "check get users")
+        }
 
         binding.loginButton.setOnClickListener {
             val username = binding.userInput.text.toString()
             val password = binding.passwordInput.text.toString()
-            var correct = false
 
-            for (account in accountList)
-                correct = correct || (username == account.first && password == account.second)
+            lifecycleScope.launch {
+                val queryResult = userAuthDao.searchByUsername(username)
 
-
-            if (correct) {
-                binding.errorPopup.visibility = View.INVISIBLE
-//                startActivity(Intent(requireContext(), MainActivity::class.java))
+                if (queryResult.isEmpty()) {
+                    binding.errorPopup.visibility = View.VISIBLE
+                    binding.errorPopup.text = "Incorrect username. Please try again!"
+                }
+                else if (password != queryResult.first().password) {
+                    binding.errorPopup.visibility = View.VISIBLE
+                    binding.errorPopup.text = "Incorrect password. Please try again!"
+                }
+                else {
+                    binding.errorPopup.visibility = View.INVISIBLE
+                    findNavController().navigate(R.id.action_customerLoginFragment_to_customerMainMenuFragment)
+                }
             }
-            else
-                binding.errorPopup.visibility = View.VISIBLE
-                binding.errorPopup.text = "Incorrect username or password, please try again!"
         }
 
         binding.signUpButton.setOnClickListener{
