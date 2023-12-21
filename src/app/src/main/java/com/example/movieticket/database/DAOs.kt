@@ -33,6 +33,9 @@ interface UserProfileDao {
 
     @Query("SELECT * FROM userProfile")
     suspend fun getAll(): List<UserProfile>
+
+    @Query("SELECT * FROM userProfile WHERE username = :username")
+    suspend fun searchByUsername(username: String): List<UserProfile>
 }
 
 @Dao

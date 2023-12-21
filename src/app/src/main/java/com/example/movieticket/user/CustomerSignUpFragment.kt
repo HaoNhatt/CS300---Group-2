@@ -13,6 +13,8 @@ import com.example.movieticket.R
 import com.example.movieticket.database.AppDatabase
 import com.example.movieticket.database.UserAuth
 import com.example.movieticket.database.UserAuthDao
+import com.example.movieticket.database.UserProfile
+import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentCustomerLoginBinding
 import com.example.movieticket.databinding.FragmentCustomerSignUpBinding
 import com.example.movieticket.user.UserViewModel
@@ -22,6 +24,7 @@ class CustomerSignUpFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentCustomerSignUpBinding
     private lateinit var userAuthDao: UserAuthDao
+    private lateinit var userProfileDao: UserProfileDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,7 @@ class CustomerSignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         userAuthDao = AppDatabase.getInstance(requireContext()).userDao()
+        userProfileDao = AppDatabase.getInstance(requireContext()).userProfileDao()
 
         binding.confirmSignUpButton.setOnClickListener {
             val username = binding.userInput.text.toString()
@@ -65,6 +69,7 @@ class CustomerSignUpFragment : Fragment() {
                 else {
                     binding.errorPopup.visibility = View.INVISIBLE
                     userAuthDao.insert(UserAuth(username, password))
+                    userProfileDao.insert(UserProfile(username, "unnamed", 0, false, "", ""))
                     findNavController().navigate(R.id.action_customerSignUpFragment_to_customerLoginFragment)
                 }
             }

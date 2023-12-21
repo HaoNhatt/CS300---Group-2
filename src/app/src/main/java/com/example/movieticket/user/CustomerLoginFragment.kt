@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.AppDatabase
 import com.example.movieticket.database.UserAuthDao
+import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentCustomerLoginBinding
 import com.example.movieticket.user.UserViewModel
 import kotlinx.coroutines.launch
@@ -25,6 +26,7 @@ class CustomerLoginFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentCustomerLoginBinding
     private lateinit var userAuthDao: UserAuthDao
+    private lateinit var userProfileDao: UserProfileDao
     private var accountList = mutableListOf< Pair< String, String > >()
 
     override fun onCreateView(
@@ -39,12 +41,7 @@ class CustomerLoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         userAuthDao = AppDatabase.getInstance(requireContext()).userDao()
-
-        lifecycleScope.launch {
-            val queryResult = userAuthDao.getAll()
-            if (queryResult.isEmpty())
-                Log.d("HaoNhat", "check get users")
-        }
+        userProfileDao = AppDatabase.getInstance(requireContext()).userProfileDao()
 
         binding.loginButton.setOnClickListener {
             val username = binding.userInput.text.toString()
@@ -63,6 +60,10 @@ class CustomerLoginFragment : Fragment() {
                 }
                 else {
                     binding.errorPopup.visibility = View.INVISIBLE
+//                    viewModel.createUser()
+//                    userProfileDao.insert(viewModel.getUser())
+                    val userProfile = userProfileDao.searchByUsername(username)
+                    viewModel.logIn(userProfile.first())
                     findNavController().navigate(R.id.action_customerLoginFragment_to_customerMainMenuFragment)
                 }
             }
