@@ -6,7 +6,7 @@ import com.example.movieticket.database.AppDatabase
 import com.example.movieticket.database.Movie
 import com.example.movieticket.database.UserProfile
 import com.example.movieticket.database.UserProfileDao
-import com.example.movieticket.staff.data.Theaters
+import com.example.movieticket.staff.data.Theater
 
 class UserViewModel : ViewModel() {
     private lateinit var user: UserProfile

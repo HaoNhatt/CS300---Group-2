@@ -31,7 +31,7 @@ class StaffTheatersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.addTheaterButton.visibility = when (viewModel.staff?.isManager!!) {
+        binding.addTheaterButton.visibility = when (viewModel.staff.isManager) {
             true -> {View.VISIBLE}
             else -> {View.INVISIBLE}
         }

@@ -6,15 +6,16 @@ import androidx.lifecycle.ViewModel
 class StaffViewModel : ViewModel() {
     lateinit var staff: StaffProfile
         private set
-    lateinit var theatersList: MutableList<Theaters>
+    var selectedTheater: Theater? = null
+    lateinit var theatersList: MutableList<Theater>
         private set
 
     init {
         staff = StaffProfile("name", 20, "sex", "email", "phone", true)
-        theatersList = mutableListOf(Theaters("Theater 1", "HCMC"),
-        Theaters("Theater 2", "HCMC"),
-        Theaters("Theater 3", "HCMC"),
-        Theaters("Theater 4", "HCMC"))
+        theatersList = mutableListOf(Theater("Theater 1", "HCMC"),
+        Theater("Theater 2", "HCMC"),
+        Theater("Theater 3", "HCMC"),
+        Theater("Theater 4", "HCMC"))
     }
 
     fun tryLogin(username: String, password: String): Boolean {

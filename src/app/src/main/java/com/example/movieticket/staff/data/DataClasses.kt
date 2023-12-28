@@ -10,5 +10,5 @@ data class StaffProfile(var name: String,
                         var phone: String,
                         var isManager: Boolean)
 
-data class Theaters(var name: String,
+data class Theater(var name: String,
                     var address: String)
