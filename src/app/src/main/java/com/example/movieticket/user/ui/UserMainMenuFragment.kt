@@ -1,4 +1,4 @@
-package com.example.movieticket
+package com.example.movieticket.user.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.movieticket.database.MovieDao
 import com.example.movieticket.database.ScheduleDao
-import com.example.movieticket.user.UserViewModel
 import com.example.movieticket.databinding.FragmentCustomerMainMenuBinding
+import com.example.movieticket.user.data.UserViewModel
 
 class UserMainMenuFragment : Fragment() {
 

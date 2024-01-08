@@ -1,7 +1,6 @@
-package com.example.movieticket.Customer
+package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +14,8 @@ import com.example.movieticket.database.UserAuth
 import com.example.movieticket.database.UserAuthDao
 import com.example.movieticket.database.UserProfile
 import com.example.movieticket.database.UserProfileDao
-import com.example.movieticket.databinding.FragmentCustomerLoginBinding
 import com.example.movieticket.databinding.FragmentCustomerSignUpBinding
-import com.example.movieticket.user.UserViewModel
+import com.example.movieticket.user.data.UserViewModel
 import kotlinx.coroutines.launch
 
 class CustomerSignUpFragment : Fragment() {

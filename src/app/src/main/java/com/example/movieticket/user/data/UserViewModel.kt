@@ -1,4 +1,4 @@
-package com.example.movieticket.user
+package com.example.movieticket.user.data
 
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModel
@@ -19,7 +19,7 @@ class UserViewModel : ViewModel() {
         this.user = userProfile
     }
 
-    fun createUser() {
+    fun createTempUser() {
         user = UserProfile("haohuynh255", "hao", 20, true, "haohuynh255@gmail.com", "090090090")
     }
 

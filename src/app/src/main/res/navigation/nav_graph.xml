@@ -18,9 +18,75 @@
     </fragment>
     <fragment
         android:id="@+id/customerMainMenuFragment"
-        android:name="com.example.movieticket.UserMainMenuFragment"
+        android:name="com.example.movieticket.user.ui.UserMainMenuFragment"
         android:label="fragment_customer_main_menu"
         tools:layout="@layout/fragment_customer_main_menu" >
+        <action
+            android:id="@+id/action_customerMainMenuFragment_to_customerMovieInfoFragment"
+            app:destination="@id/customerMovieInfoFragment" />
+        <action
+            android:id="@+id/action_customerMainMenuFragment_to_customerAccountInfoFragment"
+            app:destination="@id/customerAccountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerMovieInfoFragment"
+        android:name="com.example.movieticket.user.ui.MovieInfoFragment"
+        android:label="fragment_customer_movie_info"
+        tools:layout="@layout/fragment_customer_movie_info" >
+        <action
+            android:id="@+id/action_customerMovieInfoFragment_to_customerBookingFragment"
+            app:destination="@id/customerBookingFragment" />
+        <action
+            android:id="@+id/action_customerMovieInfoFragment_to_customerAccountInfoFragment"
+            app:destination="@id/customerAccountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerBookingFragment"
+        android:name="com.example.movieticket.user.ui.BookingFragment"
+        android:label="fragment_customer_booking"
+        tools:layout="@layout/fragment_booking" >
+        <action
+            android:id="@+id/action_customerBookingFragment_to_customerChooseSeatFragment"
+            app:destination="@id/customerChooseSeatFragment" />
+        <action
+            android:id="@+id/action_customerBookingFragment_to_customerAccountInfoFragment"
+            app:destination="@id/customerAccountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerChooseSeatFragment"
+        android:name="com.example.movieticket.user.ui.ChooseSeatFragment"
+        android:label="fragment_customer_choose_seat"
+        tools:layout="@layout/fragment_choose_seat" >
+        <action
+            android:id="@+id/action_customerChooseSeatFragment_to_customerPaymentFragment"
+            app:destination="@id/customerPaymentFragment" />
+        <action
+            android:id="@+id/action_customerChooseSeatFragment_to_customerAccountInfoFragment"
+            app:destination="@id/customerAccountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerPaymentFragment"
+        android:name="com.example.movieticket.user.ui.PaymentFragment"
+        android:label="fragment_customer_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_customerPaymentFragment_to_customerFinishPaymentFragment"
+            app:destination="@id/customerFinishPaymentFragment" />
+        <action
+            android:id="@+id/action_customerBookingFragment_to_customerAccountInfoFragment"
+            app:destination="@id/customerAccountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerFinishPaymentFragment"
+        android:name="com.example.movieticket.user.ui.FinishPaymentFragment"
+        android:label="fragment_customer_finish_payment"
+        tools:layout="@layout/fragment_finish_payment" >
+    </fragment>
+    <fragment
+        android:id="@+id/customerAccountInfoFragment"
+        android:name="com.example.movieticket.user.ui.AccountInfoFragment"
+        android:label="fragment_customer_account_info"
+        tools:layout="@layout/fragment_account_info" >
     </fragment>
     <fragment
         android:id="@+id/firstFragment"
@@ -59,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/customerLoginFragment"
-        android:name="com.example.movieticket.Customer.CustomerLoginFragment"
+        android:name="com.example.movieticket.user.ui.CustomerLoginFragment"
         android:label="fragment_customer_login"
         tools:layout="@layout/fragment_customer_login" >
         <action
@@ -71,7 +137,7 @@
     </fragment>
     <fragment
         android:id="@+id/customerSignUpFragment"
-        android:name="com.example.movieticket.Customer.CustomerSignUpFragment"
+        android:name="com.example.movieticket.user.ui.CustomerSignUpFragment"
         android:label="fragment_customer_sign_up"
         tools:layout="@layout/fragment_customer_sign_up" >
         <action

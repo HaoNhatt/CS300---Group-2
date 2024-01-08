@@ -1,8 +1,7 @@
-package com.example.movieticket.Customer
+package com.example.movieticket.user.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,7 @@ import com.example.movieticket.database.AppDatabase
 import com.example.movieticket.database.UserAuthDao
 import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentCustomerLoginBinding
-import com.example.movieticket.user.UserViewModel
+import com.example.movieticket.user.data.UserViewModel
 import kotlinx.coroutines.launch
 
 class CustomerLoginFragment : Fragment() {
@@ -27,7 +26,7 @@ class CustomerLoginFragment : Fragment() {
     private lateinit var binding: FragmentCustomerLoginBinding
     private lateinit var userAuthDao: UserAuthDao
     private lateinit var userProfileDao: UserProfileDao
-    private var accountList = mutableListOf< Pair< String, String > >()
+//    private var accountList = mutableListOf< Pair< String, String > >()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +59,7 @@ class CustomerLoginFragment : Fragment() {
                 }
                 else {
                     binding.errorPopup.visibility = View.INVISIBLE
-//                    viewModel.createUser()
+//                    viewModel.createTempUser()
 //                    userProfileDao.insert(viewModel.getUser())
                     val userProfile = userProfileDao.searchByUsername(username)
                     viewModel.logIn(userProfile.first())

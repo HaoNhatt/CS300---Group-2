@@ -21,11 +21,12 @@ data class StaffAuth(
 @Entity(tableName = "userProfile")
 data class UserProfile(
     @PrimaryKey @NonNull @ColumnInfo(name = "username") val username: String,
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "age") val age: Int,
-    @ColumnInfo(name = "sex") val sex: Boolean,
-    @ColumnInfo(name = "email") val email: String,
-    @ColumnInfo(name = "phone") val phone: String,
+    @ColumnInfo(name = "name") val name: String = "",
+    @ColumnInfo(name = "age") val age: Int = 0,
+    @ColumnInfo(name = "sex") val sex: Boolean = false,
+    @ColumnInfo(name = "email") val email: String = "",
+    @ColumnInfo(name = "phone") val phone: String = "",
+    @ColumnInfo(name = "wallet") val wallet: Int = 0,
 )
 
 @Entity(tableName = "staffProfile")
@@ -43,8 +44,13 @@ data class StaffProfile(
 data class Movie(
     @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "description") val description: String,
-    @ColumnInfo(name = "year") val year: Int,
+    @ColumnInfo(name = "description") val description: String = "",
+    @ColumnInfo(name = "year") val year: Int = 0,
+    @ColumnInfo(name = "target_age") val age: Int = 0,
+    @ColumnInfo(name = "Genre") val genre: String = "",
+    @ColumnInfo(name = "Director") val director: String = "",
+    @ColumnInfo(name = "Actors") val actors: String = "",
+    @ColumnInfo(name = "Language") val language: String = "",
 )
 
 @Entity(tableName = "theater")

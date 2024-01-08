@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserMainMenuFragment"
+    tools:context=".user.ui.UserMainMenuFragment"
     android:orientation="vertical">
 
     <ImageButton
@@ -155,7 +155,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-175sp"
+        android:layout_marginTop="-195sp"
         android:orientation="vertical"
         android:layout_marginStart="40sp"
         android:layout_marginEnd="40sp">
@@ -190,7 +190,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="5sp"
-            android:layout_marginBottom="15sp"
+            android:layout_marginBottom="25sp"
             android:layout_marginEnd="5sp"
             android:padding="1sp"
             android:text="@string/view_movie_detail_information"
