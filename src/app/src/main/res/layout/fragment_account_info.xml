@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CustomerInfoLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.ui.AccountInfoFragment">
+    tools:context=".user.ui.MovieInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Make the TextView automatically set to customer's username, make the "back to movies" button returns to previous screen -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="126dp"
+        android:text="You are a customer"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="186dp"
+        android:text="Your username is"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--https://learnpainless.com/edittext-editable-deprecated-how-use-inputtype-android/-->
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="256dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:focusable="false"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:text="Name" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="150sp"
+        android:text="Back to movies"
+        android:paddingStart="30sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="30sp"
+        android:paddingBottom="10sp"
+        android:background="@drawable/rounded_input" />
 </FrameLayout>
