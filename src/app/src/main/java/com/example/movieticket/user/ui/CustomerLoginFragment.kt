@@ -18,9 +18,7 @@ import kotlinx.coroutines.launch
 
 class CustomerLoginFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CustomerLoginFragment()
-    }
+    companion object;
 
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentCustomerLoginBinding

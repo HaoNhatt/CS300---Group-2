@@ -1,25 +1,17 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentAccountInfoBinding
-import com.example.movieticket.databinding.FragmentCustomerLoginBinding
-import com.example.movieticket.databinding.FragmentCustomerMainMenuBinding
 import com.example.movieticket.user.data.UserViewModel
 
 class AccountInfoFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentAccountInfoBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +26,11 @@ class AccountInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.saveButton.setOnClickListener {
+//            Save user new information
+            
+        }
     }
 
-    companion object {
-
-
-    }
+    companion object
 }

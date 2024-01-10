@@ -24,23 +24,16 @@ class CustomerSignUpFragment : Fragment() {
     private lateinit var userAuthDao: UserAuthDao
     private lateinit var userProfileDao: UserProfileDao
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentCustomerSignUpBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    companion object {
-        fun newInstance() = CustomerSignUpFragment()
-    }
+    companion object;
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

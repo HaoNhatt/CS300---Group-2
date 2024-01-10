@@ -9,11 +9,6 @@ import com.example.movieticket.R
 
 class NowPlayingFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +17,5 @@ class NowPlayingFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_now_playing, container, false)
     }
 
-    companion object {
-
-    }
+    companion object
 }

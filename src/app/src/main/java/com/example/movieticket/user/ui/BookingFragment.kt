@@ -8,18 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentBookingBinding
-import com.example.movieticket.databinding.FragmentCustomerLoginBinding
-import com.example.movieticket.databinding.FragmentCustomerMainMenuBinding
 import com.example.movieticket.user.data.UserViewModel
 
 class BookingFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentBookingBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +29,5 @@ class BookingFragment : Fragment() {
 
     }
 
-    companion object {
-
-    }
+    companion object
 }

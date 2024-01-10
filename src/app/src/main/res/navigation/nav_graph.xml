@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/staffMainMenuFragment"
         android:name="com.example.movieticket.staff.ui.StaffMainMenuFragment"
-        android:label="StaffMainMenuFragment">
+        android:label="StaffMainMenuFragment"
+        tools:layout="@layout/fragment_staff_main_menu">
         <action
             android:id="@+id/action_staffMainMenuFragment_to_accountsManagementFragment"
             app:destination="@id/accountsManagementFragment" />
@@ -55,6 +56,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_customerMovieInfoFragment_to_customerMainMenuFragment"
+            app:destination="@id/customerMainMenuFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@id/customerMainMenuFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/customerBookingFragment"
@@ -68,6 +78,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_customerBookingFragment_to_customerMovieInfoFragment"
+            app:destination="@id/customerMovieInfoFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@id/customerMovieInfoFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/customerChooseSeatFragment"
@@ -81,6 +100,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_customerChooseSeatFragment_to_customerBookingFragment"
+            app:destination="@id/customerBookingFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@id/customerBookingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/customerPaymentFragment"
@@ -94,6 +122,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_customerPaymentFragment_to_customerChooseSeatFragment"
+            app:destination="@id/customerChooseSeatFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@id/customerChooseSeatFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/customerFinishPaymentFragment"
