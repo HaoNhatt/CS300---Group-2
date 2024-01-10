@@ -72,6 +72,10 @@ class CustomerLoginFragment : Fragment() {
             findNavController().navigate(R.id.action_customerLoginFragment_to_customerSignUpFragment)
         }
 
+        binding.staffButton.setOnClickListener {
+            findNavController().navigate(R.id.action_customerLoginFragment_to_staffLoginFragment)
+        }
+
     }
 
 }

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/customerLoginFragment">
 
     <fragment
         android:id="@+id/staffMainMenuFragment"
         android:name="com.example.movieticket.staff.ui.StaffMainMenuFragment"
-        android:label="StaffMainMenuFragment" >
+        android:label="StaffMainMenuFragment">
         <action
             android:id="@+id/action_staffMainMenuFragment_to_accountsManagementFragment"
             app:destination="@id/accountsManagementFragment" />
@@ -20,94 +20,119 @@
         android:id="@+id/customerMainMenuFragment"
         android:name="com.example.movieticket.user.ui.UserMainMenuFragment"
         android:label="fragment_customer_main_menu"
-        tools:layout="@layout/fragment_customer_main_menu" >
+        tools:layout="@layout/fragment_customer_main_menu">
         <action
             android:id="@+id/action_customerMainMenuFragment_to_customerMovieInfoFragment"
-            app:destination="@id/customerMovieInfoFragment" />
+            app:destination="@id/customerMovieInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_customerMainMenuFragment_to_customerAccountInfoFragment"
-            app:destination="@id/customerAccountInfoFragment" />
+            app:destination="@id/customerAccountInfoFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_top" />
+        <action
+            android:id="@+id/action_customerMainMenuFragment_to_nowPlayingFragment"
+            app:destination="@id/nowPlayingFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/customerMovieInfoFragment"
         android:name="com.example.movieticket.user.ui.MovieInfoFragment"
         android:label="fragment_customer_movie_info"
-        tools:layout="@layout/fragment_customer_movie_info" >
+        tools:layout="@layout/fragment_customer_movie_info">
         <action
             android:id="@+id/action_customerMovieInfoFragment_to_customerBookingFragment"
-            app:destination="@id/customerBookingFragment" />
-        <action
-            android:id="@+id/action_customerMovieInfoFragment_to_customerAccountInfoFragment"
-            app:destination="@id/customerAccountInfoFragment" />
+            app:destination="@id/customerBookingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/customerBookingFragment"
         android:name="com.example.movieticket.user.ui.BookingFragment"
         android:label="fragment_customer_booking"
-        tools:layout="@layout/fragment_booking" >
+        tools:layout="@layout/fragment_booking">
         <action
             android:id="@+id/action_customerBookingFragment_to_customerChooseSeatFragment"
-            app:destination="@id/customerChooseSeatFragment" />
-        <action
-            android:id="@+id/action_customerBookingFragment_to_customerAccountInfoFragment"
-            app:destination="@id/customerAccountInfoFragment" />
+            app:destination="@id/customerChooseSeatFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/customerChooseSeatFragment"
         android:name="com.example.movieticket.user.ui.ChooseSeatFragment"
         android:label="fragment_customer_choose_seat"
-        tools:layout="@layout/fragment_choose_seat" >
+        tools:layout="@layout/fragment_choose_seat">
         <action
             android:id="@+id/action_customerChooseSeatFragment_to_customerPaymentFragment"
-            app:destination="@id/customerPaymentFragment" />
-        <action
-            android:id="@+id/action_customerChooseSeatFragment_to_customerAccountInfoFragment"
-            app:destination="@id/customerAccountInfoFragment" />
+            app:destination="@id/customerPaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/customerPaymentFragment"
         android:name="com.example.movieticket.user.ui.PaymentFragment"
         android:label="fragment_customer_payment"
-        tools:layout="@layout/fragment_payment" >
+        tools:layout="@layout/fragment_payment">
         <action
             android:id="@+id/action_customerPaymentFragment_to_customerFinishPaymentFragment"
-            app:destination="@id/customerFinishPaymentFragment" />
-        <action
-            android:id="@+id/action_customerBookingFragment_to_customerAccountInfoFragment"
-            app:destination="@id/customerAccountInfoFragment" />
+            app:destination="@id/customerFinishPaymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/customerFinishPaymentFragment"
         android:name="com.example.movieticket.user.ui.FinishPaymentFragment"
         android:label="fragment_customer_finish_payment"
-        tools:layout="@layout/fragment_finish_payment" >
+        tools:layout="@layout/fragment_finish_payment">
+        <action
+            android:id="@+id/action_customerFinishPaymentFragment_to_customerMainMenuFragment"
+            app:destination="@id/customerMainMenuFragment"
+            app:popUpTo="@id/customerMainMenuFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/customerAccountInfoFragment"
         android:name="com.example.movieticket.user.ui.AccountInfoFragment"
         android:label="fragment_customer_account_info"
         tools:layout="@layout/fragment_account_info" >
-    </fragment>
-    <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.example.movieticket.FirstFragment"
-        android:label="fragment_first"
-        tools:layout="@layout/fragment_first" >
         <action
-            android:id="@+id/action_firstFragment_to_customerMainMenuFragment"
-            app:destination="@id/customerLoginFragment" />
-        <action
-            android:id="@+id/action_firstFragment_to_staffLoginFragment"
-            app:destination="@id/staffLoginFragment" />
+            android:id="@+id/action_customerAccountInfoFragment_to_customerMainMenuFragment"
+            app:destination="@id/customerMainMenuFragment"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_top"
+            app:popUpTo="@id/customerMainMenuFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/staffLoginFragment"
         android:name="com.example.movieticket.staff.ui.StaffLoginFragment"
         android:label="fragment_staff_login"
-        tools:layout="@layout/fragment_staff_login" >
+        tools:layout="@layout/fragment_staff_login">
         <action
             android:id="@+id/action_staffLoginFragment_to_staffMainMenuFragment"
-            app:destination="@id/staffMainMenuFragment" />
+            app:destination="@id/staffMainMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/accountsManagementFragment"
@@ -118,7 +143,7 @@
         android:id="@+id/staffTheatersFragment"
         android:name="com.example.movieticket.staff.ui.StaffTheatersFragment"
         android:label="fragment_staff_theaters"
-        tools:layout="@layout/fragment_staff_theaters" >
+        tools:layout="@layout/fragment_staff_theaters">
         <action
             android:id="@+id/action_staffTheatersFragment_to_theaterDetailFragment"
             app:destination="@id/theaterDetailFragment" />
@@ -127,26 +152,66 @@
         android:id="@+id/customerLoginFragment"
         android:name="com.example.movieticket.user.ui.CustomerLoginFragment"
         android:label="fragment_customer_login"
-        tools:layout="@layout/fragment_customer_login" >
+        tools:layout="@layout/fragment_customer_login">
         <action
             android:id="@+id/action_customerLoginFragment_to_customerMainMenuFragment"
             app:destination="@id/customerMainMenuFragment" />
         <action
             android:id="@+id/action_customerLoginFragment_to_customerSignUpFragment"
-            app:destination="@id/customerSignUpFragment" />
+            app:destination="@id/customerSignUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_customerLoginFragment_to_staffLoginFragment"
+            app:destination="@id/staffLoginFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
     </fragment>
     <fragment
         android:id="@+id/customerSignUpFragment"
         android:name="com.example.movieticket.user.ui.CustomerSignUpFragment"
         android:label="fragment_customer_sign_up"
-        tools:layout="@layout/fragment_customer_sign_up" >
+        tools:layout="@layout/fragment_customer_sign_up">
         <action
             android:id="@+id/action_customerSignUpFragment_to_customerLoginFragment"
-            app:destination="@id/customerLoginFragment" />
+            app:destination="@id/customerLoginFragment"
+            app:popUpTo="@id/customerLoginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/theaterDetailFragment"
         android:name="com.example.movieticket.staff.ui.TheaterDetailFragment"
         android:label="fragment_theater_detail"
         tools:layout="@layout/fragment_theater_detail" />
+    <fragment
+        android:id="@+id/nowPlayingFragment"
+        android:name="com.example.movieticket.user.ui.NowPlayingFragment"
+        android:label="fragment_now_playing"
+        tools:layout="@layout/fragment_now_playing" >
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_customerMainMenuFragment"
+            app:destination="@id/customerMainMenuFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_customerMovieInfoFragment"
+            app:destination="@id/customerMovieInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_customerAccountInfoFragment"
+            app:destination="@id/customerAccountInfoFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+    </fragment>
 </navigation>

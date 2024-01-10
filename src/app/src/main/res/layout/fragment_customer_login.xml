@@ -3,62 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.ui.CustomerLoginFragment"
     android:layout_marginStart="50sp"
-    android:layout_marginEnd="50sp">
+    android:layout_marginEnd="50sp"
+    tools:context=".user.ui.CustomerLoginFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/customer_login"
-        android:textSize="36sp"
         android:layout_gravity="center"
-        android:layout_marginBottom="160sp"/>
+        android:layout_marginBottom="160sp"
+        android:text="@string/customer_login"
+        android:textSize="36sp" />
 
     <EditText
         android:id="@+id/userInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_input"
-        android:hint="@string/username"
-        android:layout_marginBottom="20sp"
-        android:paddingStart="15sp"
-        android:paddingTop="7sp"
-        android:paddingEnd="15sp"
-        android:paddingBottom="7sp"
         android:layout_gravity="center"
         android:layout_marginStart="10sp"
         android:layout_marginEnd="10sp"
+        android:layout_marginBottom="20sp"
         android:autofillHints="Username"
-        android:inputType="text" />
+        android:background="@drawable/rounded_input"
+        android:hint="@string/username"
+        android:inputType="text"
+        android:paddingStart="15sp"
+        android:paddingTop="7sp"
+        android:paddingEnd="15sp"
+        android:paddingBottom="7sp" />
 
     <EditText
         android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="40sp"
+        android:layout_marginEnd="10sp"
+        android:autofillHints="Username"
         android:background="@drawable/rounded_input"
         android:hint="@string/password"
-        android:layout_marginTop="40sp"
+        android:inputType="textPassword"
         android:paddingStart="15sp"
         android:paddingTop="7sp"
         android:paddingEnd="15sp"
-        android:paddingBottom="7sp"
-        android:layout_gravity="center"
-        android:layout_marginStart="10sp"
-        android:layout_marginEnd="10sp"
-        android:autofillHints="Username"
-        android:inputType="textPassword" />
+        android:paddingBottom="7sp" />
 
     <TextView
         android:id="@+id/errorPopup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@android:color/holo_red_light"
-        android:text="@string/error"
-        android:visibility="invisible"
         android:layout_gravity="center"
-        android:layout_marginTop="100sp"/>
+        android:layout_marginTop="100sp"
+        android:text="@string/error"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="16sp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/loginButton"
@@ -66,12 +66,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="150sp"
-        android:text="@string/login"
+        android:background="@drawable/rounded_input"
         android:paddingStart="30sp"
         android:paddingTop="10sp"
         android:paddingEnd="30sp"
         android:paddingBottom="10sp"
-        android:background="@drawable/rounded_input" />
+        android:text="@string/login" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -79,13 +79,28 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="200sp"
-        android:text="@string/sign_up"
-        android:textSize="13sp"
+        android:background="@android:color/transparent"
         android:paddingStart="10sp"
         android:paddingTop="5sp"
         android:paddingEnd="10sp"
         android:paddingBottom="5sp"
+        android:text="@string/sign_up"
         android:textColor="@android:color/holo_blue_bright"
-        android:background="@android:color/transparent" />
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/staffButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="250sp"
+        android:background="@android:color/transparent"
+        android:paddingStart="10sp"
+        android:paddingTop="5sp"
+        android:paddingEnd="10sp"
+        android:paddingBottom="5sp"
+        android:text="@string/switch_to_staff_login"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="13sp" />
 
 </FrameLayout>

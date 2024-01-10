@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/CustomerInfoLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".user.ui.MovieInfoFragment">
 
-    <!-- TODO: Make the TextView automatically set to customer's username, make the "back to movies" button returns to previous screen -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/backButton"
+        android:src="@drawable/back_arrow" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="126dp"
+        android:layout_below="@id/backButton"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="0sp"
         android:text="You are a customer"
-        android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,9 +40,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="186dp"
+        android:layout_below="@id/textView"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="0sp"
         android:text="Your username is"
-        android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,26 +56,30 @@
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginTop="256dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
-        android:focusable="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="0sp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/textView2"
         android:clickable="false"
         android:cursorVisible="false"
-        android:text="Name" />
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="text"
+        android:text="Name"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginTop="150sp"
-        android:text="Back to movies"
+        android:layout_marginBottom="30sp"
+        android:background="@drawable/rounded_input"
         android:paddingStart="30sp"
         android:paddingTop="10sp"
         android:paddingEnd="30sp"
         android:paddingBottom="10sp"
-        android:background="@drawable/rounded_input" />
-</FrameLayout>
+        android:text="Save" />
+</RelativeLayout>

@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".user.ui.FinishPaymentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textSeatReserved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50sp"
+        android:text="@string/seat_reserved"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textPurchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textSeatReserved"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="70sp"
+        android:layout_marginEnd="70sp"
+        android:text="@string/text_purchase_1"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textPurchase2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textPurchase"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="70sp"
+        android:layout_marginTop="30sp"
+        android:layout_marginEnd="70sp"
+        android:layout_marginBottom="100sp"
+        android:text="@string/text_purchase_2"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="-20sp"
+        android:background="@drawable/rounded_grey_button"
+        android:paddingStart="30sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="30sp"
+        android:paddingBottom="10sp"
+        android:text="@string/confirm" />
+
+</RelativeLayout>

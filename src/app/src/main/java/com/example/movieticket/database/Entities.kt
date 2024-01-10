@@ -47,10 +47,11 @@ data class Movie(
     @ColumnInfo(name = "description") val description: String = "",
     @ColumnInfo(name = "year") val year: Int = 0,
     @ColumnInfo(name = "target_age") val age: Int = 0,
-    @ColumnInfo(name = "Genre") val genre: String = "",
-    @ColumnInfo(name = "Director") val director: String = "",
-    @ColumnInfo(name = "Actors") val actors: String = "",
-    @ColumnInfo(name = "Language") val language: String = "",
+    @ColumnInfo(name = "genre") val genre: String = "",
+    @ColumnInfo(name = "director") val director: String = "",
+    @ColumnInfo(name = "actors") val actors: String = "",
+    @ColumnInfo(name = "language") val language: String = "",
+    @ColumnInfo(name = "nowPlaying") val nowPlaying: Boolean = false,
 )
 
 @Entity(tableName = "theater")
@@ -60,11 +61,12 @@ data class Theater(
     @ColumnInfo(name = "address") val address: String,
 )
 
-@Entity(tableName = "schedule", foreignKeys = [ForeignKey(entity = Movie::class, parentColumns = ["uid"], childColumns = ["movieID"], onDelete = ForeignKey.CASCADE)])
+@Entity(tableName = "schedule", foreignKeys = [ForeignKey(entity = Movie::class, parentColumns = ["uid"], childColumns = ["movieID"], onDelete = ForeignKey.CASCADE), ForeignKey(entity = Theater::class, parentColumns = ["uid"], childColumns = ["theaterID"], onDelete = ForeignKey.CASCADE)])
 data class Schedule(
     @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
     @ColumnInfo(name = "date") val date: String,
-    @ColumnInfo(name = "movieID") val movieID: String,
+    @ColumnInfo(name = "movieID") val movieID: Int,
+    @ColumnInfo(name = "theaterID") val theater: Int,
     @ColumnInfo(name = "startingTime") val startTime: String,
     @ColumnInfo(name = "endingTime") val endTime: String,
 )

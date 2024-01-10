@@ -61,12 +61,14 @@ interface MovieDao {
     @Query("SELECT * FROM movie")
     suspend fun getAll(): List<Movie>
 
+    @Query("SELECT * FROM movie WHERE nowPlaying = 1")
+    suspend fun getAllNowPlaying(): List<Movie>
+
+    @Query("SELECT * FROM movie WHERE title like '%' || :movieName || '%'")
+    suspend fun searchByName(movieName: String): List<Movie>
+
 //    @Query("UPDATE movie SET imagePath = (:imagePath), name = (:dogName), breed = (:dogBreed), description = (:dogDescription) WHERE uid = (:imageID)")
 //    suspend fun updateMovie(imageID: Int, imagePath: String, dogName: String, dogBreed: String, dogDescription: String)
-//
-//
-//    @Query("SELECT * FROM movie WHERE name like '%' || :keywords || '%'")
-//    suspend fun searchByName(keywords: String): List<Movie>
 //
 //    @Query("SELECT * FROM movie WHERE breed like '%' || :keywords || '%'")
 //    suspend fun searchByBreed(keywords: String): List<Movie>
@@ -91,4 +93,7 @@ interface ScheduleDao {
 
     @Query("SELECT * FROM schedule")
     suspend fun getAll(): List<Schedule>
+
+    @Query("SELECT * FROM schedule WHERE movieID = :movieID")
+    suspend fun getScheduleOfMovie(movieID: Int): List<Schedule>
 }

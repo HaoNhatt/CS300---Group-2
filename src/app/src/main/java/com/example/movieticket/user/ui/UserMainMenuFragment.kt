@@ -22,8 +22,6 @@ class UserMainMenuFragment : Fragment() {
     private lateinit var viewModel: UserViewModel
     private lateinit var binding: FragmentCustomerMainMenuBinding
     private lateinit var movieDao: MovieDao
-    private lateinit var theaterDao: MovieDao
-    private lateinit var scheduleDao: ScheduleDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
