@@ -21,52 +21,52 @@ data class StaffAuth(
 @Entity(tableName = "userProfile")
 data class UserProfile(
     @PrimaryKey @NonNull @ColumnInfo(name = "username") val username: String,
-    @ColumnInfo(name = "name") val name: String = "",
-    @ColumnInfo(name = "age") val age: Int = 0,
-    @ColumnInfo(name = "sex") val sex: Boolean = false,
-    @ColumnInfo(name = "email") val email: String = "",
-    @ColumnInfo(name = "phone") val phone: String = "",
-    @ColumnInfo(name = "wallet") val wallet: Int = 0,
+    @ColumnInfo(name = "name") var name: String = "",
+    @ColumnInfo(name = "age") var age: Int = 0,
+    @ColumnInfo(name = "sex") var sex: Boolean = false,
+    @ColumnInfo(name = "email") var email: String = "",
+    @ColumnInfo(name = "phone") var phone: String = "",
+    @ColumnInfo(name = "wallet") var wallet: Int = 0,
 )
 
 @Entity(tableName = "staffProfile")
 data class StaffProfile(
     @PrimaryKey @NonNull @ColumnInfo(name = "staffName") val staffName: String,
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "age") val age: Int,
-    @ColumnInfo(name = "sex") val sex: Boolean,
-    @ColumnInfo(name = "email") val email: String,
-    @ColumnInfo(name = "phone") val phone: String,
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "age") var age: Int,
+    @ColumnInfo(name = "sex") var sex: Boolean,
+    @ColumnInfo(name = "email") var email: String,
+    @ColumnInfo(name = "phone") var phone: String,
     @ColumnInfo(name = "isManager") val isManager: Boolean,
 )
 
 @Entity(tableName = "movie")
 data class Movie(
     @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "description") val description: String = "",
-    @ColumnInfo(name = "year") val year: Int = 0,
-    @ColumnInfo(name = "target_age") val age: Int = 0,
-    @ColumnInfo(name = "genre") val genre: String = "",
-    @ColumnInfo(name = "director") val director: String = "",
-    @ColumnInfo(name = "actors") val actors: String = "",
-    @ColumnInfo(name = "language") val language: String = "",
-    @ColumnInfo(name = "nowPlaying") val nowPlaying: Boolean = false,
+    @ColumnInfo(name = "title") var title: String,
+    @ColumnInfo(name = "description") var description: String = "",
+    @ColumnInfo(name = "year") var year: Int = 0,
+    @ColumnInfo(name = "target_age") var age: Int = 0,
+    @ColumnInfo(name = "genre") var genre: String = "",
+    @ColumnInfo(name = "director") var director: String = "",
+    @ColumnInfo(name = "actors") var actors: String = "",
+    @ColumnInfo(name = "language") var language: String = "",
+    @ColumnInfo(name = "nowPlaying") var nowPlaying: Boolean = false,
 )
 
 @Entity(tableName = "theater")
 data class Theater(
     @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "address") val address: String,
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "address") var address: String,
 )
 
 @Entity(tableName = "schedule", foreignKeys = [ForeignKey(entity = Movie::class, parentColumns = ["uid"], childColumns = ["movieID"], onDelete = ForeignKey.CASCADE), ForeignKey(entity = Theater::class, parentColumns = ["uid"], childColumns = ["theaterID"], onDelete = ForeignKey.CASCADE)])
 data class Schedule(
     @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
-    @ColumnInfo(name = "date") val date: String,
-    @ColumnInfo(name = "movieID") val movieID: Int,
-    @ColumnInfo(name = "theaterID") val theater: Int,
-    @ColumnInfo(name = "startingTime") val startTime: String,
-    @ColumnInfo(name = "endingTime") val endTime: String,
+    @ColumnInfo(name = "date") var date: String,
+    @ColumnInfo(name = "movieID") var movieID: Int,
+    @ColumnInfo(name = "theaterID") var theater: Int,
+    @ColumnInfo(name = "startingTime") var startTime: String,
+    @ColumnInfo(name = "endingTime") var endTime: String,
 )

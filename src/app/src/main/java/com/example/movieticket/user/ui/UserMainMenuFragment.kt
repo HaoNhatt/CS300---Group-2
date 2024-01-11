@@ -35,6 +35,8 @@ class UserMainMenuFragment : Fragment() {
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerAccountInfoFragment)
         }
 
-
+        binding.viewDetailButton.setOnClickListener {
+            findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerMovieInfoFragment)
+        }
     }
 }

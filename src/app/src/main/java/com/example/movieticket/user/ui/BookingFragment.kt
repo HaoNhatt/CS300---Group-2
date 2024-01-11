@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentBookingBinding
 import com.example.movieticket.user.data.UserViewModel
@@ -27,6 +28,13 @@ class BookingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.backArrow.setOnClickListener {
+            findNavController().navigate(R.id.action_customerBookingFragment_to_customerMovieInfoFragment)
+        }
+
+        binding.chooseSeatButton.setOnClickListener {
+            findNavController().navigate(R.id.action_customerBookingFragment_to_customerChooseSeatFragment)
+        }
     }
 
     companion object

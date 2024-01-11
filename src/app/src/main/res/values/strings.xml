@@ -42,4 +42,18 @@
     <string name="seat_reserved">Seat Reserved</string>
     <string name="text_purchase_2">Your reserved seat will be canceled if you fail to pay within the next 3 days.</string>
     <string name="confirm">Confirm</string>
+    <string name="continue_text">Continue</string>
+    <string name="book_a_ticket">Book a ticket</string>
+    <string name="name">Name</string>
+    <string name="icon_for_account_name">Icon for account name</string>
+    <string name="icon_for_account_age">Icon for account age</string>
+    <string name="icon_for_account_male">Icon for account male</string>
+    <string name="icon_for_account_female">Icon for account female</string>
+    <string name="age_hint">18</string>
+    <string name="email">Email</string>
+    <string name="icon_for_account_email">Icon for account Email</string>
+    <string name="icon_for_account_phone">Icon for account Phone</string>
+    <string name="save">Save</string>
+    <string name="phone_hint">0123456789</string>
+    <string name="wallet_hint">0 VND</string>
 </resources>
