@@ -2,58 +2,16 @@ package com.example.movieticket.staff.data
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class StaffViewModel : ViewModel() {
-    lateinit var staff: StaffProfile
-        private set
-    var selectedTheaterIndex: Int = -1
-    lateinit var theatersList: MutableList<Theater>
-        private set
-
-    init {
-        staff = StaffProfile("name", 20, "sex", "email", "phone", true)
-        theatersList = mutableListOf(Theater("Theater 1", "HCMC"),
-        Theater("Theater 2", "HCMC"),
-        Theater("Theater 3", "HCMC"),
-        Theater("Theater 4", "HCMC"))
-    }
-
-    fun tryLogin(username: String, password: String): Boolean {
-//        if valid, set the current staff profile return true
-        return true
-
-//        if (TODO()) {
-//            staff =
-//            return true
-//        }
-//        return false
-    }
-
-    fun addTheater(name: String, address: String) {
-        theatersList.add(Theater(name, address))
-        Log.d("============", theatersList.size.toString())
-    }
-
-    fun modifyTheater(index: Int, name: String, address: String) {
-        theatersList[index].name = name
-        theatersList[index].address = address
-    }
-
-    fun deleteTheater(index: Int) {
-        theatersList.removeAt(index)
-        TODO()
-//        remove coresponding schedule
-    }
-
-    fun staffLogout() {
-//        staff = null
-    }
-}class StaffViewModelMovie : ViewModel() {
     private val firestore = Firebase.firestore
     lateinit var staff: StaffProfile
         private set
-    var selectedMovieIndex: Int = -1
-    var moviesList = mutableListOf<Movie>()
+    var selectedTheaterIndex: Int = -1
+    var theatersList = mutableListOf<Theater>()
         private set
 
     init {
@@ -62,7 +20,7 @@ class StaffViewModel : ViewModel() {
 //        Theater("Theater 2", "HCMC"),
 //        Theater("Theater 3", "HCMC"),
 //        Theater("Theater 4", "HCMC"))
-        syncMoviesListwithFirestore()
+        syncTheatersListwithFirestore()
 
     }
 
@@ -77,10 +35,10 @@ class StaffViewModel : ViewModel() {
 //        return false
     }
 
-    private fun syncMoviesListwithFirestore() {
-        val TAG = "Sync movies"
+    private fun syncTheatersListwithFirestore() {
+        val TAG = "Sync theaters"
 
-        firestore.collection("Movies").addSnapshotListener { snapshot, e ->
+        firestore.collection("Theaters").addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
@@ -92,67 +50,86 @@ class StaffViewModel : ViewModel() {
                     when (docChange.type) {
                         DocumentChange.Type.ADDED -> {
                             val document = docChange.document
-                            val movie = document.toObject(Movie::class.java)
-                            if (moviesList.any { t -> t.id == movie.id })
+                            val theater = document.toObject(Theater::class.java)
+                            if (theatersList.any { t -> t.id == theater.id })
                                 continue
-                            movie.id = document.id
-                            moviesList.add(movie)
+                            theater.id = document.id
+                            theatersList.add(theater)
                             Log.d("Load theaters", "${document.id} => ${document.data}")
                         }
 
                         DocumentChange.Type.MODIFIED -> {
                             val document = docChange.document
                             val modifiedTheater = document.toObject(Theater::class.java)
-                            val theater = moviesList.find { it.id == document.id }
+                            val theater = theatersList.find { it.id == document.id }
                             theater?.name = modifiedTheater.name
-                            theater?.genre = modifiedTheater.address
+                            theater?.address = modifiedTheater.address
                         }
 
                         DocumentChange.Type.REMOVED -> {
                             val document = docChange.document
                             val removedTheater = document.toObject(Theater::class.java)
-                            moviesList.remove(removedMovie)
+                            if (!theatersList.any { t -> t.id == removedTheater.id })
+                                continue
+                            theatersList.remove(removedTheater)
                         }
                     }
-                moviesList.reverse()
+                theatersList.reverse()
             }
         }
     }
 
-    private fun addMovieToFirestore(name: String, genre: String): String {
+    private fun addTheaterToFirestore(name: String, address: String): String {
         val theaterMapping = mapOf(
             "name" to name,
-            "genre" to genre
+            "address" to address
         )
         var addedID = ""
-        firestore.collection("Movies")
-            .add(movieMapping)
+        firestore.collection("Theaters")
+            .add(theaterMapping)
             .addOnSuccessListener { documentReference ->
                 addedID = documentReference.id
-                Log.d("Add movie", "DocumentSnapshot added with ID: ${documentReference.id}")
+                Log.d("Add theater", "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
-                Log.w("Add movie", "Error adding document", e)
+                Log.w("Add theater", "Error adding document", e)
             }
         return addedID
     }
 
-    fun addMovie(name: String, address: String) {
-        val addedID = addMovieToFirestore(name, address)
-        moviesList.add(Movie(name, genre, addedID))
+    fun addTheater(name: String, address: String) {
+        val addedID = addTheaterToFirestore(name, address)
+        theatersList.add(Theater(name, address, addedID))
     }
 
-    fun modifyMovie(index: Int, name: String, genre: String) {
-        moviesList[index].name = name
-        moviesList[index].genre = genre
+    private fun modifyTheaterInFirestore(id: String, name: String, address: String) {
+        firestore.collection("Theaters").document(id)
+            .update("name", name)
+        firestore.collection("Theaters").document(id)
+            .update("address", address)
     }
 
-    fun deleteMovie(index: Int) {
-        moviesList.removeAt(index)
-        TODO()
+    fun modifyTheater(index: Int, name: String, address: String) {
+        theatersList[index].name = name
+        theatersList[index].address = address
+        modifyTheaterInFirestore(theatersList[index].id, name, address)
+    }
+
+    fun deleteTheaterFromFirestore(id: String) {
+        val TAG = "Delete theater"
+        firestore.collection("Theaters").document(id)
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    fun deleteTheater(index: Int) {
+        deleteTheaterFromFirestore(theatersList[index].id)
+        theatersList.removeAt(index)
 //        remove coresponding schedule
     }
-     fun staffLogout() {
+
+    fun staffLogout() {
 //        staff = null
     }
 }

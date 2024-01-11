@@ -11,4 +11,5 @@ data class StaffProfile(var name: String,
                         var isManager: Boolean)
 
 data class Theater(var name: String,
-                    var address: String)
+                   var address: String,
+                   var id: String)
