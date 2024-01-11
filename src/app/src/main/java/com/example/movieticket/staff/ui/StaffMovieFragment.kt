@@ -35,7 +35,7 @@ class StaffMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.addMovieButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_staffTheatersFragment_to_addTheaterFragment2)
+            findNavController().navigate(R.id.action_staffMovieFragment_to_addMovieFragment)
         }
 
 
