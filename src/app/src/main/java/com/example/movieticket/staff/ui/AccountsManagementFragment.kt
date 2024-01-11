@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieticket.databinding.FragmentAccountsManagementBinding
 import com.example.movieticket.staff.data.StaffViewModel
 
 
 class AccountsManagementFragment : Fragment() {
-    private lateinit var viewModel: StaffViewModel
+    private val viewModel: StaffViewModel by activityViewModels()
     private lateinit var binding: FragmentAccountsManagementBinding
 
 
@@ -20,7 +21,6 @@ class AccountsManagementFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[StaffViewModel::class.java]
         binding = FragmentAccountsManagementBinding.inflate(inflater, container, false)
         return binding.root
     }

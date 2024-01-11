@@ -8,7 +8,7 @@
     tools:context=".staff.ui.AddTheaterFragment">
 
     <EditText
-        android:id="@+id/theaterNameDetail"
+        android:id="@+id/theaterNameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/theaterAddressDetail"
+        android:id="@+id/theaterAddressInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,42 +41,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theaterNameDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/theaterNameInput" />
 
     <Button
-        android:id="@+id/saveChangesTheaterDetailButton"
-        android:layout_width="150dp"
+        android:id="@+id/addTheaterButton2"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="83dp"
         android:backgroundTint="@color/app_color_theme"
-        android:text="Save Changes"
+        android:text="@string/add"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theaterAddressDetail" />
-
-    <Button
-        android:id="@+id/deleteTheaterButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="368dp"
-        android:backgroundTint="@color/app_color_theme"
-        android:text="Delete Theater"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theaterAddressDetail" />
-
-    <Button
-        android:id="@+id/goToSetShowtimebutton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="@color/app_color_theme"
-        android:text="Set Showtime"
-        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theaterAddressDetail" />
-
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theaterAddressInput"
+        app:layout_constraintVertical_bias="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

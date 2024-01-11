@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentStaffMainMenuBinding
@@ -17,7 +18,7 @@ class StaffMainMenuFragment : Fragment() {
         fun newInstance() = StaffMainMenuFragment()
     }
 
-    private lateinit var viewModel: StaffViewModel
+    private val viewModel: StaffViewModel by activityViewModels()
     private lateinit var binding: FragmentStaffMainMenuBinding
 
     override fun onCreateView(
@@ -25,7 +26,6 @@ class StaffMainMenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[StaffViewModel::class.java]
         binding = FragmentStaffMainMenuBinding.inflate(inflater, container, false)
         return binding.root
     }

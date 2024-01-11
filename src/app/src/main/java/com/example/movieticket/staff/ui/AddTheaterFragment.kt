@@ -9,30 +9,29 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
+import com.example.movieticket.databinding.FragmentAddTheaterBinding
+import com.example.movieticket.databinding.FragmentStaffTheatersBinding
 import com.example.movieticket.staff.data.StaffViewModel
-import com.example.movieticket.databinding.FragmentStaffLoginBinding
 
-class StaffLoginFragment : Fragment() {
-
+class AddTheaterFragment : Fragment() {
     private val viewModel: StaffViewModel by activityViewModels()
-    private lateinit var binding: FragmentStaffLoginBinding
+    private lateinit var binding: FragmentAddTheaterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
 
-        binding = FragmentStaffLoginBinding.inflate(inflater, container, false)
+        binding = FragmentAddTheaterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.loginButton.setOnClickListener {
-            if (viewModel.tryLogin(binding.username.toString(), binding.password.toString())) {
-                findNavController().navigate(R.id.action_staffLoginFragment_to_staffMainMenuFragment)
-            }
+        binding.addTheaterButton2.setOnClickListener {
+            val name = binding.theaterNameInput.text.toString()
+            val address = binding.theaterAddressInput.text.toString()
+            viewModel.addTheater(name, address)
+            findNavController().navigate(R.id.action_addTheaterFragment2_to_staffTheatersFragment)
         }
     }
 
