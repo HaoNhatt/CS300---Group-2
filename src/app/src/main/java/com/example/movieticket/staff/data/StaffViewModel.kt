@@ -24,6 +24,7 @@ class StaffViewModel : ViewModel() {
 //        Theater("Theater 3", "HCMC"),
 //        Theater("Theater 4", "HCMC"))
         syncTheatersListwithFirestore()
+        syncMoviesListwithFirestore()
 
     }
 
@@ -130,6 +131,105 @@ class StaffViewModel : ViewModel() {
         deleteTheaterFromFirestore(theatersList[index].id)
         theatersList.removeAt(index)
 //        remove coresponding schedule
+    }
+
+
+    private fun syncMoviesListwithFirestore() {
+        val TAG = "Sync movies"
+
+        firestore.collection("Movies").addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            val changes = snapshot?.documentChanges
+            if (changes != null) {
+                for (docChange in changes)
+                    when (docChange.type) {
+                        DocumentChange.Type.ADDED -> {
+                            val document = docChange.document
+                            val movie = document.toObject(Movie::class.java)
+                            if (moviesList.any { t -> t.id == movie.id })
+                                continue
+                            movie.id = document.id
+                            moviesList.add(movie)
+                            Log.d("Load theaters", "${document.id} => ${document.data}")
+                        }
+
+                        DocumentChange.Type.MODIFIED -> {
+                            val document = docChange.document
+                            val modifiedMovie = document.toObject(Movie::class.java)
+                            val movie = moviesList.find { it.id == document.id }
+                            movie?.title = modifiedMovie.title
+                            movie?.year = modifiedMovie.year
+                            movie?.description = modifiedMovie.description
+                        }
+
+                        DocumentChange.Type.REMOVED -> {
+                            val document = docChange.document
+                            val removedMovie = document.toObject(Movie::class.java)
+                            if (!moviesList.any { m -> m.id == removedMovie.id })
+                                continue
+                            moviesList.remove(removedMovie)
+                        }
+                    }
+                moviesList.reverse()
+            }
+        }
+    }
+
+    private fun addMovieToFirestore(title: String, year: String, description: String): String {
+        val movieMapping = mapOf(
+            "title" to title,
+            "year" to year,
+            "description" to description
+        )
+        var addedID = ""
+        firestore.collection("Movies")
+            .add(movieMapping)
+            .addOnSuccessListener { documentReference ->
+                addedID = documentReference.id
+                Log.d("Add movie", "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("Add movie", "Error adding document", e)
+            }
+        return addedID
+    }
+
+    fun addMovie(title: String, year: String, description: String) {
+        val addedID = addMovieToFirestore(title, year, description)
+        moviesList.add(Movie(title, year, description, addedID))
+    }
+
+    private fun modifyMovieInFirestore(id: String, title: String, year: String, description: String) {
+        firestore.collection("Movies").document(id)
+            .update("title", title)
+        firestore.collection("Movies").document(id)
+            .update("year", year)
+        firestore.collection("Movies").document(id)
+            .update("description", description)
+    }
+
+    fun modifyMovie(index: Int, title: String, year: String, description: String) {
+        moviesList[index].title = title
+        moviesList[index].year = year
+        moviesList[index].description = description
+        modifyMovieInFirestore(moviesList[index].id, title, year, description)
+    }
+
+    fun deleteMovieFromFirestore(id: String) {
+        val TAG = "Delete movie"
+        firestore.collection("Movies").document(id)
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    fun deleteMovie(index: Int) {
+        deleteMovieFromFirestore(moviesList[index].id)
+        moviesList.removeAt(index)
     }
 
     fun staffLogout() {
