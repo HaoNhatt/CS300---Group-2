@@ -69,6 +69,8 @@ class StaffViewModel : ViewModel() {
                         DocumentChange.Type.REMOVED -> {
                             val document = docChange.document
                             val removedTheater = document.toObject(Theater::class.java)
+                            if (!theatersList.any { t -> t.id == removedTheater.id })
+                                continue
                             theatersList.remove(removedTheater)
                         }
                     }
@@ -100,14 +102,30 @@ class StaffViewModel : ViewModel() {
         theatersList.add(Theater(name, address, addedID))
     }
 
+    private fun modifyTheaterInFirestore(id: String, name: String, address: String) {
+        firestore.collection("Theaters").document(id)
+            .update("name", name)
+        firestore.collection("Theaters").document(id)
+            .update("address", address)
+    }
+
     fun modifyTheater(index: Int, name: String, address: String) {
         theatersList[index].name = name
         theatersList[index].address = address
+        modifyTheaterInFirestore(theatersList[index].id, name, address)
+    }
+
+    fun deleteTheaterFromFirestore(id: String) {
+        val TAG = "Delete theater"
+        firestore.collection("Theaters").document(id)
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
     }
 
     fun deleteTheater(index: Int) {
+        deleteTheaterFromFirestore(theatersList[index].id)
         theatersList.removeAt(index)
-        TODO()
 //        remove coresponding schedule
     }
 
