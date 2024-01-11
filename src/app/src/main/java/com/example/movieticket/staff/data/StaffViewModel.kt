@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 class StaffViewModel : ViewModel() {
     lateinit var staff: StaffProfile
         private set
-    var selectedTheater: Theater? = null
+    var selectedTheaterIndex: Int = -1
     lateinit var theatersList: MutableList<Theater>
         private set
 
@@ -27,6 +27,22 @@ class StaffViewModel : ViewModel() {
 //            return true
 //        }
 //        return false
+    }
+
+    fun addTheater(name: String, address: String) {
+        theatersList.add(Theater(name, address))
+        Log.d("============", theatersList.size.toString())
+    }
+
+    fun modifyTheater(index: Int, name: String, address: String) {
+        theatersList[index].name = name
+        theatersList[index].address = address
+    }
+
+    fun deleteTheater(index: Int) {
+        theatersList.removeAt(index)
+        TODO()
+//        remove coresponding schedule
     }
 
     fun staffLogout() {
