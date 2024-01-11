@@ -10,6 +10,11 @@ data class StaffProfile(var name: String,
                         var phone: String,
                         var isManager: Boolean)
 
-data class Theater(var name: String,
-                   var address: String,
-                   var id: String)
+data class Theater(var name: String = "",
+                   var address: String = "",
+                   var id: String = "")
+
+data class Movie(var title: String = "",
+                 var description: String = "",
+                 var year: String = "",
+                 var id: String = "")

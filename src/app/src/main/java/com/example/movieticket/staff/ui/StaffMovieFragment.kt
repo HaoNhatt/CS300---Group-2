@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieticket.R
-import com.example.movieticket.databinding.FragmentStaffMoviesBinding
+import com.example.movieticket.databinding.FragmentStaffMovieBinding
+import com.example.movieticket.databinding.FragmentStaffTheatersBinding
 import com.example.movieticket.staff.data.StaffViewModel
 
 
-class StaffTheatersFragment : Fragment() {
+class StaffMovieFragment : Fragment() {
 
     private val viewModel: StaffViewModel by activityViewModels()
-    private lateinit var binding: FragmentStaffMoviesBinding
+    private lateinit var binding: FragmentStaffMovieBinding
 
 
     override fun onCreateView(
@@ -26,7 +27,7 @@ class StaffTheatersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentStaffMoviesBinding.inflate(inflater, container, false)
+        binding = FragmentStaffMovieBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,13 +35,9 @@ class StaffTheatersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.addMovieButton.setOnClickListener {
-            findNavController().navigate(R.id.action_staffMoviesFragment_to_addMoviesFragment2)
+//            findNavController().navigate(R.id.action_staffTheatersFragment_to_addTheaterFragment2)
         }
 
-        binding.addMovieButton.visibility = when (viewModel.staff.isManager) {
-            true -> {View.VISIBLE}
-            else -> {View.INVISIBLE}
-        }
 
         val moviesRecyclerView = binding.moviesRecyclerView
         val adapter = StaffMoviesAdapter(viewModel)

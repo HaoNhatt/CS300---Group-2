@@ -1,6 +1,5 @@
 package com.example.movieticket.staff.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
@@ -14,13 +13,13 @@ import com.example.movieticket.staff.data.StaffViewModel;
 class StaffTheatersAdapter(private val viewModel: StaffViewModel): RecyclerView.Adapter<StaffTheatersAdapter.TheaterViewHolder>() {
 
     class TheaterViewHolder(private val view:View) : RecyclerView.ViewHolder(view) {
-        val theaterNameView = view.findViewById<TextView>(R.id.staffTheaterItem)!!
+        val theaterNameView = view.findViewById<TextView>(R.id.textViewItem)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TheaterViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.staff_theaters_item, parent, false)
+            .inflate(R.layout.textview_item, parent, false)
 
         return TheaterViewHolder(layout)
     }

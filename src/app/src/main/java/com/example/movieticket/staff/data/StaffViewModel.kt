@@ -11,7 +11,10 @@ class StaffViewModel : ViewModel() {
     lateinit var staff: StaffProfile
         private set
     var selectedTheaterIndex: Int = -1
+    var selectedMovieIndex: Int = -1
     var theatersList = mutableListOf<Theater>()
+        private set
+    var moviesList = mutableListOf<Movie>()
         private set
 
     init {
