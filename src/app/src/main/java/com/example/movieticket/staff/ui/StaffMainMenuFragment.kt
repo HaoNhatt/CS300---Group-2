@@ -44,6 +44,13 @@ class StaffMainMenuFragment : Fragment() {
         binding.theatersTextView.setOnClickListener {
             findNavController().navigate(R.id.action_staffMainMenuFragment_to_staffTheatersFragment)
         }
+
+        binding.moviesButton.setOnClickListener {
+            findNavController().navigate(R.id.action_staffMainMenuFragment_to_staffMovieFragment)
+        }
+        binding.moviesTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_staffMainMenuFragment_to_staffMovieFragment)
+        }
     }
 
 }

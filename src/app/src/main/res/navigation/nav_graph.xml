@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_staffMainMenuFragment_to_staffTheatersFragment"
             app:destination="@id/staffTheatersFragment" />
+        <action
+            android:id="@+id/action_staffMainMenuFragment_to_staffMovieFragment"
+            app:destination="@id/staffMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/customerMainMenuFragment"
@@ -290,5 +293,22 @@
         <action
             android:id="@+id/action_addTheaterFragment2_to_staffTheatersFragment"
             app:destination="@id/staffTheatersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffMovieFragment"
+        android:name="com.example.movieticket.staff.ui.StaffMovieFragment"
+        android:label="StaffMovieFragment" >
+        <action
+            android:id="@+id/action_staffMovieFragment_to_addMovieFragment"
+            app:destination="@id/addMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMovieFragment"
+        android:name="com.example.movieticket.staff.ui.AddMovieFragment"
+        android:label="fragment_add_movie"
+        tools:layout="@layout/fragment_add_movie" >
+        <action
+            android:id="@+id/action_addMovieFragment_to_staffMovieFragment"
+            app:destination="@id/staffMovieFragment" />
     </fragment>
 </navigation>

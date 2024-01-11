@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".staff.ui.AddMovieFragment" >
+
+    <EditText
+        android:id="@+id/movieTitleEditText"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="70dp"
+        android:autofillHints="Title"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="@color/app_color_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/movieYearEditText"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints="Year"
+        android:ems="10"
+        android:hint="Year"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="@color/app_color_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieTitleEditText" />
+
+    <EditText
+        android:id="@+id/movieDescriptionEditText"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:autofillHints="Description"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="text"
+        android:maxLines="6"
+        android:minHeight="48dp"
+        android:textColor="@color/app_color_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieYearEditText" />
+
+    <Button
+        android:id="@+id/addMovieButton2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="260dp"
+        android:backgroundTint="@color/app_color_theme"
+        android:text="Add"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieDescriptionEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
