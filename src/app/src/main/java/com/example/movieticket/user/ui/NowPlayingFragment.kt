@@ -36,16 +36,16 @@ class NowPlayingFragment : Fragment() {
 
         movieDao = AppDatabase.getInstance(requireContext()).movieDao()
 
-        lifecycleScope.launch {
-            val queryResult = movieDao.getAllNowPlaying()
-
-            for (movie in queryResult) {
-                val movieItem = layoutInflater.inflate(R.layout.list_movie_item, null)
-                val parentLayout = binding.listMovies
-
-                parentLayout.addView(movieItem)
-            }
-        }
+//        lifecycleScope.launch {
+//            val queryResult = movieDao.getAllNowPlaying()
+//
+//            for (movie in queryResult) {
+//                val movieItem = layoutInflater.inflate(R.layout.list_movie_item, null)
+//                val parentLayout = binding.listMovies
+//
+//                parentLayout.addView(movieItem)
+//            }
+//        }
 
         binding.groupUpcoming.setOnClickListener {
             findNavController().navigate(R.id.action_nowPlayingFragment_to_customerMainMenuFragment)

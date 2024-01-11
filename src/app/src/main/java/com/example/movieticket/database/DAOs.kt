@@ -100,3 +100,15 @@ interface ScheduleDao {
     @Query("SELECT * FROM schedule WHERE movieID = :movieID")
     suspend fun getScheduleOfMovie(movieID: Int): List<Schedule>
 }
+
+@Dao
+interface InvoiceDao {
+    @Insert
+    suspend fun insert(invoice: Invoice)
+
+    @Query("SELECT * FROM invoice")
+    suspend fun getAll(): List<Invoice>
+
+    @Query("SELECT * FROM invoice WHERE username = :username")
+    suspend fun getInvoiceOfUser(username: String): List<Invoice>
+}

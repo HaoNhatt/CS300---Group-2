@@ -58,4 +58,21 @@
     <string name="wallet_hint">0 VND</string>
     <string name="example_movie_genres">Adventure, Comedy, Childhood</string>
     <string name="movie_banner">Movie Banner</string>
+    <string name="movie_title">Title:</string>
+    <string name="movie_description">Description:</string>
+    <string name="a_new_film_of_inside_out_series">A new film of inside out series</string>
+    <string name="year">Year:</string>
+    <string name="_2023">2023</string>
+    <string name="target_age">Target Age:</string>
+    <string name="_16">16</string>
+    <string name="genre">Genre:</string>
+    <string name="adventure_funny_and_childhood">Adventure, Funny and Childhood</string>
+    <string name="director">Director:</string>
+    <string name="john_smith">John Smith</string>
+    <string name="actor">Actor:</string>
+    <string name="jame_smith">Jame Smith</string>
+    <string name="language">Language:</string>
+    <string name="english">English</string>
+    <string name="_11_1">11/1</string>
+    <string name="_13h">13h</string>
 </resources>

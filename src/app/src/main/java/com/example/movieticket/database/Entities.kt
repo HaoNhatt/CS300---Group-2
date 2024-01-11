@@ -66,7 +66,14 @@ data class Schedule(
     @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
     @ColumnInfo(name = "date") var date: String,
     @ColumnInfo(name = "movieID") var movieID: Int,
-    @ColumnInfo(name = "theaterID") var theater: Int,
+    @ColumnInfo(name = "theaterID") var theaterID: Int,
     @ColumnInfo(name = "startingTime") var startTime: String,
-    @ColumnInfo(name = "endingTime") var endTime: String,
+    @ColumnInfo(name = "duration") var endTime: String,
+)
+
+@Entity(tableName = "invoice", foreignKeys = [ForeignKey(entity = UserProfile::class, parentColumns = ["username"], childColumns = ["username"], onDelete = ForeignKey.CASCADE), ForeignKey(entity = Schedule::class, parentColumns = ["uid"], childColumns = ["scheduleID"], onDelete = ForeignKey.CASCADE)])
+data class Invoice(
+    @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
+    @ColumnInfo(name = "username") var username: String,
+    @ColumnInfo(name = "scheduleID") var scheduleID: Int,
 )
