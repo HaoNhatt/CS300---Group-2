@@ -3,14 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".user.ui.ChooseSeatFragment">
 
-    <TextView
+    <ImageButton
+        android:id="@+id/backArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="ASDFASDF" />
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="20sp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/backButton"
+        android:src="@drawable/back_arrow" />
 
     <GridLayout
         android:id="@+id/seatGrid"
@@ -51,7 +57,7 @@
             android:layout_margin="2sp"
             android:background="@drawable/seat_chosen"
             android:contentDescription="Available Seat"
-            android:onClick="onSeatClicked" />
+            android:clickable="false" />
 
         <ImageView
             android:id="@+id/seat3"
@@ -333,13 +339,52 @@
 
     </GridLayout>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/seatGrid"
         android:layout_centerInParent="true"
-        android:text="Total Cost: "
-        android:textSize="24sp" />
+        android:gravity="center">
 
+
+        <TextView
+            android:id="@+id/totalCostText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Cost: "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/totalCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/totalCostText"
+            android:text="0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/unitCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/totalCost"
+            android:text=" VND"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30sp"
+        android:background="@drawable/rounded_grey_button"
+        android:paddingStart="30sp"
+        android:paddingTop="10sp"
+        android:paddingEnd="30sp"
+        android:paddingBottom="10sp"
+        android:text="@string/continue_text" />
 
 </RelativeLayout>

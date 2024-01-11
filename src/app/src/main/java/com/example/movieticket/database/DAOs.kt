@@ -36,6 +36,9 @@ interface UserProfileDao {
 
     @Query("SELECT * FROM userProfile WHERE username = :username")
     suspend fun searchByUsername(username: String): List<UserProfile>
+
+    @Query("UPDATE userProfile SET name = (:newName), age = (:newAge), sex = (:newSex), email = (:newEmail), phone = (:newPhone), wallet = (:newWallet) WHERE username = (:newUsername)")
+    suspend fun updateUser(newUsername: String, newName: String, newAge: Int, newSex: Boolean, newEmail: String, newPhone: String, newWallet: Int)
 }
 
 @Dao
