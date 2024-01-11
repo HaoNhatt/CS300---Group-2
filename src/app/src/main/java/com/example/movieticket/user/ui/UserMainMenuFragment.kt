@@ -1,10 +1,12 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
@@ -16,7 +18,7 @@ class UserMainMenuFragment : Fragment() {
 
     companion object;
 
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentCustomerMainMenuBinding
     private lateinit var movieDao: MovieDao
 
@@ -25,7 +27,6 @@ class UserMainMenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentCustomerMainMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,7 +36,12 @@ class UserMainMenuFragment : Fragment() {
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerAccountInfoFragment)
         }
 
+        binding.groupNowPlaying.setOnClickListener {
+            findNavController().navigate(R.id.action_customerMainMenuFragment_to_nowPlayingFragment)
+        }
+
         binding.viewDetailButton.setOnClickListener {
+            viewModel.selectedMovieIndex = 1
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerMovieInfoFragment)
         }
     }

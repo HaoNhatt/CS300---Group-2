@@ -1,10 +1,12 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,7 +19,7 @@ import com.example.movieticket.user.data.UserViewModel
 import kotlinx.coroutines.launch
 
 class AccountInfoFragment : Fragment() {
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by activityViewModels()
     private lateinit var userProfileDao: UserProfileDao
     private lateinit var binding: FragmentAccountInfoBinding
 
@@ -26,7 +28,6 @@ class AccountInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentAccountInfoBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,12 +54,15 @@ class AccountInfoFragment : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
-            viewModel.getUser().name = binding.accountUsername.text.toString()
-            viewModel.getUser().age = binding.accountAge.text.toString().toInt()
-            viewModel.getUser().sex = binding.accountMaleCheck.isChecked
-            viewModel.getUser().email = binding.accountEmail.text.toString()
-            viewModel.getUser().phone = binding.accountPhone.text.toString()
-            viewModel.getUser().wallet = binding.accountUsername.text.toString().toInt()
+            Log.d("HaoNhat", "Test1")
+            val newName = binding.accountUsername.text.toString()
+            val newAge = binding.accountAge.text.toString().toInt()
+            val newSex = binding.accountMaleCheck.isChecked
+            val newEmail = binding.accountEmail.text.toString()
+            val newPhone = binding.accountPhone.text.toString()
+            val newWallet = binding.accountWallet.text.toString().toInt()
+            viewModel.setUser(newName, newAge, newSex, newEmail, newPhone, newWallet)
+            Log.d("HaoNhat", "Test2")
 
             lifecycleScope.launch {
                 userProfileDao.updateUser(
@@ -71,6 +75,7 @@ class AccountInfoFragment : Fragment() {
                     viewModel.getUser().wallet
                 )
             }
+            findNavController().navigate(R.id.action_customerAccountInfoFragment_to_customerMainMenuFragment)
         }
     }
 

@@ -56,4 +56,6 @@
     <string name="save">Save</string>
     <string name="phone_hint">0123456789</string>
     <string name="wallet_hint">0 VND</string>
+    <string name="example_movie_genres">Adventure, Comedy, Childhood</string>
+    <string name="movie_banner">Movie Banner</string>
 </resources>

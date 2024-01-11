@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movieItemBlock"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_input"
+    android:padding="10sp"
+    android:layout_margin="5sp"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/movieItemBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="10sp"
+        android:contentDescription="@string/movie_banner"
+        android:src="@mipmap/example_banner" />
+
+    <TextView
+        android:id="@+id/movieItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="15sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/movieItemBanner"
+        android:text="@string/example_movie_title"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/movieItemGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/movieItemTitle"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/movieItemBanner"
+        android:text="@string/example_movie_genres"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="16sp" />
+
+</RelativeLayout>

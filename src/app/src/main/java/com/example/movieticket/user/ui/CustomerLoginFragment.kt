@@ -2,10 +2,12 @@ package com.example.movieticket.user.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
@@ -20,7 +22,7 @@ class CustomerLoginFragment : Fragment() {
 
     companion object;
 
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentCustomerLoginBinding
     private lateinit var userAuthDao: UserAuthDao
     private lateinit var userProfileDao: UserProfileDao
@@ -31,7 +33,6 @@ class CustomerLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentCustomerLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
