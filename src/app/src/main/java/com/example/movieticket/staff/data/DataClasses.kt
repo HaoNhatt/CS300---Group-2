@@ -12,9 +12,9 @@ data class StaffProfile(var name: String,
 
 data class Theater(var name: String = "",
                    var address: String = "",
-                   var id: String = "")
+                   var id: String = "0")
 
 data class Movie(var title: String = "",
                  var description: String = "",
                  var year: String = "",
-                 var id: String = "")
+                 var id: String = "0")
