@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieticket.R
 import com.example.movieticket.staff.data.StaffViewModel
@@ -28,7 +29,7 @@ class StaffMoviesAdapter(private val viewModel: StaffViewModel): RecyclerView.Ad
         holder.movieNameView.text = viewModel.moviesList[position].title
         holder.itemView.setOnClickListener {
             viewModel.selectedMovieIndex = position
-//            it.findNavController().navigate(R.id.action_staffTheatersFragment_to_theaterDetailFragment)
+            it.findNavController().navigate(R.id.action_staffMovieFragment_to_movieDetailFragment)
         }
     }
 }

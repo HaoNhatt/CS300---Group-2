@@ -301,6 +301,9 @@
         <action
             android:id="@+id/action_staffMovieFragment_to_addMovieFragment"
             app:destination="@id/addMovieFragment" />
+        <action
+            android:id="@+id/action_staffMovieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addMovieFragment"
@@ -309,6 +312,14 @@
         tools:layout="@layout/fragment_add_movie" >
         <action
             android:id="@+id/action_addMovieFragment_to_staffMovieFragment"
+            app:destination="@id/staffMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.movieticket.staff.ui.MovieDetailFragment"
+        android:label="MovieDetailFragment" >
+        <action
+            android:id="@+id/action_movieDetailFragment_to_staffMovieFragment"
             app:destination="@id/staffMovieFragment" />
     </fragment>
 </navigation>
