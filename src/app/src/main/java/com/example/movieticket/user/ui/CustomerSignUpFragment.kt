@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
@@ -19,7 +19,7 @@ import com.example.movieticket.user.data.UserViewModel
 import kotlinx.coroutines.launch
 
 class CustomerSignUpFragment : Fragment() {
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentCustomerSignUpBinding
     private lateinit var userAuthDao: UserAuthDao
     private lateinit var userProfileDao: UserProfileDao
@@ -28,7 +28,6 @@ class CustomerSignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentCustomerSignUpBinding.inflate(inflater, container, false)
         return binding.root
     }

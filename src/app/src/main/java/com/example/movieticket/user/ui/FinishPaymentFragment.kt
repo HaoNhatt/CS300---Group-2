@@ -1,26 +1,18 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.InvoiceDao
-import com.example.movieticket.database.MovieDao
-import com.example.movieticket.databinding.FragmentCustomerLoginBinding
 import com.example.movieticket.databinding.FragmentFinishPaymentBinding
-import com.example.movieticket.user.data.UserViewModel
 
 class FinishPaymentFragment : Fragment() {
     private lateinit var binding: FragmentFinishPaymentBinding
     private lateinit var invoiceDao: InvoiceDao
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +33,5 @@ class FinishPaymentFragment : Fragment() {
         }
     }
 
-    companion object {
-
-    }
+    companion object
 }

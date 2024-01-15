@@ -1,6 +1,5 @@
 package com.example.movieticket.database
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -8,19 +7,19 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "userAuth")
 data class UserAuth(
-    @PrimaryKey @NonNull @ColumnInfo(name = "username") val username: String,
+    @PrimaryKey @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "password") val password: String,
 )
 
 @Entity(tableName = "staffAuth")
 data class StaffAuth(
-    @PrimaryKey @NonNull @ColumnInfo(name = "staffName") val staffName: String,
+    @PrimaryKey @ColumnInfo(name = "staffName") val staffName: String,
     @ColumnInfo(name = "password") val password: String,
 )
 
 @Entity(tableName = "userProfile")
 data class UserProfile(
-    @PrimaryKey @NonNull @ColumnInfo(name = "username") val username: String,
+    @PrimaryKey @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "name") var name: String = "",
     @ColumnInfo(name = "age") var age: Int = 0,
     @ColumnInfo(name = "sex") var sex: Boolean = false,
@@ -31,7 +30,7 @@ data class UserProfile(
 
 @Entity(tableName = "staffProfile")
 data class StaffProfile(
-    @PrimaryKey @NonNull @ColumnInfo(name = "staffName") val staffName: String,
+    @PrimaryKey @ColumnInfo(name = "staffName") val staffName: String,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "age") var age: Int,
     @ColumnInfo(name = "sex") var sex: Boolean,
@@ -42,7 +41,7 @@ data class StaffProfile(
 
 @Entity(tableName = "movie")
 data class Movie(
-    @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "title") var title: String,
     @ColumnInfo(name = "description") var description: String = "",
     @ColumnInfo(name = "year") var year: Int = 0,
@@ -56,24 +55,24 @@ data class Movie(
 
 @Entity(tableName = "theater")
 data class Theater(
-    @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "address") var address: String,
 )
 
 @Entity(tableName = "schedule", foreignKeys = [ForeignKey(entity = Movie::class, parentColumns = ["uid"], childColumns = ["movieID"], onDelete = ForeignKey.CASCADE), ForeignKey(entity = Theater::class, parentColumns = ["uid"], childColumns = ["theaterID"], onDelete = ForeignKey.CASCADE)])
 data class Schedule(
-    @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "date") var date: String,
     @ColumnInfo(name = "movieID") var movieID: Int,
     @ColumnInfo(name = "theaterID") var theaterID: Int,
     @ColumnInfo(name = "startingTime") var startTime: String,
-    @ColumnInfo(name = "duration") var endTime: String,
+    @ColumnInfo(name = "duration") var duration: String,
 )
 
 @Entity(tableName = "invoice", foreignKeys = [ForeignKey(entity = UserProfile::class, parentColumns = ["username"], childColumns = ["username"], onDelete = ForeignKey.CASCADE), ForeignKey(entity = Schedule::class, parentColumns = ["uid"], childColumns = ["scheduleID"], onDelete = ForeignKey.CASCADE)])
 data class Invoice(
-    @PrimaryKey(autoGenerate = true) @NonNull val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "username") var username: String,
     @ColumnInfo(name = "scheduleID") var scheduleID: Int,
 )

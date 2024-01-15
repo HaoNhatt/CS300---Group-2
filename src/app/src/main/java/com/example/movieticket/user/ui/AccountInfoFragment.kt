@@ -1,18 +1,15 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.AppDatabase
-import com.example.movieticket.database.UserProfile
 import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentAccountInfoBinding
 import com.example.movieticket.user.data.UserViewModel
@@ -54,7 +51,6 @@ class AccountInfoFragment : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
-            Log.d("HaoNhat", "Test1")
             val newName = binding.accountUsername.text.toString()
             val newAge = binding.accountAge.text.toString().toInt()
             val newSex = binding.accountMaleCheck.isChecked
@@ -62,7 +58,6 @@ class AccountInfoFragment : Fragment() {
             val newPhone = binding.accountPhone.text.toString()
             val newWallet = binding.accountWallet.text.toString().toInt()
             viewModel.setUser(newName, newAge, newSex, newEmail, newPhone, newWallet)
-            Log.d("HaoNhat", "Test2")
 
             lifecycleScope.launch {
                 userProfileDao.updateUser(

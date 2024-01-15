@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentChooseSeatBinding
 import com.example.movieticket.user.data.UserViewModel
 
 class ChooseSeatFragment : Fragment() {
-    private lateinit var viewModel: UserViewModel
+    private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentChooseSeatBinding
 
     override fun onCreateView(
@@ -20,7 +20,6 @@ class ChooseSeatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         binding = FragmentChooseSeatBinding.inflate(inflater, container, false)
         return binding.root
     }

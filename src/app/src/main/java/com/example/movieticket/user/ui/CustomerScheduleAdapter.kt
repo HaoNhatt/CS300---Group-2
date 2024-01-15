@@ -1,6 +1,5 @@
 package com.example.movieticket.user.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,10 @@ import com.example.movieticket.user.data.UserViewModel
 
 class CustomerScheduleAdapter(private val viewModel: UserViewModel): RecyclerView.Adapter<CustomerScheduleAdapter.ScheduleViewHolder>() {
 
-    class ScheduleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val scheduleNameView = view.findViewById<TextView>(R.id.scheduleDate)!!
+    class ScheduleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val scheduleDateView = view.findViewById<TextView>(R.id.scheduleDate)!!
+        val scheduleStartView = view.findViewById<TextView>(R.id.scheduleStart)!!
+        val scheduleDurationView = view.findViewById<TextView>(R.id.scheduleDuration)!!
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
@@ -27,7 +28,9 @@ class CustomerScheduleAdapter(private val viewModel: UserViewModel): RecyclerVie
     override fun getItemCount(): Int = viewModel.filteredSchedulesList.size
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-//        holder.scheduleNameView.text = viewModel.filteredSchedulesList[position].uid.toString()
+        holder.scheduleDateView.text = viewModel.filteredSchedulesList[position].date
+        holder.scheduleStartView.text = viewModel.filteredSchedulesList[position].startTime
+        holder.scheduleDurationView.text = viewModel.filteredSchedulesList[position].duration
         holder.itemView.setOnClickListener {
             viewModel.selectedScheduleIndex = position
             it.findNavController().navigate(R.id.action_customerBookingFragment_to_customerFinishPaymentFragment)

@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieticket.R
 import com.example.movieticket.database.AppDatabase
 import com.example.movieticket.database.MovieDao
 import com.example.movieticket.databinding.FragmentNowPlayingBinding
-import com.example.movieticket.staff.ui.StaffTheatersAdapter
 import com.example.movieticket.user.data.UserViewModel
-import kotlinx.coroutines.launch
 
 class NowPlayingFragment : Fragment() {
     private val viewModel: UserViewModel by activityViewModels()
@@ -36,16 +33,9 @@ class NowPlayingFragment : Fragment() {
 
         movieDao = AppDatabase.getInstance(requireContext()).movieDao()
 
-//        lifecycleScope.launch {
-//            val queryResult = movieDao.getAllNowPlaying()
-//
-//            for (movie in queryResult) {
-//                val movieItem = layoutInflater.inflate(R.layout.list_movie_item, null)
-//                val parentLayout = binding.listMovies
-//
-//                parentLayout.addView(movieItem)
-//            }
-//        }
+        binding.customerAccountIcon.setOnClickListener {
+            findNavController().navigate(R.id.action_nowPlayingFragment_to_customerAccountInfoFragment)
+        }
 
         binding.groupUpcoming.setOnClickListener {
             findNavController().navigate(R.id.action_nowPlayingFragment_to_customerMainMenuFragment)
