@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.ui.PaymentFragment">
+    tools:context=".user.ui.ChooseTheaterFragment">
 
     <ImageButton
         android:id="@+id/backArrow"
@@ -16,5 +16,15 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/backButton"
         android:src="@drawable/back_arrow" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listTheaters"
+        android:layout_below="@id/backArrow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="20sp" />
 
 </RelativeLayout>

@@ -1,13 +1,11 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.MovieDao
@@ -41,7 +39,7 @@ class UserMainMenuFragment : Fragment() {
         }
 
         binding.viewDetailButton.setOnClickListener {
-            viewModel.selectedMovieIndex = 1
+            viewModel.selectedMovieIndex = 0
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerMovieInfoFragment)
         }
     }
