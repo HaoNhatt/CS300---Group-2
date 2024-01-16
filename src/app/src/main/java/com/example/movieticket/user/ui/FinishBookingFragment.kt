@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.InvoiceDao
-import com.example.movieticket.databinding.FragmentFinishPaymentBinding
+import com.example.movieticket.databinding.FragmentFinishBookingBinding
 
-class FinishPaymentFragment : Fragment() {
-    private lateinit var binding: FragmentFinishPaymentBinding
+class FinishBookingFragment : Fragment() {
+    private lateinit var binding: FragmentFinishBookingBinding
     private lateinit var invoiceDao: InvoiceDao
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class FinishPaymentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentFinishPaymentBinding.inflate(inflater, container, false)
+        binding = FragmentFinishBookingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,7 +29,7 @@ class FinishPaymentFragment : Fragment() {
 
 
         binding.confirmButton.setOnClickListener {
-            findNavController().navigate(R.id.action_customerFinishPaymentFragment_to_customerMainMenuFragment)
+            findNavController().navigate(R.id.action_customerFinishBookingFragment_to_customerMainMenuFragment)
         }
     }
 

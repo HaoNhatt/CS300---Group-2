@@ -3,6 +3,7 @@ package com.example.movieticket.user.data
 import androidx.lifecycle.ViewModel
 import com.example.movieticket.database.Movie
 import com.example.movieticket.database.Schedule
+import com.example.movieticket.database.Theater
 import com.example.movieticket.database.UserProfile
 
 class UserViewModel : ViewModel() {
@@ -13,9 +14,13 @@ class UserViewModel : ViewModel() {
         Movie(3, "Inside Out 4", "New film 3", 2023, 16, "Adventure, Childhood and Comedy", "John Jack", "Jame Jack", "india", true),
         Movie(4, "Inside Out 5", "New film 4", 2023, 16, "Adventure, Funny and Comedy", "John Harry", "Jame harry", "france", true),
         Movie(5, "Inside Out 6", "New film 5", 2023, 16, "Adventure, Childhood", "John Cena", "Jame Cena", "japanese", true))
-//    var theaterList: MutableList<Theater> = mutableListOf(
-//        Theater()
-//    )
+    var theaterList: MutableList<Theater> = mutableListOf(
+        Theater(1, "CGV Nguyen Hong Dao", "Nguyen Hong Dao P.14 Q.TanBinh TP.HCM"),
+        Theater(2, "CGV Nguyen Van Cu", "Nguyen Van Cu P.11 Q.5 TP.HCM"),
+        Theater(3, "CGV Nguyen Thi Minh Khai", "Nguyen Thi Minh Khai P.11 Q.5 TP.HCM"),
+        Theater(4, "CGV Nguyen Dinh Chieu", "Nguyen Dinh Chieu P.14 Q.5 TP.HCM"),
+        Theater(5, "CGV Pasture", "Pasture P.11 Q.1 TP.HCM"),
+        )
     private var schedulesList: MutableList<Schedule> = mutableListOf(
         Schedule(1, "11/1", 1, 1, "13h", "300"),
         Schedule(2, "11/1", 1, 2, "15h", "300"),
@@ -29,7 +34,7 @@ class UserViewModel : ViewModel() {
         Schedule(10, "16/1", 5, 1, "16h", "360"))
     var filteredSchedulesList: MutableList<Schedule> = mutableListOf()
     var selectedMovieIndex: Int = -1
-//    var selectedTheaterIndex: Int = -1
+    var selectedTheaterIndex: Int = -1
     var selectedScheduleIndex: Int = -1
     private var viewSearchResult = false
 

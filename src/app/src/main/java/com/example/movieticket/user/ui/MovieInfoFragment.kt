@@ -31,13 +31,13 @@ class MovieInfoFragment : Fragment() {
             findNavController().navigate(R.id.action_customerMovieInfoFragment_to_customerMainMenuFragment)
         }
 
-        binding.startBookingButton.setOnClickListener {
-            findNavController().navigate(R.id.action_customerMovieInfoFragment_to_customerBookingFragment)
-        }
-
 //        binding.startBookingButton.setOnClickListener {
-//            findNavController().navigate(R.id.action_customerMovieInfoFragment_to_customerFinishPaymentFragment)
+//            findNavController().navigate(R.id.action_customerMovieInfoFragment_to_customerChooseScheduleFragment)
 //        }
+
+        binding.startBookingButton.setOnClickListener {
+            findNavController().navigate(R.id.action_customerMovieInfoFragment_to_customerChooseTheaterFragment)
+        }
 
         binding.movieTitle.text = viewModel.moviesList[viewModel.selectedMovieIndex].title
         binding.movieDescription.text = viewModel.moviesList[viewModel.selectedMovieIndex].description

@@ -17,7 +17,7 @@
         android:layout_marginStart="15sp"
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
-        android:text="Date: "
+        android:text="@string/date"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginStart="5sp"
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
         android:layout_toEndOf="@id/scheduleDateText"
@@ -42,7 +43,7 @@
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
         android:layout_toEndOf="@id/scheduleDate"
-        android:text="Start: "
+        android:text="@string/start"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -51,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginStart="5sp"
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
         android:layout_toEndOf="@id/scheduleStartText"
@@ -67,7 +69,7 @@
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
         android:layout_toEndOf="@id/scheduleStart"
-        android:text="Duration: "
+        android:text="@string/duration"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -76,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_marginStart="5sp"
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
         android:layout_toEndOf="@id/scheduleDurationText"

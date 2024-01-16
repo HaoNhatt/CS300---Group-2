@@ -33,7 +33,7 @@ class CustomerScheduleAdapter(private val viewModel: UserViewModel): RecyclerVie
         holder.scheduleDurationView.text = viewModel.filteredSchedulesList[position].duration
         holder.itemView.setOnClickListener {
             viewModel.selectedScheduleIndex = position
-            it.findNavController().navigate(R.id.action_customerBookingFragment_to_customerFinishPaymentFragment)
+            it.findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerFinishBookingFragment)
         }
     }
 }
