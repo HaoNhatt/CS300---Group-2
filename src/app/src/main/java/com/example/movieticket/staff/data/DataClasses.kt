@@ -15,6 +15,7 @@ data class Theater(var name: String = "",
                    var id: String = "0")
 
 data class Movie(var title: String = "",
-                 var description: String = "",
                  var year: String = "",
+                 var duration: Int = 0,
+                 var description: String = "",
                  var id: String = "0")

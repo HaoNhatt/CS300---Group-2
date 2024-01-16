@@ -36,8 +36,9 @@ class MovieDetailFragment : Fragment() {
         binding.saveChangesMovieDetailButton.setOnClickListener {
             val title = binding.movieTitleDetailEditText.text.toString()
             val year = binding.movieYearDetailEditText.text.toString()
+            val duration = binding.movieDurationDetailEditText.text.toString().toInt()
             val description = binding.movieDescriptionDetailEditText.text.toString()
-            viewModel.modifyMovie(viewModel.selectedMovieIndex, title, year, description)
+            viewModel.modifyMovie(viewModel.selectedMovieIndex, title, year, duration, description)
         }
 
         binding.deleteMovieButton.setOnClickListener {

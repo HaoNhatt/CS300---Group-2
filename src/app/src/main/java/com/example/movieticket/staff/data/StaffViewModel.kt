@@ -18,10 +18,6 @@ class StaffViewModel : ViewModel() {
 
     init {
         staff = StaffProfile("name", 20, "sex", "email", "phone", true)
-//        theatersList = mutableListOf(Theater("Theater 1", "HCMC"),
-//        Theater("Theater 2", "HCMC"),
-//        Theater("Theater 3", "HCMC"),
-//        Theater("Theater 4", "HCMC"))
         dbController.syncTheatersListwithDB(theatersList)
         dbController.syncMoviesListwithDB(moviesList)
 
@@ -59,16 +55,17 @@ class StaffViewModel : ViewModel() {
 
 
 
-    fun addMovie(title: String, year: String, description: String) {
-        val addedID = dbController.addMovieToDB(title, year, description)
-        moviesList.add(Movie(title, year, description, addedID))
+    fun addMovie(title: String, year: String, duration: Int, description: String) {
+        val addedID = dbController.addMovieToDB(title, year, duration, description)
+        moviesList.add(Movie(title, year, duration, description, addedID))
     }
 
-    fun modifyMovie(index: Int, title: String, year: String, description: String) {
+    fun modifyMovie(index: Int, title: String, year: String, duration: Int, description: String) {
         moviesList[index].title = title
         moviesList[index].year = year
+        moviesList[index].duration = duration
         moviesList[index].description = description
-        dbController.modifyMovieInDB(moviesList[index].id, title, year, description)
+        dbController.modifyMovieInDB(moviesList[index].id, title, year, duration, description)
     }
 
     fun deleteMovie(index: Int) {

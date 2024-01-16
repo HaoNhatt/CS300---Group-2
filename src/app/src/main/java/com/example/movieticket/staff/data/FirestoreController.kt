@@ -138,11 +138,12 @@ class FirestoreController {
         }
     }
 
-    fun addMovieToDB(title: String, year: String, description: String): String {
+    fun addMovieToDB(title: String, year: String, duration: Int, description: String): String {
         val TAG = "Add movie"
         val movieMapping = mapOf(
             "title" to title,
             "year" to year,
+            "duration" to duration,
             "description" to description
         )
         var addedID = ""
@@ -158,10 +159,11 @@ class FirestoreController {
         return addedID
     }
 
-    fun modifyMovieInDB(id: String, title: String, year: String, description: String) {
+    fun modifyMovieInDB(id: String, title: String, year: String, duration: Int, description: String) {
         firestore.collection("Movies").document(id)
             .update("title", title,
         "year", year,
+                        "duration", duration,
                         "description", description)
     }
 
