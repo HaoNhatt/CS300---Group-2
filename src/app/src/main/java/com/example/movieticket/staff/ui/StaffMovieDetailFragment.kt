@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
-import com.example.movieticket.databinding.FragmentAddTheaterBinding
 import com.example.movieticket.databinding.FragmentMovieDetailBinding
-import com.example.movieticket.databinding.FragmentTheaterDetailBinding
 import com.example.movieticket.staff.data.StaffViewModel
 
 
-class MovieDetailFragment : Fragment() {
+class StaffMovieDetailFragment : Fragment() {
     private val viewModel: StaffViewModel by activityViewModels()
     private lateinit var binding: FragmentMovieDetailBinding
 

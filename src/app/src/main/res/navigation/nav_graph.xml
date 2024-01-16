@@ -247,7 +247,7 @@
     </fragment>
     <fragment
         android:id="@+id/theaterDetailFragment"
-        android:name="com.example.movieticket.staff.ui.TheaterDetailFragment"
+        android:name="com.example.movieticket.staff.ui.StaffTheaterDetailFragment"
         android:label="fragment_theater_detail"
         tools:layout="@layout/fragment_theater_detail" >
         <action
@@ -314,7 +314,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.example.movieticket.staff.ui.MovieDetailFragment"
+        android:name="com.example.movieticket.staff.ui.StaffMovieDetailFragment"
         android:label="MovieDetailFragment" >
         <action
             android:id="@+id/action_movieDetailFragment_to_staffMovieFragment"
