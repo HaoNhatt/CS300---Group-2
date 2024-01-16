@@ -32,8 +32,9 @@ class AddMovieFragment : Fragment() {
         binding.addMovieButton2.setOnClickListener {
             val title = binding.movieTitleEditText.text.toString()
             val year = binding.movieYearEditText.text.toString()
+            val duration = Integer.parseInt(binding.movieDurationEditText.text.toString())
             val description = binding.movieDescriptionEditText.text.toString()
-            viewModel.addMovie(title, year, description)
+            viewModel.addMovie(title, year, duration, description)
             findNavController().navigate(R.id.action_addMovieFragment_to_staffMovieFragment)
         }
     }
