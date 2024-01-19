@@ -15,7 +15,7 @@ class CustomerMovieAdapter(private val viewModel: UserViewModel): RecyclerView.A
     class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val movieBannerView = view.findViewById<ImageView>(R.id.movieItemBanner)!!
         val movieNameView = view.findViewById<TextView>(R.id.movieItemTitle)!!
-        val movieGenreView = view.findViewById<TextView>(R.id.movieItemGenre)!!
+        val movieDescriptionView = view.findViewById<TextView>(R.id.movieItemDescription)!!
 
     }
 
@@ -32,7 +32,7 @@ class CustomerMovieAdapter(private val viewModel: UserViewModel): RecyclerView.A
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 //        holder.movieBannerView.setImageResource()
         holder.movieNameView.text = viewModel.moviesList[position].title
-        holder.movieGenreView.text = viewModel.moviesList[position].genre
+        holder.movieDescriptionView.text = viewModel.moviesList[position].description
         holder.itemView.setOnClickListener {
             viewModel.selectedMovieIndex = position
             it.findNavController().navigate(R.id.action_nowPlayingFragment_to_customerMovieInfoFragment)

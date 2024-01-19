@@ -6,18 +6,19 @@
     android:layout_height="wrap_content"
     tools:ignore="MissingDefaultResource">
 
-    <View
+    <TextView
         android:id="@+id/seat"
-        android:layout_width="20sp"
-        android:layout_height="20sp"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
         android:layout_marginStart="2sp"
         android:layout_marginTop="2sp"
         android:layout_marginEnd="2sp"
         android:layout_marginBottom="2sp"
         android:background="@drawable/seat_free"
-        android:contentDescription="@string/available_seat" />
+        android:contentDescription="@string/available_seat"
+        android:gravity="center"
+        android:padding="3sp"
+        android:textSize="12sp"
+        android:text="@string/a1" />
 
 </RelativeLayout>

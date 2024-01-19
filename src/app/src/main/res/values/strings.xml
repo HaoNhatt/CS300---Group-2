@@ -81,4 +81,15 @@
     <string name="cgv_nguyen_hong_dao">CGV Nguyen Hong Dao</string>
     <string name="nguyen_hong_dao_p_14_q_tanbinh_tp_hcm">Nguyen Hong Dao P.14 Q.TanBinh TP.HCM</string>
     <string name="available_seat">Available Seat</string>
+    <string name="a1">A1</string>
+    <string name="_300_min">300 min</string>
+    <string name="new_inside_out_film">New Inside Out Film</string>
+    <string name="_0">0</string>
+    <string name="total_cost">Total Cost:</string>
+    <string name="vnd">VND</string>
+    <string name="title">Title:</string>
+    <string name="inside_out_2">Inside Out 2</string>
+    <string name="theater">Theater:</string>
+    <string name="schedule">Schedule:</string>
+    <string name="_13h_19_1_2024">13h : 19/1/2024</string>
 </resources>

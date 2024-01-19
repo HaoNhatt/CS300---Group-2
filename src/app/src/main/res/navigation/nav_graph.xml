@@ -91,15 +91,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_customerChooseScheduleFragment_to_customerFinishBookingFragment"
-            app:destination="@id/customerFinishBookingFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/customerFinishBookingFragment"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_customerChooseScheduleFragment_to_customerChooseTheaterFragment"
             app:destination="@id/customerChooseTheaterFragment"
             app:enterAnim="@anim/slide_in_left"
@@ -170,7 +161,7 @@
         android:id="@+id/customerAccountInfoFragment"
         android:name="com.example.movieticket.user.ui.AccountInfoFragment"
         android:label="fragment_customer_account_info"
-        tools:layout="@layout/fragment_account_info" >
+        tools:layout="@layout/fragment_account_info">
         <action
             android:id="@+id/action_customerAccountInfoFragment_to_customerMainMenuFragment"
             app:destination="@id/customerMainMenuFragment"
@@ -249,7 +240,7 @@
         android:id="@+id/theaterDetailFragment"
         android:name="com.example.movieticket.staff.ui.StaffTheaterDetailFragment"
         android:label="fragment_theater_detail"
-        tools:layout="@layout/fragment_theater_detail" >
+        tools:layout="@layout/fragment_theater_detail">
         <action
             android:id="@+id/action_theaterDetailFragment_to_staffTheatersFragment"
             app:destination="@id/staffTheatersFragment" />
@@ -261,7 +252,7 @@
         android:id="@+id/nowPlayingFragment"
         android:name="com.example.movieticket.user.ui.NowPlayingFragment"
         android:label="fragment_now_playing"
-        tools:layout="@layout/fragment_now_playing" >
+        tools:layout="@layout/fragment_now_playing">
         <action
             android:id="@+id/action_nowPlayingFragment_to_customerMainMenuFragment"
             app:destination="@id/customerMainMenuFragment"
@@ -290,7 +281,7 @@
         android:id="@+id/addTheaterFragment2"
         android:name="com.example.movieticket.staff.ui.AddTheaterFragment"
         android:label="fragment_add_theater"
-        tools:layout="@layout/fragment_add_theater" >
+        tools:layout="@layout/fragment_add_theater">
         <action
             android:id="@+id/action_addTheaterFragment2_to_staffTheatersFragment"
             app:destination="@id/staffTheatersFragment" />
@@ -298,7 +289,7 @@
     <fragment
         android:id="@+id/staffMovieFragment"
         android:name="com.example.movieticket.staff.ui.StaffMovieFragment"
-        android:label="StaffMovieFragment" >
+        android:label="StaffMovieFragment">
         <action
             android:id="@+id/action_staffMovieFragment_to_addMovieFragment"
             app:destination="@id/addMovieFragment" />
@@ -310,7 +301,7 @@
         android:id="@+id/addMovieFragment"
         android:name="com.example.movieticket.staff.ui.AddMovieFragment"
         android:label="fragment_add_movie"
-        tools:layout="@layout/fragment_add_movie" >
+        tools:layout="@layout/fragment_add_movie">
         <action
             android:id="@+id/action_addMovieFragment_to_staffMovieFragment"
             app:destination="@id/staffMovieFragment" />
@@ -318,7 +309,7 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.example.movieticket.staff.ui.StaffMovieDetailFragment"
-        android:label="MovieDetailFragment" >
+        android:label="MovieDetailFragment">
         <action
             android:id="@+id/action_movieDetailFragment_to_staffMovieFragment"
             app:destination="@id/staffMovieFragment" />

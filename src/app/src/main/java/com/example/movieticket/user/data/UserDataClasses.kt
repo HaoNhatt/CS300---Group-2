@@ -20,14 +20,8 @@ data class Movie(
     var id: String = "0",
     var title: String = "",
     var description: String = "",
-    var year: Int = 0,
-    var targetAge: Int = 0,
-    var genre: String = "",
-    var director: String = "",
-    var actors: String = "",
+    var year: String = "",
     var duration: Int = 0,
-    var language: String = "",
-    var nowPlaying: Boolean = false,
 )
 
 data class Theater(
@@ -44,28 +38,15 @@ data class Schedule(
     var startTime: String = "0",
 )
 
-data class Seat(
-    var id: String = "0",
-    var scheduleID: String = "0",
-    var row: Int = 0,
-    var col: Int = 0,
-    var isBooked: Boolean = false,
-)
-
-enum class SeatStatus {
-    AVAILABLE,
-    BOOKED,
-    SELECTED
-}
-
 enum class SeatType {
     NORMAL,
     VIP,
 }
 
-data class Invoice(
-    var id: Int = 0,
+data class Ticket(
+    var id: String = "0",
     var username: String = "",
-    var scheduleID: Int = 0,
-    var seatList: MutableList<Seat>,
+    var scheduleID: String = "0",
+    var seatList: String = "",
+    var price: Int = 0,
 )

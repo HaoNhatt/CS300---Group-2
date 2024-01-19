@@ -18,6 +18,90 @@
         android:contentDescription="@string/backButton"
         android:src="@drawable/back_arrow" />
 
+    <RelativeLayout
+        android:id="@+id/movieTitleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70sp"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/movieTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/movieTitleInChooseSeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/movieTitleText"
+            android:text="@string/inside_out_2"
+            android:layout_marginStart="10sp"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/theaterGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/movieTitleGroup"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/theaterNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/theater"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/theaterNameInChooseSeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/theaterNameText"
+            android:text="@string/cgv_nguyen_hong_dao"
+            android:layout_marginStart="10sp"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/scheduleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/theaterGroup"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/scheduleDateInChooseSeatText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/schedule"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/scheduleDateInChooseSeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/scheduleDateInChooseSeatText"
+            android:text="@string/_13h_19_1_2024"
+            android:layout_marginStart="10sp"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/seatGrid"
         android:layout_width="wrap_content"
@@ -29,18 +113,6 @@
         android:layout_marginBottom="40dp"
         android:padding="15sp" />
 
-    <EditText
-        android:id="@+id/testDateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="datetime"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/testDateTime"
-        android:inputType="date"/>
-
 <!--    <GridLayout-->
 <!--        android:id="@+id/seatGrid"-->
 <!--        android:layout_width="wrap_content"-->
@@ -51,10 +123,9 @@
 <!--        android:layout_marginEnd="20dp"-->
 <!--        android:layout_marginBottom="40dp"-->
 <!--        android:alignmentMode="alignMargins"-->
-<!--        android:columnCount="10"-->
+<!--        android:columnCount="9"-->
 <!--        android:columnOrderPreserved="false"-->
 <!--        android:padding="15sp"-->
-<!--        android:rowCount="10">-->
 
 <!--        &lt;!&ndash; Available seat &ndash;&gt;-->
 <!--        <View-->
@@ -168,141 +239,10 @@
 <!--            android:contentDescription="Available Seat"-->
 <!--            android:onClick="onSeatClicked" />-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/seat10"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat11"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat12"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat13"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat14"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat15"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat16"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat17"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat18"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat19"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/seat20"-->
-<!--            android:layout_width="20sp"-->
-<!--            android:layout_height="20sp"-->
-<!--            android:layout_rowWeight="1"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:layout_gravity="fill"-->
-<!--            android:layout_margin="2sp"-->
-<!--            android:background="@drawable/seat_free"-->
-<!--            android:contentDescription="Available Seat"-->
-<!--            android:onClick="onSeatClicked" />-->
-
 <!--    </GridLayout>-->
 
     <RelativeLayout
+        android:id="@+id/totalCostGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/seatGrid"
@@ -314,7 +254,7 @@
             android:id="@+id/totalCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Cost: "
+            android:text="@string/total_cost"
             android:textSize="24sp" />
 
         <TextView
@@ -322,7 +262,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/totalCostText"
-            android:text="0"
+            android:text="@string/_0"
+            android:layout_marginStart="10sp"
             android:textSize="24sp" />
 
         <TextView
@@ -330,7 +271,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/totalCost"
-            android:text=" VND"
+            android:text="@string/vnd"
+            android:layout_marginStart="10sp"
             android:textSize="24sp" />
 
     </RelativeLayout>

@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
-import com.example.movieticket.database.MovieDao
 import com.example.movieticket.databinding.FragmentCustomerMainMenuBinding
 import com.example.movieticket.user.data.UserViewModel
 
@@ -18,7 +17,6 @@ class UserMainMenuFragment : Fragment() {
 
     private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentCustomerMainMenuBinding
-    private lateinit var movieDao: MovieDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +37,7 @@ class UserMainMenuFragment : Fragment() {
         }
 
         binding.viewDetailButton.setOnClickListener {
-            viewModel.selectedMovieIndex = 0
+            viewModel.selectedMovieIndex = 1
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerMovieInfoFragment)
         }
     }
