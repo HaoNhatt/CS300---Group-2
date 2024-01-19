@@ -40,5 +40,9 @@ class StaffTheaterDetailFragment : Fragment() {
             viewModel.deleteTheater(viewModel.selectedTheaterIndex)
             findNavController().navigate(R.id.action_theaterDetailFragment_to_staffTheatersFragment)
         }
+
+        binding.goToSetSchedulesButton.setOnClickListener {
+            findNavController().navigate((R.id.action_theaterDetailFragment_to_staffTheaterSchedulesFragment))
+        }
     }
 }

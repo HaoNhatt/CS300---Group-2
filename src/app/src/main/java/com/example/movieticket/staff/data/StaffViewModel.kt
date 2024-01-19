@@ -1,12 +1,12 @@
 package com.example.movieticket.staff.data
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.ktx.firestore
+import java.util.Calendar
 
 class StaffViewModel : ViewModel() {
-    val dbController = FirestoreController()
+    private val dbController = FirestoreController()
+    var todayDate: Calendar = Calendar.getInstance()
+    var selectedDate: Calendar = Calendar.getInstance()
     lateinit var staff: StaffProfile
         private set
     var selectedTheaterIndex: Int = -1
@@ -15,12 +15,14 @@ class StaffViewModel : ViewModel() {
         private set
     var moviesList = mutableListOf<Movie>()
         private set
+    var schedulesList = mutableListOf<Schedule>()
+        private set
 
     init {
         staff = StaffProfile("name", 20, "sex", "email", "phone", true)
         dbController.syncTheatersListwithDB(theatersList)
         dbController.syncMoviesListwithDB(moviesList)
-
+        dbController.syncScheduleListwithDB(schedulesList)
     }
 
     fun tryLogin(username: String, password: String): Boolean {
@@ -48,9 +50,10 @@ class StaffViewModel : ViewModel() {
     }
 
     fun deleteTheater(index: Int) {
+        schedulesList.removeIf { it.theaterID ==  theatersList[index].id}
+
         dbController.deleteTheaterFromDB(theatersList[index].id)
         theatersList.removeAt(index)
-//        remove coresponding schedule
     }
 
 
@@ -73,6 +76,25 @@ class StaffViewModel : ViewModel() {
         moviesList.removeAt(index)
     }
 
+
+
+
+    fun addSchedule(movieID: String, theaterID: String, date: String, startTime: String) {
+        val addedID = dbController.addScheduleToDB(movieID, theaterID, date, startTime)
+        schedulesList.add(Schedule(movieID, theaterID, date, startTime, addedID))
+    }
+
+    fun modifySchedule(id: String, movieID: String, theaterID: String, date: String, startTime: String) {
+        val index = schedulesList.indexOfFirst { it.id == id }
+        schedulesList[index] = Schedule(movieID, theaterID, date, startTime, id)
+        dbController.modifyScheduleInDB(movieID, theaterID, date, startTime, id)
+    }
+
+    fun deleteSchedule(id: String) {
+        val index = schedulesList.indexOfFirst { it.id == id }
+        schedulesList.removeAt(index)
+        dbController.deleteScheduleFromDB(id)
+    }
     fun staffLogout() {
 //        staff = null
     }

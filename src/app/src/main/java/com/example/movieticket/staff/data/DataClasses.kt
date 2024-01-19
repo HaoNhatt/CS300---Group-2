@@ -20,8 +20,8 @@ data class Movie(var title: String = "",
                  var description: String = "",
                  var id: String = "0")
 
-data class Schedule(var id: String = "0",
-                    var movieID: String = "0",
+data class Schedule(var movieID: String = "0",
                     var theaterID: String = "0",
-                    var date: String = "",
-                    var startTime: String = "0",)
+                    var date: String = "1/1/1970",
+                    var startTime: String = "0",
+                    var id: String = "0")
