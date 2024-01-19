@@ -13,6 +13,10 @@ import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentChooseSeatBinding
 import com.example.movieticket.user.data.SeatType
 import com.example.movieticket.user.data.UserViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListener {
     private val viewModel: UserViewModel by activityViewModels()
@@ -30,11 +34,13 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.movieTitleInChooseSeat.text = viewModel.moviesList[viewModel.selectedMovieIndex].title
-        binding.theaterNameInChooseSeat.text = viewModel.theatersList[viewModel.selectedTheaterIndex].name
-        "${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].startTime} : ${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].date}".also { binding.scheduleDateInChooseSeat.text = it }
-
-        viewModel.filterSeat()
+        binding.movieTitleInChooseSeat.text =
+            viewModel.moviesList[viewModel.selectedMovieIndex].title
+        binding.theaterNameInChooseSeat.text =
+            viewModel.theatersList[viewModel.selectedTheaterIndex].name
+        "${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].startTime} : ${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].date}".also {
+            binding.scheduleDateInChooseSeat.text = it
+        }
 
         binding.backArrow.setOnClickListener {
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerChooseScheduleFragment)
@@ -45,10 +51,35 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerFinishBookingFragment)
         }
 
-        val seatsRecyclerView = binding.seatGrid
-        val adapter = CustomerSeatAdapter(viewModel, this)
-        seatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 9)
-        seatsRecyclerView.adapter = adapter
+//        viewModel.filterSeat(viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].id)
+//        Thread.sleep(2000)
+
+//        val seatsRecyclerView = binding.seatGrid
+//        val adapter = CustomerSeatAdapter(viewModel, this@ChooseSeatFragment)
+//        seatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 9)
+//        seatsRecyclerView.adapter = adapter
+
+        // Use coroutine to perform the filtering asynchronously
+//        CoroutineScope(Dispatchers.Main).launch {
+//            // Perform the filtering operation
+//            viewModel.filterSeat(viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].id)
+//
+//            // Delay for 2 seconds (replace with the actual time needed for the filtering)
+//            delay(1000)
+//
+//            // Set the RecyclerView adapter after the filtering is done
+//            val seatsRecyclerView = binding.seatGrid
+//            val adapter = CustomerSeatAdapter(viewModel, this@ChooseSeatFragment)
+//            seatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 9)
+//            seatsRecyclerView.adapter = adapter
+//        }
+
+        viewModel.filterSeat(viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].id) {
+            val seatsRecyclerView = binding.seatGrid
+            val adapter = CustomerSeatAdapter(viewModel, this@ChooseSeatFragment)
+            seatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 9)
+            seatsRecyclerView.adapter = adapter
+        }
     }
 
     override fun onSeatSelected() {

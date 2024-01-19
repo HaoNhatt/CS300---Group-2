@@ -285,7 +285,7 @@ class UserFireStoreController {
         db.collection("UserAuthInfo")
             .add(userAuthMapping)
             .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -302,7 +302,7 @@ class UserFireStoreController {
         db.collection("UserProfiles")
             .add(userProfileMapping)
             .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -352,11 +352,38 @@ class UserFireStoreController {
             .add(ticketMapping)
             .addOnSuccessListener { documentReference ->
                 addedID = documentReference.id
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
         return addedID
+    }
+
+    fun getTicketFromFireStoreByScheduleID(
+        scheduleID: String,
+        callback: (MutableList<Ticket>) -> Unit
+    ) {
+        var ticketsList = mutableListOf<Ticket>()
+
+        db.collection("Tickets").whereEqualTo("scheduleID", scheduleID).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val ticket = Ticket(
+                        document.id,
+                        document.data["username"].toString(),
+                        document.data["scheduleID"].toString(),
+                        document.data["seatList"].toString(),
+                        document.data["price"].toString().toInt(),
+                    )
+                    ticketsList.add(ticket)
+                }
+                Log.d("HaoNhat", ticketsList.toString())
+                callback.invoke(ticketsList)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("HaoNhat", "Error getting documents: ", exception)
+                callback.invoke(mutableListOf())
+            }
     }
 }

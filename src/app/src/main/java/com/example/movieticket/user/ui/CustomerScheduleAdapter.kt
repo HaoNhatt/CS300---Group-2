@@ -33,6 +33,7 @@ class CustomerScheduleAdapter(private val viewModel: UserViewModel): RecyclerVie
         holder.scheduleDurationView.text = viewModel.moviesList[viewModel.selectedMovieIndex].duration.toString()
         holder.itemView.setOnClickListener {
             viewModel.selectedScheduleIndex = position
+//            viewModel.filterSeat(viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].id)
             it.findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerChooseSeatFragment)
         }
     }

@@ -169,13 +169,24 @@ class UserViewModel : ViewModel() {
         ticketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
     }
 
-    fun filterSeat() {
-        for (ticket in ticketsList) {
-            if (schedulesList[selectedScheduleIndex].id == ticket.scheduleID) {
+    fun filterSeat(scheduleID: String, callback: (Int) -> Unit) {
+        dbController.getTicketFromFireStoreByScheduleID(scheduleID) { result ->
+            for (ticket in result) {
+//                if (schedulesList[selectedScheduleIndex].id == ticket.scheduleID) {
+//                    val seatBooked = ticket.seatList.split(",")
+//                    val editedSeatBooked = seatBooked.map { it.trim() }
+//                    seatSelectedList.addAll(editedSeatBooked)
+//                    Log.d("HaoNhat", seatSelectedList.toString())
+//                }
+
+//                seatSelectedList.add(ticket.toString())
+//                Log.d("HaoNhat", seatSelectedList.toString())
+
                 val seatBooked = ticket.seatList.split(",")
                 val editedSeatBooked = seatBooked.map { it.trim() }
                 seatSelectedList.addAll(editedSeatBooked)
                 Log.d("HaoNhat", seatSelectedList.toString())
+                callback.invoke(1)
             }
         }
     }
