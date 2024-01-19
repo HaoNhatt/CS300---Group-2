@@ -1,7 +1,6 @@
 package com.example.movieticket.user.data
 
 import android.util.Log
-import com.example.movieticket.staff.data.Theater
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -10,7 +9,7 @@ class UserFireStoreController {
     private val db = Firebase.firestore
 
     fun syncMoviesListWithFireStore(moviesList: MutableList<Movie>) {
-        val TAG = "Sync movies"
+        val TAG = "HaoNhat"
 
         db.collection("Movies").addSnapshotListener { snapshot, e ->
             // exception
@@ -60,7 +59,7 @@ class UserFireStoreController {
     }
 
     fun syncTheatersListWithFireStore(theatersList: MutableList<Theater>) {
-        val TAG = "Sync theaters"
+        val TAG = "HaoNhat"
 
         db.collection("Theaters").addSnapshotListener { snapshot, e ->
             if (e != null) {
@@ -103,6 +102,102 @@ class UserFireStoreController {
                         }
                     }
                 theatersList.reverse()
+            }
+        }
+    }
+
+    fun syncSchedulesListWithFireStore(schedulesList: MutableList<Schedule>) {
+        val TAG = "HaoNhat"
+
+        db.collection("Schedules").addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+            val source = if (snapshot != null && snapshot.metadata.hasPendingWrites()) {
+                "Local"
+            } else {
+                "Server"
+            }
+
+            val changes = snapshot?.documentChanges
+            if (changes != null && source == "Server") {
+                for (docChange in changes)
+                    when (docChange.type) {
+                        DocumentChange.Type.ADDED -> {
+                            val document = docChange.document
+                            val schedule = document.toObject(Schedule::class.java)
+                            schedule.id = document.id
+                            schedulesList.add(schedule)
+                            Log.d("$TAG - ADDED", "${document.id} => ${document.data}")
+                        }
+
+                        DocumentChange.Type.MODIFIED -> {
+                            val document = docChange.document
+                            val modifiedSchedule = document.toObject(Schedule::class.java)
+                            modifiedSchedule.id = document.id
+                            val index = schedulesList.indexOfFirst { it.id == document.id }
+                            schedulesList[index] = modifiedSchedule
+                            Log.d("$TAG - MODIFIED", "${document.id} => ${document.data}")
+                        }
+
+                        DocumentChange.Type.REMOVED -> {
+                            val document = docChange.document
+                            val removedSchedule = document.toObject(Schedule::class.java)
+                            removedSchedule.id
+                            schedulesList.remove(removedSchedule)
+                            Log.d("$TAG - REMOVED", "${document.id} => ${document.data}")
+                        }
+                    }
+                schedulesList.reverse()
+            }
+        }
+    }
+
+    fun syncTicketsListWithFireStore(ticketsList: MutableList<Ticket>) {
+        val TAG = "HaoNhat"
+
+        db.collection("Tickets").addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+            val source = if (snapshot != null && snapshot.metadata.hasPendingWrites()) {
+                "Local"
+            } else {
+                "Server"
+            }
+
+            val changes = snapshot?.documentChanges
+            if (changes != null && source == "Server") {
+                for (docChange in changes)
+                    when (docChange.type) {
+                        DocumentChange.Type.ADDED -> {
+                            val document = docChange.document
+                            val ticket = document.toObject(Ticket::class.java)
+                            ticket.id = document.id
+                            ticketsList.add(ticket)
+                            Log.d("$TAG - ADDED", "${document.id} => ${document.data}")
+                        }
+
+                        DocumentChange.Type.MODIFIED -> {
+                            val document = docChange.document
+                            val modifiedTicket = document.toObject(Ticket::class.java)
+                            modifiedTicket.id = document.id
+                            val index = ticketsList.indexOfFirst { it.id == document.id }
+                            ticketsList[index] = modifiedTicket
+                            Log.d("$TAG - MODIFIED", "${document.id} => ${document.data}")
+                        }
+
+                        DocumentChange.Type.REMOVED -> {
+                            val document = docChange.document
+                            val removedTicket = document.toObject(Ticket::class.java)
+                            removedTicket.id
+                            ticketsList.remove(removedTicket)
+                            Log.d("$TAG - REMOVED", "${document.id} => ${document.data}")
+                        }
+                    }
+                ticketsList.reverse()
             }
         }
     }
@@ -230,5 +325,38 @@ class UserFireStoreController {
                 "email", email,
                 "phone", phone
             )
+    }
+
+    fun addTicketToFireStore(
+        username: String,
+        scheduleID: String,
+        seatList: MutableSet<String>,
+        price: Int,
+    ): String {
+        val TAG = "HaoNhat"
+        var seatListEdited = ""
+        for (seat in seatList) {
+            seatListEdited += seat
+            if (seatList.last() != seat) {
+                seatListEdited += ", "
+            }
+        }
+        val ticketMapping = mapOf(
+            "username" to username,
+            "scheduleID" to scheduleID,
+            "seatList" to seatListEdited,
+            "price" to price,
+        )
+        var addedID = ""
+        db.collection("Tickets")
+            .add(ticketMapping)
+            .addOnSuccessListener { documentReference ->
+                addedID = documentReference.id
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
+        return addedID
     }
 }

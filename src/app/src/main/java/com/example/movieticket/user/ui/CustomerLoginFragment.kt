@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
 import com.example.movieticket.database.AppDatabase
@@ -14,7 +13,6 @@ import com.example.movieticket.database.UserAuthDao
 import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentCustomerLoginBinding
 import com.example.movieticket.user.data.UserViewModel
-import kotlinx.coroutines.launch
 
 class CustomerLoginFragment : Fragment() {
 
@@ -66,12 +64,12 @@ class CustomerLoginFragment : Fragment() {
                 when (loginResult) {
                     1 -> {
                         binding.errorPopup.visibility = View.VISIBLE
-                        binding.errorPopup.text = "Incorrect username. Please try again!"
+                        "Incorrect username. Please try again!".also { binding.errorPopup.text = it }
                     }
 
                     2 -> {
                         binding.errorPopup.visibility = View.VISIBLE
-                        binding.errorPopup.text = "Incorrect password. Please try again!"
+                        "Incorrect password. Please try again!".also { binding.errorPopup.text = it }
                     }
 
                     3 -> {

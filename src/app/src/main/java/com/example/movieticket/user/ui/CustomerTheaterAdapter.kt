@@ -24,11 +24,11 @@ class CustomerTheaterAdapter(private val viewModel: UserViewModel): RecyclerView
         return TheaterViewHolder(layout)
     }
 
-    override fun getItemCount(): Int = viewModel.theaterList.size
+    override fun getItemCount(): Int = viewModel.theatersList.size
 
     override fun onBindViewHolder(holder: TheaterViewHolder, position: Int) {
-        holder.theaterNameView.text = viewModel.theaterList[position].name
-        holder.theaterAddressView.text = viewModel.theaterList[position].address
+        holder.theaterNameView.text = viewModel.theatersList[position].name
+        holder.theaterAddressView.text = viewModel.theatersList[position].address
         holder.itemView.setOnClickListener {
             viewModel.selectedTheaterIndex = position
             it.findNavController().navigate(R.id.action_customerChooseTheaterFragment_to_customerChooseScheduleFragment)

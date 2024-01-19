@@ -1,118 +1,109 @@
 package com.example.movieticket.user.data
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
-
-//import com.example.movieticket.database.Movie
-//import com.example.movieticket.database.Schedule
-//import com.example.movieticket.database.Theater
-//import com.example.movieticket.database.UserProfile
 
 class UserViewModel : ViewModel() {
     private val dbController = UserFireStoreController()
-    private lateinit var user: UserProfile
-    var moviesList: MutableList<Movie> = mutableListOf(
-        Movie(
-            "1",
-            "Inside Out 2",
-            "New film",
-            2023,
-            16,
-            "Adventure, Funny, Childhood",
-            "John Smith",
-            "Jame Smith",
-            300,
-            "english",
-            true
-        ),
-        Movie(
-            "2",
-            "Inside Out 3",
-            "New film 2",
-            2023,
-            16,
-            "Adventure, Funny, Childhood and Comedy",
-            "John William",
-            "Jame William",
-            360,
-            "vietnamese",
-            true
-        ),
-        Movie(
-            "3",
-            "Inside Out 4",
-            "New film 3",
-            2023,
-            16,
-            "Adventure, Childhood and Comedy",
-            "John Jack",
-            "Jame Jack",
-            240,
-            "india",
-            true
-        ),
-        Movie(
-            "4",
-            "Inside Out 5",
-            "New film 4",
-            2023,
-            16,
-            "Adventure, Funny and Comedy",
-            "John Harry",
-            "Jame harry",
-            270,
-            "france",
-            true
-        ),
-        Movie(
-            "5",
-            "Inside Out 6",
-            "New film 5",
-            2023,
-            16,
-            "Adventure, Childhood",
-            "John Cena",
-            "Jame Cena",
-            330,
-            "japanese",
-            true
-        )
-    )
-    var theaterList: MutableList<Theater> = mutableListOf(
-        Theater("1", "CGV Nguyen Hong Dao", "Nguyen Hong Dao P.14 Q.TanBinh TP.HCM"),
-        Theater("2", "CGV Nguyen Van Cu", "Nguyen Van Cu P.11 Q.5 TP.HCM"),
-        Theater("3", "CGV Nguyen Thi Minh Khai", "Nguyen Thi Minh Khai P.11 Q.5 TP.HCM"),
-        Theater("4", "CGV Nguyen Dinh Chieu", "Nguyen Dinh Chieu P.14 Q.5 TP.HCM"),
-        Theater("5", "CGV Pasture", "Pasture P.11 Q.1 TP.HCM"),
-    )
-//    private var schedulesList = mutableListOf<Schedule>()
 
-    private var schedulesList: MutableList<Schedule> = mutableListOf(
-        Schedule("1", "1", "1", "11/1", "13h"),
-        Schedule("2", "2", "1", "11/1", "15h"),
-        Schedule("3", "3", "1", "12/1", "13h"),
-        Schedule("4", "4", "2", "12/1", "17h"),
-        Schedule("5", "5", "2", "13/1", "15h"),
-        Schedule("6", "1", "2", "13/1", "17h"),
-        Schedule("7", "2", "3", "14/1", "12h"),
-        Schedule("8", "3", "3", "14/1", "14h"),
-        Schedule("9", "4", "3", "15/1", "12h"),
-        Schedule("10", "5", "4", "16/1", "16h"),
-        Schedule("11", "1", "4", "16/1", "16h"),
-        Schedule("12", "2", "4", "16/1", "16h"),
-        Schedule("13", "3", "5", "16/1", "16h"),
-        Schedule("14", "4", "5", "16/1", "16h"),
-        Schedule("15", "5", "5", "16/1", "16h"),
-    )
-    lateinit var seatList: MutableList<Seat>
+    private lateinit var user: UserProfile
+
+    var moviesList = mutableListOf<Movie>()
+
+    //    var moviesList: MutableList<Movie> = mutableListOf(
+//        Movie(
+//            "1",
+//            "Inside Out 2",
+//            "New film",
+//            2023,
+//            300,
+//        ),
+//        Movie(
+//            "2",
+//            "Inside Out 3",
+//            "New film 2",
+//            2023,
+//            360,
+//        ),
+//        Movie(
+//            "3",
+//            "Inside Out 4",
+//            "New film 3",
+//            2023,
+//            240,
+//        ),
+//        Movie(
+//            "4",
+//            "Inside Out 5",
+//            "New film 4",
+//            2023,
+//            270,
+//        ),
+//        Movie(
+//            "5",
+//            "Inside Out 6",
+//            "New film 5",
+//            2023,
+//            330,
+//        )
+//    )
+    var theatersList = mutableListOf<Theater>()
+
+    //    var theaterList: MutableList<Theater> = mutableListOf(
+//        Theater("1", "CGV Nguyen Hong Dao", "Nguyen Hong Dao P.14 Q.TanBinh TP.HCM"),
+//        Theater("2", "CGV Nguyen Van Cu", "Nguyen Van Cu P.11 Q.5 TP.HCM"),
+//        Theater("3", "CGV Nguyen Thi Minh Khai", "Nguyen Thi Minh Khai P.11 Q.5 TP.HCM"),
+//        Theater("4", "CGV Nguyen Dinh Chieu", "Nguyen Dinh Chieu P.14 Q.5 TP.HCM"),
+//        Theater("5", "CGV Pasture", "Pasture P.11 Q.1 TP.HCM"),
+//    )
+    private var schedulesList = mutableListOf<Schedule>()
+
+    //    private var schedulesList: MutableList<Schedule> = mutableListOf(
+//        Schedule("1", "1", "1", "11/1", "13h"),
+//        Schedule("2", "2", "1", "11/1", "15h"),
+//        Schedule("3", "3", "1", "12/1", "13h"),
+//        Schedule("4", "4", "2", "12/1", "17h"),
+//        Schedule("5", "5", "2", "13/1", "15h"),
+//        Schedule("6", "1", "2", "13/1", "17h"),
+//        Schedule("7", "2", "3", "14/1", "12h"),
+//        Schedule("8", "3", "3", "14/1", "14h"),
+//        Schedule("9", "4", "3", "15/1", "12h"),
+//        Schedule("10", "5", "4", "16/1", "16h"),
+//        Schedule("11", "1", "4", "16/1", "16h"),
+//        Schedule("12", "2", "4", "16/1", "16h"),
+//        Schedule("13", "3", "5", "16/1", "16h"),
+//        Schedule("14", "4", "5", "16/1", "16h"),
+//        Schedule("15", "5", "5", "16/1", "16h"),
+//    )
+    private var ticketsList = mutableListOf<Ticket>()
+
+    // Seat that current customer want to select
+    var seatSelectingList: MutableSet<String> = mutableSetOf()
+
+    // Type of the selecting seat, can only select all Normal or all VIP type
+    var seatType: SeatType = SeatType.NORMAL
+    val NORMALSEATTYPE: Int = 100
+    val VIPSEATTYPE: Int = 120
+    var totalSeatCost: Int = 0
+
+    // Seat that being selected already
+    var seatSelectedList: MutableSet<String> = mutableSetOf()
+
     var filteredSchedulesList: MutableList<Schedule> = mutableListOf()
+
     var selectedMovieIndex: Int = -1
     var selectedTheaterIndex: Int = -1
     var selectedScheduleIndex: Int = -1
     var selectedSeatIndex: Int = -1
-    var seatSelectedList: MutableList<Seat> = mutableListOf()
-    var seatType: SeatType = SeatType.NORMAL
+
     private var viewSearchResult = false
 
+    init {
+        dbController.syncMoviesListWithFireStore(moviesList)
+        dbController.syncTheatersListWithFireStore(theatersList)
+        dbController.syncSchedulesListWithFireStore(schedulesList)
+        dbController.syncTicketsListWithFireStore(ticketsList)
+    }
 
     fun tryLogin(username: String, password: String, callback: (Int) -> Unit) {
         dbController.getUserAuthInFireStore(username) { result ->
@@ -139,9 +130,9 @@ class UserViewModel : ViewModel() {
     fun checkUserExist(username: String, callback: (Int) -> Unit) {
         dbController.checkUserAuthExist(username) { result ->
             if (result) {
-                callback.invoke(1)
+                callback.invoke(1) // Username already exist, inform to choose another username
             } else {
-                callback.invoke(2)
+                callback.invoke(2) // Username can be used
             }
         }
     }
@@ -159,6 +150,34 @@ class UserViewModel : ViewModel() {
             this.user.email,
             this.user.phone
         )
+    }
+
+    fun exportTicket() {
+        val addedID = dbController.addTicketToFireStore(
+            user.username,
+            schedulesList[selectedScheduleIndex].id,
+            seatSelectingList,
+            totalSeatCost,
+        )
+        var seatListEdited = ""
+        for (seat in seatSelectingList) {
+            seatListEdited += seat
+            if (seatSelectingList.last() != seat) {
+                seatListEdited += ", "
+            }
+        }
+        ticketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
+    }
+
+    fun filterSeat() {
+        for (ticket in ticketsList) {
+            if (schedulesList[selectedScheduleIndex].id == ticket.scheduleID) {
+                val seatBooked = ticket.seatList.split(",")
+                val editedSeatBooked = seatBooked.map { it.trim() }
+                seatSelectedList.addAll(editedSeatBooked)
+                Log.d("HaoNhat", seatSelectedList.toString())
+            }
+        }
     }
 
 //    fun logIn(userProfile: UserProfile) {
