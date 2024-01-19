@@ -42,7 +42,7 @@ class MovieInfoFragment : Fragment() {
         binding.movieTitle.text = viewModel.moviesList[viewModel.selectedMovieIndex].title
         binding.movieDescription.text = viewModel.moviesList[viewModel.selectedMovieIndex].description
         binding.movieYear.text = viewModel.moviesList[viewModel.selectedMovieIndex].year.toString()
-        binding.movieAge.text = viewModel.moviesList[viewModel.selectedMovieIndex].age.toString()
+        binding.movieAge.text = viewModel.moviesList[viewModel.selectedMovieIndex].targetAge.toString()
         binding.movieDirector.text = viewModel.moviesList[viewModel.selectedMovieIndex].director
         binding.movieActor.text = viewModel.moviesList[viewModel.selectedMovieIndex].actors
         binding.movieLanguage.text = viewModel.moviesList[viewModel.selectedMovieIndex].language

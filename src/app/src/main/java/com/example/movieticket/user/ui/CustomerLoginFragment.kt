@@ -43,29 +43,48 @@ class CustomerLoginFragment : Fragment() {
             val username = binding.userInput.text.toString()
             val password = binding.passwordInput.text.toString()
 
-            lifecycleScope.launch {
-                val queryResult = userAuthDao.searchByUsername(username)
+//            lifecycleScope.launch {
+//                val queryResult = userAuthDao.searchByUsername(username)
+//
+//                if (queryResult.isEmpty()) {
+//                    binding.errorPopup.visibility = View.VISIBLE
+//                    binding.errorPopup.text = "Incorrect username. Please try again!"
+//                }
+//                else if (password != queryResult.first().password) {
+//                    binding.errorPopup.visibility = View.VISIBLE
+//                    binding.errorPopup.text = "Incorrect password. Please try again!"
+//                }
+//                else {
+//                    binding.errorPopup.visibility = View.INVISIBLE
+//                    val userProfile = userProfileDao.searchByUsername(username)
+//                    viewModel.logIn(userProfile.first())
+//                    findNavController().navigate(R.id.action_customerLoginFragment_to_customerMainMenuFragment)
+//                }
+//            }
 
-                if (queryResult.isEmpty()) {
-                    binding.errorPopup.visibility = View.VISIBLE
-                    binding.errorPopup.text = "Incorrect username. Please try again!"
-                }
-                else if (password != queryResult.first().password) {
-                    binding.errorPopup.visibility = View.VISIBLE
-                    binding.errorPopup.text = "Incorrect password. Please try again!"
-                }
-                else {
-                    binding.errorPopup.visibility = View.INVISIBLE
-//                    viewModel.createTempUser()
-//                    userProfileDao.insert(viewModel.getUser())
-                    val userProfile = userProfileDao.searchByUsername(username)
-                    viewModel.logIn(userProfile.first())
-                    findNavController().navigate(R.id.action_customerLoginFragment_to_customerMainMenuFragment)
+            viewModel.tryLogin(username, password) { loginResult ->
+                when (loginResult) {
+                    1 -> {
+                        binding.errorPopup.visibility = View.VISIBLE
+                        binding.errorPopup.text = "Incorrect username. Please try again!"
+                    }
+
+                    2 -> {
+                        binding.errorPopup.visibility = View.VISIBLE
+                        binding.errorPopup.text = "Incorrect password. Please try again!"
+                    }
+
+                    3 -> {
+                        binding.errorPopup.visibility = View.INVISIBLE
+                        viewModel.logIn(username)
+                        findNavController().navigate(R.id.action_customerLoginFragment_to_customerMainMenuFragment)
+                    }
                 }
             }
+
         }
 
-        binding.signUpButton.setOnClickListener{
+        binding.signUpButton.setOnClickListener {
             findNavController().navigate(R.id.action_customerLoginFragment_to_customerSignUpFragment)
         }
 

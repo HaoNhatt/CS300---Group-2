@@ -5,8 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [UserAuth::class, StaffAuth::class, UserProfile::class, StaffProfile::class, Movie::class, Theater::class, Schedule::class, Invoice::class,],
-    version = 1)
+@Database(
+    entities = [UserAuth::class, StaffAuth::class, UserProfile::class, StaffProfile::class, Movie::class, Theater::class, Schedule::class, Invoice::class],
+    version = 1
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserAuthDao
     abstract fun staffDao(): StaffAuthDao
@@ -24,7 +26,9 @@ abstract class AppDatabase : RoomDatabase() {
         fun getInstance(context: Context): AppDatabase {
             if (INSTANCE == null)
                 synchronized(this) {
-                    INSTANCE = Room.databaseBuilder(context, AppDatabase::class.java, "app_database").build()
+                    INSTANCE =
+                        Room.databaseBuilder(context, AppDatabase::class.java, "app_database")
+                            .build()
                 }
 
             return INSTANCE!!

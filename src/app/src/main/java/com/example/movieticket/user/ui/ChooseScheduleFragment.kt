@@ -32,7 +32,7 @@ class ChooseScheduleFragment : Fragment() {
             findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerChooseTheaterFragment)
         }
 
-        viewModel.filterSchedule(viewModel.moviesList[viewModel.selectedMovieIndex].uid)
+        viewModel.filterSchedule(viewModel.moviesList[viewModel.selectedMovieIndex].id)
 
         val schedulesRecyclerView = binding.listSchedules
         val adapter = CustomerScheduleAdapter(viewModel)

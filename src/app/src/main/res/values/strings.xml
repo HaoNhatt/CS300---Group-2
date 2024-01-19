@@ -80,4 +80,5 @@
     <string name="duration">Duration:</string>
     <string name="cgv_nguyen_hong_dao">CGV Nguyen Hong Dao</string>
     <string name="nguyen_hong_dao_p_14_q_tanbinh_tp_hcm">Nguyen Hong Dao P.14 Q.TanBinh TP.HCM</string>
+    <string name="available_seat">Available Seat</string>
 </resources>

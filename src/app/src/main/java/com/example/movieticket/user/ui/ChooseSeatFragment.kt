@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentChooseSeatBinding
 import com.example.movieticket.user.data.UserViewModel
@@ -34,6 +36,11 @@ class ChooseSeatFragment : Fragment() {
         binding.continueButton.setOnClickListener {
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerFinishBookingFragment)
         }
+
+        val seatsRecyclerView = binding.seatGrid
+        val adapter = CustomerSeatAdapter(viewModel)
+        seatsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 10)
+        seatsRecyclerView.adapter = adapter
     }
 
     companion object

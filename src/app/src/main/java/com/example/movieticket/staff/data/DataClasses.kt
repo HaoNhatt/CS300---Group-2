@@ -19,3 +19,9 @@ data class Movie(var title: String = "",
                  var duration: Int = 0,
                  var description: String = "",
                  var id: String = "0")
+
+data class Schedule(var id: String = "0",
+                    var movieID: String = "0",
+                    var theaterID: String = "0",
+                    var date: String = "",
+                    var startTime: String = "0",)

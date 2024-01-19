@@ -30,10 +30,11 @@ class CustomerScheduleAdapter(private val viewModel: UserViewModel): RecyclerVie
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         holder.scheduleDateView.text = viewModel.filteredSchedulesList[position].date
         holder.scheduleStartView.text = viewModel.filteredSchedulesList[position].startTime
-        holder.scheduleDurationView.text = viewModel.filteredSchedulesList[position].duration
+        holder.scheduleDurationView.text = viewModel.moviesList[viewModel.selectedMovieIndex].duration.toString()
         holder.itemView.setOnClickListener {
             viewModel.selectedScheduleIndex = position
-            it.findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerFinishBookingFragment)
+//            it.findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerFinishBookingFragment)
+            it.findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerChooseSeatFragment)
         }
     }
 }

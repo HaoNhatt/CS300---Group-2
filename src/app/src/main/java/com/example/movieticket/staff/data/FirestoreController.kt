@@ -94,10 +94,12 @@ class FirestoreController {
         val TAG = "Sync movies"
 
         firestore.collection("Movies").addSnapshotListener { snapshot, e ->
+            // exception
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
             }
+            // listen on where the data is changed
             val source = if (snapshot != null && snapshot.metadata.hasPendingWrites()) {
                 "Local"
             } else {

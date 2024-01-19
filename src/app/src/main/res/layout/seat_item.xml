@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seatItemBlock"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource">
+
+    <View
+        android:id="@+id/seat"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_gravity="fill"
+        android:layout_marginStart="2sp"
+        android:layout_marginTop="2sp"
+        android:layout_marginEnd="2sp"
+        android:layout_marginBottom="2sp"
+        android:background="@drawable/seat_free"
+        android:contentDescription="@string/available_seat" />
+
+</RelativeLayout>

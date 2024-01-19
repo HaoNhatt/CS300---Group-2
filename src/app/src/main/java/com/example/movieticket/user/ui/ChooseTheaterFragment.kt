@@ -31,8 +31,6 @@ class ChooseTheaterFragment : Fragment() {
             findNavController().navigate(R.id.action_customerChooseTheaterFragment_to_customerMovieInfoFragment)
         }
 
-        viewModel.filterSchedule(viewModel.moviesList[viewModel.selectedMovieIndex].uid)
-
         val theatersRecyclerView = binding.listTheaters
         val adapter = CustomerTheaterAdapter(viewModel)
         theatersRecyclerView.layoutManager = LinearLayoutManager(requireContext())

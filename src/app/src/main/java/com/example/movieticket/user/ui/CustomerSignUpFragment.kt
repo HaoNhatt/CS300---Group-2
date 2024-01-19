@@ -21,8 +21,8 @@ import kotlinx.coroutines.launch
 class CustomerSignUpFragment : Fragment() {
     private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentCustomerSignUpBinding
-    private lateinit var userAuthDao: UserAuthDao
-    private lateinit var userProfileDao: UserProfileDao
+//    private lateinit var userAuthDao: UserAuthDao
+//    private lateinit var userProfileDao: UserProfileDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,31 +37,51 @@ class CustomerSignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userAuthDao = AppDatabase.getInstance(requireContext()).userDao()
-        userProfileDao = AppDatabase.getInstance(requireContext()).userProfileDao()
+//        userAuthDao = AppDatabase.getInstance(requireContext()).userDao()
+//        userProfileDao = AppDatabase.getInstance(requireContext()).userProfileDao()
 
         binding.confirmSignUpButton.setOnClickListener {
             val username = binding.userInput.text.toString()
             val password = binding.passwordInput.text.toString()
             val confirmPassword = binding.passwordReInput.text.toString()
 
-            lifecycleScope.launch {
-                val queryResult = userAuthDao.searchByUsername(username)
+//            lifecycleScope.launch {
+//                val queryResult = userAuthDao.searchByUsername(username)
+//
+//                if (queryResult.isNotEmpty()) {
+//                    binding.errorPopup.visibility = View.VISIBLE
+//                    binding.errorPopup.text = "Username '$username' has already been used. Please try another username!"
+//                }
+//                else if (password != confirmPassword) {
+//                    binding.errorPopup.visibility = View.VISIBLE
+//                    binding.errorPopup.text = "Password and confirm password does not match"
+//                }
+//                else {
+//                    binding.errorPopup.visibility = View.INVISIBLE
+//                    userAuthDao.insert(UserAuth(username, password))
+//                    userProfileDao.insert(UserProfile(username, "unnamed", 0, false, "", ""))
+//                    findNavController().navigate(R.id.action_customerSignUpFragment_to_customerLoginFragment)
+//                }
+//            }
 
-                if (queryResult.isNotEmpty()) {
-                    binding.errorPopup.visibility = View.VISIBLE
-                    binding.errorPopup.text = "Username '$username' has already been used. Please try another username!"
+            viewModel.checkUserExist(username) { signUpResult ->
+                when (signUpResult) {
+                    1 -> {
+                        binding.errorPopup.visibility = View.VISIBLE
+                        binding.errorPopup.text = "Username '$username' has already been used. Please try another username!"
+                    }
+                    2 -> {
+                        if (password != confirmPassword) {
+                            binding.errorPopup.visibility = View.VISIBLE
+                            binding.errorPopup.text = "Password and confirm password does not match"
+                        }
+                        else {
+                            binding.errorPopup.visibility = View.INVISIBLE
+                            viewModel.addUserToRemoteDatabase(username, password)
+                            findNavController().navigate(R.id.action_customerSignUpFragment_to_customerLoginFragment)
+                    }
                 }
-                else if (password != confirmPassword) {
-                    binding.errorPopup.visibility = View.VISIBLE
-                    binding.errorPopup.text = "Password and confirm password does not match"
-                }
-                else {
-                    binding.errorPopup.visibility = View.INVISIBLE
-                    userAuthDao.insert(UserAuth(username, password))
-                    userProfileDao.insert(UserProfile(username, "unnamed", 0, false, "", ""))
-                    findNavController().navigate(R.id.action_customerSignUpFragment_to_customerLoginFragment)
-                }
+            }
             }
         }
     }

@@ -30,7 +30,7 @@ class CustomerTheaterAdapter(private val viewModel: UserViewModel): RecyclerView
         holder.theaterNameView.text = viewModel.theaterList[position].name
         holder.theaterAddressView.text = viewModel.theaterList[position].address
         holder.itemView.setOnClickListener {
-            viewModel.selectedScheduleIndex = position
+            viewModel.selectedTheaterIndex = position
             it.findNavController().navigate(R.id.action_customerChooseTheaterFragment_to_customerChooseScheduleFragment)
         }
     }

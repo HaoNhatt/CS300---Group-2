@@ -43,7 +43,7 @@ class AccountInfoFragment : Fragment() {
         }
         binding.accountEmail.setText(viewModel.getUser().email)
         binding.accountPhone.setText(viewModel.getUser().phone)
-        binding.accountWallet.setText(viewModel.getUser().wallet.toString())
+//        binding.accountWallet.setText(viewModel.getUser().wallet.toString())
 
 
         binding.backButton.setOnClickListener {
@@ -56,20 +56,22 @@ class AccountInfoFragment : Fragment() {
             val newSex = binding.accountMaleCheck.isChecked
             val newEmail = binding.accountEmail.text.toString()
             val newPhone = binding.accountPhone.text.toString()
-            val newWallet = binding.accountWallet.text.toString().toInt()
-            viewModel.setUser(newName, newAge, newSex, newEmail, newPhone, newWallet)
+//            val newWallet = binding.accountWallet.text.toString().toInt()
 
-            lifecycleScope.launch {
-                userProfileDao.updateUser(
-                    viewModel.getUser().username,
-                    viewModel.getUser().name,
-                    viewModel.getUser().age,
-                    viewModel.getUser().sex,
-                    viewModel.getUser().email,
-                    viewModel.getUser().phone,
-                    viewModel.getUser().wallet
-                )
-            }
+            viewModel.setUser(newName, newAge, newSex, newEmail, newPhone)
+            viewModel.updateUserInformation()
+
+//            lifecycleScope.launch {
+//                userProfileDao.updateUser(
+//                    viewModel.getUser().username,
+//                    viewModel.getUser().name,
+//                    viewModel.getUser().age,
+//                    viewModel.getUser().sex,
+//                    viewModel.getUser().email,
+//                    viewModel.getUser().phone,
+////                    viewModel.getUser().wallet
+//                )
+//            }
             findNavController().navigate(R.id.action_customerAccountInfoFragment_to_customerMainMenuFragment)
         }
     }
