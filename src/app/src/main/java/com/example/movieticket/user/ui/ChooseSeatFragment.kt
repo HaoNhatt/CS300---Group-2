@@ -1,7 +1,6 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,6 @@ import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentChooseSeatBinding
 import com.example.movieticket.user.data.SeatType
 import com.example.movieticket.user.data.UserViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListener {
     private val viewModel: UserViewModel by activityViewModels()
@@ -35,12 +30,14 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
         super.onViewCreated(view, savedInstanceState)
 
         binding.movieTitleInChooseSeat.text =
-            viewModel.moviesList[viewModel.selectedMovieIndex].title
+            viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title
         binding.theaterNameInChooseSeat.text =
             viewModel.theatersList[viewModel.selectedTheaterIndex].name
         "${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].startTime} : ${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].date}".also {
             binding.scheduleDateInChooseSeat.text = it
         }
+
+        viewModel.seatSelectingList = mutableSetOf()
 
         binding.backArrow.setOnClickListener {
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerChooseScheduleFragment)
@@ -48,6 +45,8 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
 
         binding.continueButton.setOnClickListener {
             viewModel.exportTicket()
+            viewModel.seatSelectedList.addAll(viewModel.seatSelectingList)
+            viewModel.seatSelectingList = mutableSetOf()
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerFinishBookingFragment)
         }
 

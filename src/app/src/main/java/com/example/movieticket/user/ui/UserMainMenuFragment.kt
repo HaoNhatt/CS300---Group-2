@@ -28,6 +28,33 @@ class UserMainMenuFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        viewModel.filterMovies("", false)
+
+        viewModel.selectedMovieIndex = 0
+        binding.movieTitle.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title
+        binding.movieDescription.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].description
+
+        binding.leftArrowButton.setOnClickListener {
+            if (viewModel.selectedMovieIndex == 0) {
+                viewModel.selectedMovieIndex = viewModel.filteredMoviesList.size - 1
+            } else {
+                viewModel.selectedMovieIndex -= 1
+            }
+            binding.movieTitle.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title
+            binding.movieDescription.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].description
+        }
+
+        binding.rightArrowButton.setOnClickListener {
+            if (viewModel.selectedMovieIndex == (viewModel.filteredMoviesList.size - 1)) {
+                viewModel.selectedMovieIndex = 0
+            } else {
+                viewModel.selectedMovieIndex += 1
+            }
+            binding.movieTitle.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title
+            binding.movieDescription.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].description
+        }
+
         binding.customerAccountIcon.setOnClickListener {
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerAccountInfoFragment)
         }
@@ -41,7 +68,6 @@ class UserMainMenuFragment : Fragment() {
         }
 
         binding.viewDetailButton.setOnClickListener {
-            viewModel.selectedMovieIndex = 1
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerMovieInfoFragment)
         }
     }

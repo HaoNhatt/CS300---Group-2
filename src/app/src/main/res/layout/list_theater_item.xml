@@ -4,9 +4,9 @@
     android:id="@+id/movieItemBlock"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5sp"
     android:background="@drawable/rounded_input"
     android:padding="10sp"
-    android:layout_margin="5sp"
     tools:ignore="MissingDefaultResource">
 
     <TextView

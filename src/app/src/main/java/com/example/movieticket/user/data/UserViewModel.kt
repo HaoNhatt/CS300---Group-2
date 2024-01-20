@@ -1,6 +1,5 @@
 package com.example.movieticket.user.data
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 
 class UserViewModel : ViewModel() {
@@ -75,7 +74,8 @@ class UserViewModel : ViewModel() {
 //        Schedule("14", "4", "5", "16/1", "16h"),
 //        Schedule("15", "5", "5", "16/1", "16h"),
 //    )
-    var ticketsList = mutableListOf<Ticket>()
+//    var ticketsList = mutableListOf<Ticket>()
+    var userTicketsList = mutableListOf<Ticket>()
 
     // Seat that current customer want to select
     var seatSelectingList: MutableSet<String> = mutableSetOf()
@@ -90,6 +90,7 @@ class UserViewModel : ViewModel() {
     var seatSelectedList: MutableSet<String> = mutableSetOf()
 
     var filteredSchedulesList: MutableList<Schedule> = mutableListOf()
+    var filteredMoviesList: MutableList<Movie> = mutableListOf()
 
     var selectedMovieIndex: Int = -1
     var selectedTheaterIndex: Int = -1
@@ -103,7 +104,7 @@ class UserViewModel : ViewModel() {
         dbController.syncMoviesListWithFireStore(moviesList)
         dbController.syncTheatersListWithFireStore(theatersList)
         dbController.syncSchedulesListWithFireStore(schedulesList)
-        dbController.syncTicketsListWithFireStore(ticketsList)
+//        dbController.syncTicketsListWithFireStore(ticketsList)
     }
 
     fun tryLogin(username: String, password: String, callback: (Int) -> Unit) {
@@ -167,7 +168,8 @@ class UserViewModel : ViewModel() {
                 seatListEdited += ", "
             }
         }
-        ticketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
+//        ticketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
+        userTicketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
     }
 
     fun filterSeat(scheduleID: String, callback: (Int) -> Unit) {
@@ -186,9 +188,15 @@ class UserViewModel : ViewModel() {
                 val seatBooked = ticket.seatList.split(",")
                 val editedSeatBooked = seatBooked.map { it.trim() }
                 seatSelectedList.addAll(editedSeatBooked)
-                Log.d("HaoNhat", seatSelectedList.toString())
-                callback.invoke(1)
             }
+            callback.invoke(1)
+        }
+    }
+
+    fun getUserBookedHistory(callback: (Int) -> Unit) {
+        dbController.getTicketFromFireStoreByUsername(user.username) { result ->
+            userTicketsList = result
+            callback.invoke(1)
         }
     }
 
@@ -212,20 +220,27 @@ class UserViewModel : ViewModel() {
         this.user.phone = newPhone
     }
 
-    fun filterSchedule(selectedMovieID: String) {
+    fun filterSchedule(selectedMovieID: String, selectedTheaterID: String) {
         // Clear data first
         this.filteredSchedulesList.clear()
 
         // Add new data
         for (schedule in this.schedulesList) {
-            if (schedule.movieID == selectedMovieID) {
+            if (schedule.movieID == selectedMovieID && schedule.theaterID == selectedTheaterID) {
                 filteredSchedulesList.add(schedule)
             }
         }
     }
 
-    fun loadMovies(queryResult: List<Movie>) {
-        for (movie in queryResult)
-            this.moviesList.add(movie)
+    fun filterMovies(movieName: String, viewSearch: Boolean) {
+        filteredMoviesList = mutableListOf()
+        if (viewSearch) {
+            for (movie in moviesList)
+                if (movie.title.lowercase().contains(movieName)) {
+                    filteredMoviesList.add(movie)
+                }
+        } else {
+            filteredMoviesList = moviesList
+        }
     }
 }

@@ -6,17 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
-import com.example.movieticket.database.AppDatabase
-import com.example.movieticket.database.UserAuth
-import com.example.movieticket.database.UserAuthDao
-import com.example.movieticket.database.UserProfile
-import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentCustomerSignUpBinding
 import com.example.movieticket.user.data.UserViewModel
-import kotlinx.coroutines.launch
 
 class CustomerSignUpFragment : Fragment() {
     private val viewModel: UserViewModel by activityViewModels()
@@ -68,12 +61,12 @@ class CustomerSignUpFragment : Fragment() {
                 when (signUpResult) {
                     1 -> {
                         binding.errorPopup.visibility = View.VISIBLE
-                        binding.errorPopup.text = "Username '$username' has already been used. Please try another username!"
+                        "Username '$username' has already been used. Please try another username!".also { binding.errorPopup.text = it }
                     }
                     2 -> {
                         if (password != confirmPassword) {
                             binding.errorPopup.visibility = View.VISIBLE
-                            binding.errorPopup.text = "Password and confirm password does not match"
+                            "Password and confirm password does not match".also { binding.errorPopup.text = it }
                         }
                         else {
                             binding.errorPopup.visibility = View.INVISIBLE

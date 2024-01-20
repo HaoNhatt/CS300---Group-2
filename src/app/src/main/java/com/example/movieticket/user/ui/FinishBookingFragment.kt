@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
-import com.example.movieticket.database.InvoiceDao
 import com.example.movieticket.databinding.FragmentFinishBookingBinding
 
 class FinishBookingFragment : Fragment() {
     private lateinit var binding: FragmentFinishBookingBinding
-    private lateinit var invoiceDao: InvoiceDao
+//    private lateinit var invoiceDao: InvoiceDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +24,6 @@ class FinishBookingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         binding.confirmButton.setOnClickListener {
             findNavController().navigate(R.id.action_customerFinishBookingFragment_to_customerMainMenuFragment)
