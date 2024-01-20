@@ -9,15 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieticket.R
-import com.example.movieticket.database.AppDatabase
-import com.example.movieticket.database.MovieDao
 import com.example.movieticket.databinding.FragmentNowPlayingBinding
 import com.example.movieticket.user.data.UserViewModel
 
 class NowPlayingFragment : Fragment() {
     private val viewModel: UserViewModel by activityViewModels()
     private lateinit var binding: FragmentNowPlayingBinding
-    private lateinit var movieDao: MovieDao
+//    private lateinit var movieDao: MovieDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +29,14 @@ class NowPlayingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        movieDao = AppDatabase.getInstance(requireContext()).movieDao()
+//        movieDao = AppDatabase.getInstance(requireContext()).movieDao()
 
         binding.customerAccountIcon.setOnClickListener {
             findNavController().navigate(R.id.action_nowPlayingFragment_to_customerAccountInfoFragment)
+        }
+
+        binding.customerBookedHistoryIcon.setOnClickListener {
+            findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerBookedHistoryFragment)
         }
 
         binding.groupUpcoming.setOnClickListener {

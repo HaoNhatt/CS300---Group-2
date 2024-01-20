@@ -48,6 +48,13 @@
             app:popExitAnim="@anim/slide_out_left"
             app:popUpTo="@id/nowPlayingFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_customerMainMenuFragment_to_customerBookedHistoryFragment"
+            app:destination="@id/customerBookedHistoryFragment"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_out_top"
+            app:popExitAnim="@anim/slide_in_bottom" />
     </fragment>
     <fragment
         android:id="@+id/customerMovieInfoFragment"
@@ -243,7 +250,9 @@
         tools:layout="@layout/fragment_theater_detail">
         <action
             android:id="@+id/action_theaterDetailFragment_to_staffTheatersFragment"
-            app:destination="@id/staffTheatersFragment" />
+            app:destination="@id/staffTheatersFragment"
+            app:popUpTo="@id/staffTheatersFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingFragment"
@@ -273,6 +282,13 @@
             app:exitAnim="@anim/slide_out_top"
             app:popEnterAnim="@anim/slide_in_top"
             app:popExitAnim="@anim/slide_out_bottom" />
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_customerBookedHistoryFragment"
+            app:destination="@id/customerBookedHistoryFragment"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_bottom"
+            app:popEnterAnim="@anim/slide_out_top"
+            app:popExitAnim="@anim/slide_in_bottom" />
     </fragment>
     <fragment
         android:id="@+id/addTheaterFragment2"
@@ -281,7 +297,9 @@
         tools:layout="@layout/fragment_add_theater">
         <action
             android:id="@+id/action_addTheaterFragment2_to_staffTheatersFragment"
-            app:destination="@id/staffTheatersFragment" />
+            app:destination="@id/staffTheatersFragment"
+            app:popUpTo="@id/staffTheatersFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/staffMovieFragment"
@@ -301,7 +319,9 @@
         tools:layout="@layout/fragment_add_movie">
         <action
             android:id="@+id/action_addMovieFragment_to_staffMovieFragment"
-            app:destination="@id/staffMovieFragment" />
+            app:destination="@id/staffMovieFragment"
+            app:popUpTo="@id/staffMovieFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -309,6 +329,23 @@
         android:label="MovieDetailFragment">
         <action
             android:id="@+id/action_movieDetailFragment_to_staffMovieFragment"
-            app:destination="@id/staffMovieFragment" />
+            app:destination="@id/staffMovieFragment"
+            app:popUpTo="@id/staffMovieFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerBookedHistoryFragment"
+        android:name="com.example.movieticket.user.ui.CustomerBookedHistoryFragment"
+        android:label="fragment_customer_booked_history"
+        tools:layout="@layout/fragment_customer_booked_history" >
+        <action
+            android:id="@+id/action_customerBookedHistoryFragment_to_customerMainMenuFragment"
+            app:destination="@id/customerMainMenuFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom"
+            app:popUpTo="@id/customerMainMenuFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

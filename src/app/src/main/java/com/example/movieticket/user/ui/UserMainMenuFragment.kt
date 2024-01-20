@@ -32,6 +32,10 @@ class UserMainMenuFragment : Fragment() {
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerAccountInfoFragment)
         }
 
+        binding.customerBookedHistoryIcon.setOnClickListener {
+            findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerBookedHistoryFragment)
+        }
+
         binding.groupNowPlaying.setOnClickListener {
             findNavController().navigate(R.id.action_customerMainMenuFragment_to_nowPlayingFragment)
         }

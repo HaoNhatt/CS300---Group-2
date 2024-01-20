@@ -6,18 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.movieticket.R
-import com.example.movieticket.database.AppDatabase
-import com.example.movieticket.database.UserProfileDao
 import com.example.movieticket.databinding.FragmentAccountInfoBinding
 import com.example.movieticket.user.data.UserViewModel
-import kotlinx.coroutines.launch
 
 class AccountInfoFragment : Fragment() {
     private val viewModel: UserViewModel by activityViewModels()
-    private lateinit var userProfileDao: UserProfileDao
+//    private lateinit var userProfileDao: UserProfileDao
     private lateinit var binding: FragmentAccountInfoBinding
 
     override fun onCreateView(
@@ -31,7 +27,7 @@ class AccountInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userProfileDao = AppDatabase.getInstance(requireContext()).userProfileDao()
+//        userProfileDao = AppDatabase.getInstance(requireContext()).userProfileDao()
 
         binding.accountUsername.setText(viewModel.getUser().name)
         binding.accountAge.setText(viewModel.getUser().age.toString())

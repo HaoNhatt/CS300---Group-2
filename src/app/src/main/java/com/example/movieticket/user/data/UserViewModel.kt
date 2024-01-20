@@ -56,7 +56,7 @@ class UserViewModel : ViewModel() {
 //        Theater("4", "CGV Nguyen Dinh Chieu", "Nguyen Dinh Chieu P.14 Q.5 TP.HCM"),
 //        Theater("5", "CGV Pasture", "Pasture P.11 Q.1 TP.HCM"),
 //    )
-    private var schedulesList = mutableListOf<Schedule>()
+    var schedulesList = mutableListOf<Schedule>()
 
     //    private var schedulesList: MutableList<Schedule> = mutableListOf(
 //        Schedule("1", "1", "1", "11/1", "13h"),
@@ -75,7 +75,7 @@ class UserViewModel : ViewModel() {
 //        Schedule("14", "4", "5", "16/1", "16h"),
 //        Schedule("15", "5", "5", "16/1", "16h"),
 //    )
-    private var ticketsList = mutableListOf<Ticket>()
+    var ticketsList = mutableListOf<Ticket>()
 
     // Seat that current customer want to select
     var seatSelectingList: MutableSet<String> = mutableSetOf()
@@ -95,6 +95,7 @@ class UserViewModel : ViewModel() {
     var selectedTheaterIndex: Int = -1
     var selectedScheduleIndex: Int = -1
     var selectedSeatIndex: Int = -1
+    var selectedTicketHistory: Int = -1
 
     private var viewSearchResult = false
 

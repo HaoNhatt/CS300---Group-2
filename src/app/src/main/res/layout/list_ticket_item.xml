@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movieItemBlock"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_input"
+    android:padding="10sp"
+    android:layout_margin="5sp"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/movieItemBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginEnd="10sp"
+        android:layout_marginBottom="5sp"
+        android:contentDescription="@string/movie_banner"
+        android:src="@mipmap/example_banner" />
+
+    <TextView
+        android:id="@+id/ticketMovieHistoryItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/movieItemBanner"
+        android:text="@string/example_movie_title"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ticketTheaterHistoryItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketMovieHistoryItemTitle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/movieItemBanner"
+        android:text="@string/cgv_nguyen_hong_dao"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/slashItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketMovieHistoryItemTitle"
+        android:text="@string/slash"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/ticketTheaterHistoryItemName"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/ticketDateTimeHistoryItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketMovieHistoryItemTitle"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/slashItem"
+        android:text="@string/_13h_19_1_2024"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ticketSeatsHistoryItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketDateTimeHistoryItemName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/movieItemBanner"
+        android:text="@string/booked_seats"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ticketSeatsHistoryItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketDateTimeHistoryItemName"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/ticketSeatsHistoryItemText"
+        android:text="@string/a3_a4_a5_a6"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ticketPriceHistoryItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketSeatsHistoryItemText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/movieItemBanner"
+        android:text="@string/total_cost"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/ticketPriceHistoryItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketSeatsHistoryItemText"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginBottom="5sp"
+        android:layout_toEndOf="@id/ticketPriceHistoryItemText"
+        android:text="@string/_400_000_vnd"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="12sp" />
+
+</RelativeLayout>

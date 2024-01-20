@@ -92,4 +92,8 @@
     <string name="theater">Theater:</string>
     <string name="schedule">Schedule:</string>
     <string name="_13h_19_1_2024">13h : 19/1/2024</string>
+    <string name="slash">/</string>
+    <string name="a3_a4_a5_a6">A3, A4, A5, A6</string>
+    <string name="booked_seats">Booked seats:</string>
+    <string name="_400_000_vnd">400.000 VND</string>
 </resources>
