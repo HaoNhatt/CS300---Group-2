@@ -34,8 +34,10 @@ class AddMovieFragment : Fragment() {
             val year = binding.movieYearEditText.text.toString()
             val duration = Integer.parseInt(binding.movieDurationEditText.text.toString())
             val description = binding.movieDescriptionEditText.text.toString()
-            viewModel.addMovie(title, year, duration, description)
+            viewModel.addMovie(title, year, duration, description) {
             findNavController().navigate(R.id.action_addMovieFragment_to_staffMovieFragment)
+            }
+
         }
     }
 

@@ -29,6 +29,7 @@ class StaffMovieDetailFragment : Fragment() {
         val selectedMovie = viewModel.moviesList[viewModel.selectedMovieIndex]
         binding.movieTitleDetailEditText.setText(selectedMovie.title)
         binding.movieYearDetailEditText.setText(selectedMovie.year)
+        binding.movieDurationDetailEditText.setText((selectedMovie.duration).toString())
         binding.movieDescriptionDetailEditText.setText(selectedMovie.description)
 
         binding.saveChangesMovieDetailButton.setOnClickListener {

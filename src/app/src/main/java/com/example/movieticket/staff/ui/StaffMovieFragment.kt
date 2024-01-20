@@ -41,13 +41,10 @@ class StaffMovieFragment : Fragment() {
             findNavController().navigate(R.id.action_staffMovieFragment_to_addMovieFragment)
         }
 
-
         val moviesRecyclerView = binding.moviesRecyclerView
         val adapter = StaffMoviesAdapter(viewModel)
         moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         moviesRecyclerView.adapter = adapter
-
-        Log.d("==========", viewModel.moviesList.size.toString())
     }
 
 }

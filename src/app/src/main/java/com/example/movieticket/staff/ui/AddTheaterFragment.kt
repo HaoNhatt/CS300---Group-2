@@ -30,8 +30,9 @@ class AddTheaterFragment : Fragment() {
         binding.addTheaterButton2.setOnClickListener {
             val name = binding.theaterNameInput.text.toString()
             val address = binding.theaterAddressInput.text.toString()
-            viewModel.addTheater(name, address)
-            findNavController().navigate(R.id.action_addTheaterFragment2_to_staffTheatersFragment)
+            viewModel.addTheater(name, address) {
+                findNavController().navigate(R.id.action_addTheaterFragment2_to_staffTheatersFragment)
+            }
         }
     }
 
