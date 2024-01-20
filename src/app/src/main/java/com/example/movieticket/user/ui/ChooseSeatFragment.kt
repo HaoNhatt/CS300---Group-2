@@ -30,7 +30,7 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
         super.onViewCreated(view, savedInstanceState)
 
         binding.movieTitleInChooseSeat.text =
-            viewModel.moviesList[viewModel.selectedMovieIndex].title
+            viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title
         binding.theaterNameInChooseSeat.text =
             viewModel.theatersList[viewModel.selectedTheaterIndex].name
         "${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].startTime} : ${viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].date}".also {
@@ -45,6 +45,7 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
 
         binding.continueButton.setOnClickListener {
             viewModel.exportTicket()
+            viewModel.seatSelectedList.addAll(viewModel.seatSelectingList)
             viewModel.seatSelectingList = mutableSetOf()
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerFinishBookingFragment)
         }

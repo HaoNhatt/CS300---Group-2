@@ -35,10 +35,10 @@ class MovieInfoFragment : Fragment() {
             findNavController().navigate(R.id.action_customerMovieInfoFragment_to_customerChooseTheaterFragment)
         }
 
-        binding.movieTitle.text = viewModel.moviesList[viewModel.selectedMovieIndex].title
-        binding.movieDescription.text = viewModel.moviesList[viewModel.selectedMovieIndex].description
-        binding.movieYear.text = viewModel.moviesList[viewModel.selectedMovieIndex].year
-        "${viewModel.moviesList[viewModel.selectedMovieIndex].duration} min".also { binding.movieDuration.text = it }
+        binding.movieTitle.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title
+        binding.movieDescription.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].description
+        binding.movieYear.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].year
+        "${viewModel.filteredMoviesList[viewModel.selectedMovieIndex].duration} min".also { binding.movieDuration.text = it }
     }
 
     companion object

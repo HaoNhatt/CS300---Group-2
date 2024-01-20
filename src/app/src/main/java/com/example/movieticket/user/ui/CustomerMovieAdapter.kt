@@ -26,12 +26,12 @@ class CustomerMovieAdapter(private val viewModel: UserViewModel): RecyclerView.A
         return MovieViewHolder(layout)
     }
 
-    override fun getItemCount(): Int = viewModel.moviesList.size
+    override fun getItemCount(): Int = viewModel.filteredMoviesList.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 //        holder.movieBannerView.setImageResource()
-        holder.movieNameView.text = viewModel.moviesList[position].title
-        holder.movieDescriptionView.text = viewModel.moviesList[position].description
+        holder.movieNameView.text = viewModel.filteredMoviesList[position].title
+        holder.movieDescriptionView.text = viewModel.filteredMoviesList[position].description
         holder.itemView.setOnClickListener {
             viewModel.selectedMovieIndex = position
             it.findNavController().navigate(R.id.action_nowPlayingFragment_to_customerMovieInfoFragment)

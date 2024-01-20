@@ -30,7 +30,7 @@ class CustomerScheduleAdapter(private val viewModel: UserViewModel): RecyclerVie
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         holder.scheduleDateView.text = viewModel.filteredSchedulesList[position].date
         holder.scheduleStartView.text = viewModel.filteredSchedulesList[position].startTime
-        holder.scheduleDurationView.text = viewModel.moviesList[viewModel.selectedMovieIndex].duration.toString()
+        holder.scheduleDurationView.text = viewModel.filteredMoviesList[viewModel.selectedMovieIndex].duration.toString()
         holder.itemView.setOnClickListener {
             viewModel.selectedScheduleIndex = position
 //            viewModel.filterSeat(viewModel.filteredSchedulesList[viewModel.selectedScheduleIndex].id)

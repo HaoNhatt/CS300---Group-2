@@ -90,6 +90,7 @@ class UserViewModel : ViewModel() {
     var seatSelectedList: MutableSet<String> = mutableSetOf()
 
     var filteredSchedulesList: MutableList<Schedule> = mutableListOf()
+    var filteredMoviesList: MutableList<Movie> = mutableListOf()
 
     var selectedMovieIndex: Int = -1
     var selectedTheaterIndex: Int = -1
@@ -231,8 +232,15 @@ class UserViewModel : ViewModel() {
         }
     }
 
-    fun loadMovies(queryResult: List<Movie>) {
-        for (movie in queryResult)
-            this.moviesList.add(movie)
+    fun filterMovies(movieName: String, viewSearch: Boolean) {
+        filteredMoviesList = mutableListOf()
+        if (viewSearch) {
+            for (movie in moviesList)
+                if (movie.title.lowercase().contains(movieName)) {
+                    filteredMoviesList.add(movie)
+                }
+        } else {
+            filteredMoviesList = moviesList
+        }
     }
 }

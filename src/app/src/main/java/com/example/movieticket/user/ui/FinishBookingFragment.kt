@@ -25,8 +25,6 @@ class FinishBookingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.confirmButton.setOnClickListener {
             findNavController().navigate(R.id.action_customerFinishBookingFragment_to_customerMainMenuFragment)
         }

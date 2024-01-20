@@ -31,6 +31,8 @@ class NowPlayingFragment : Fragment() {
 
 //        movieDao = AppDatabase.getInstance(requireContext()).movieDao()
 
+        viewModel.filterMovies("", false)
+
         binding.customerAccountIcon.setOnClickListener {
             findNavController().navigate(R.id.action_nowPlayingFragment_to_customerAccountInfoFragment)
         }
@@ -47,6 +49,16 @@ class NowPlayingFragment : Fragment() {
         val adapter = CustomerMovieAdapter(viewModel)
         moviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         moviesRecyclerView.adapter = adapter
+
+        binding.searchIcon.setOnClickListener {
+            binding.searchBar.clearFocus()
+            val searchKeyWord = binding.searchBar.text.toString()
+            if (searchKeyWord.isEmpty()) {
+                viewModel.filterMovies(searchKeyWord, false)
+            }
+            viewModel.filterMovies(searchKeyWord, true)
+            moviesRecyclerView.run { adapter.run { notifyDataSetChanged() } }
+        }
     }
 
     companion object

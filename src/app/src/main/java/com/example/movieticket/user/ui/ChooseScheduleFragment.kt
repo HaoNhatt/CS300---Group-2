@@ -34,9 +34,9 @@ class ChooseScheduleFragment : Fragment() {
 
         binding.announceNoSchedule.visibility = View.INVISIBLE
 
-        viewModel.filterSchedule(viewModel.moviesList[viewModel.selectedMovieIndex].id, viewModel.theatersList[viewModel.selectedTheaterIndex].id)
+        viewModel.filterSchedule(viewModel.filteredMoviesList[viewModel.selectedMovieIndex].id, viewModel.theatersList[viewModel.selectedTheaterIndex].id)
 
-        val message = "There is no available schedule for movie ${viewModel.moviesList[viewModel.selectedMovieIndex].title} in ${viewModel.theatersList[viewModel.selectedTheaterIndex].name}, please try again."
+        val message = "There is no available schedule for movie ${viewModel.filteredMoviesList[viewModel.selectedMovieIndex].title} in ${viewModel.theatersList[viewModel.selectedTheaterIndex].name}, please try again."
         if (viewModel.filteredSchedulesList.isEmpty()) {
             binding.announceNoSchedule.text = message
             binding.announceNoSchedule.visibility = View.VISIBLE
