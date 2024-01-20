@@ -253,6 +253,10 @@
             app:destination="@id/staffTheatersFragment"
             app:popUpTo="@id/staffTheatersFragment"
             app:popUpToInclusive="true" />
+            app:destination="@id/staffTheatersFragment" />
+        <action
+            android:id="@+id/action_theaterDetailFragment_to_staffTheaterSchedulesFragment"
+            app:destination="@id/staffTheaterSchedulesFragment" />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingFragment"
@@ -347,5 +351,26 @@
             app:popExitAnim="@anim/slide_out_bottom"
             app:popUpTo="@id/customerMainMenuFragment"
             app:popUpToInclusive="true" />
+            app:destination="@id/staffMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffTheaterSchedulesFragment"
+        android:name="com.example.movieticket.staff.ui.StaffTheaterSchedulesFragment"
+        android:label="StaffTheaterSchedulesFragment" >
+        <action
+            android:id="@+id/action_staffTheaterSchedulesFragment_to_addShowtimeFragment"
+            app:destination="@id/addShowtimeFragment" />
+        <action
+            android:id="@+id/action_staffTheaterSchedulesFragment_to_theaterDetailFragment"
+            app:destination="@id/theaterDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addShowtimeFragment"
+        android:name="com.example.movieticket.staff.ui.AddShowtimeFragment"
+        android:label="fragment_add_showtime"
+        tools:layout="@layout/fragment_add_showtime" >
+        <action
+            android:id="@+id/action_addShowtimeFragment_to_staffTheaterSchedulesFragment"
+            app:destination="@id/staffTheaterSchedulesFragment" />
     </fragment>
 </navigation>
