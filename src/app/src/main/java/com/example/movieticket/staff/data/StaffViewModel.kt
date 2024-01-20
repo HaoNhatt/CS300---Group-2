@@ -1,5 +1,6 @@
 package com.example.movieticket.staff.data
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import java.util.Calendar
 
@@ -38,14 +39,17 @@ class StaffViewModel : ViewModel() {
 
 
 
-    fun addTheater(name: String, address: String) {
-        val addedID = dbController.addTheaterToDB(name, address)
-        theatersList.add(Theater(name, address, addedID))
+    fun addTheater(name: String, address: String, callback: (Boolean) -> Unit) {
+        dbController.addTheaterToDB(name, address) {
+            addedID -> theatersList.add(Theater(name, address, addedID))
+            callback.invoke(true)
+        }
     }
 
     fun modifyTheater(index: Int, name: String, address: String) {
         theatersList[index].name = name
         theatersList[index].address = address
+        Log.d("===Modifying Theater", "Theater ID: ${theatersList[index].id}")
         dbController.modifyTheaterInDB(theatersList[index].id, name, address)
     }
 
@@ -58,9 +62,11 @@ class StaffViewModel : ViewModel() {
 
 
 
-    fun addMovie(title: String, year: String, duration: Int, description: String) {
-        val addedID = dbController.addMovieToDB(title, year, duration, description)
-        moviesList.add(Movie(title, year, duration, description, addedID))
+    fun addMovie(title: String, year: String, duration: Int, description: String, callback: (Boolean) -> Unit) {
+        dbController.addMovieToDB(title, year, duration, description) {
+            addedID -> moviesList.add(Movie(title, year, duration, description, addedID))
+            callback.invoke(true)
+        }
     }
 
     fun modifyMovie(index: Int, title: String, year: String, duration: Int, description: String) {
@@ -79,9 +85,11 @@ class StaffViewModel : ViewModel() {
 
 
 
-    fun addSchedule(movieID: String, theaterID: String, date: String, startTime: String) {
-        val addedID = dbController.addScheduleToDB(movieID, theaterID, date, startTime)
-        schedulesList.add(Schedule(movieID, theaterID, date, startTime, addedID))
+    fun addSchedule(movieID: String, theaterID: String, date: String, startTime: String, callback: (Boolean) -> Unit) {
+        dbController.addScheduleToDB(movieID, theaterID, date, startTime) {
+            addedID -> schedulesList.add(Schedule(movieID, theaterID, date, startTime, addedID))
+            callback.invoke(true)
+        }
     }
 
     fun modifySchedule(id: String, movieID: String, theaterID: String, date: String, startTime: String) {

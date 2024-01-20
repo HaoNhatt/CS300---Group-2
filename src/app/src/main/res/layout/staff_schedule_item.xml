@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movieItemBlock"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_margin="5sp"
+    android:background="#FFE6DC"
+    android:padding="5sp"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/Textview9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="33dp"
+        android:text="@string/date"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/_11_1"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/Textview9"
+        app:layout_constraintTop_toTopOf="@id/Textview9" />
+
+    <TextView
+        android:id="@+id/Textview10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/start"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/dateTextview"
+        app:layout_constraintTop_toTopOf="@id/Textview9" />
+
+    <TextView
+        android:id="@+id/startTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="13h00"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/Textview10"
+        app:layout_constraintTop_toTopOf="@id/Textview9" />
+
+    <TextView
+        android:id="@+id/Textview11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="End"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/startTimeTextView"
+        app:layout_constraintTop_toTopOf="@id/Textview9" />
+
+    <TextView
+        android:id="@+id/endTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="15h00"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/Textview11"
+        app:layout_constraintTop_toTopOf="@id/Textview9" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="7dp"
+        android:text="Movie:"
+        android:textColor="@color/app_color_theme"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/movieTitleTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="-2dp"
+        android:text="Movie Title"
+        android:textColor="@color/app_color_theme"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/textView3"
+        app:layout_constraintStart_toEndOf="@id/textView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

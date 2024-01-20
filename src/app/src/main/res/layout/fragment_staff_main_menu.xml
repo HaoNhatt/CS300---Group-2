@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/accounts"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/app_color_theme" />
 
     </LinearLayout>
 
@@ -66,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/theaters"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/app_color_theme" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,7 +95,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/movies"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/app_color_theme" />
 
     </LinearLayout>
 
@@ -120,7 +123,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/statistics"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/app_color_theme" />
     </LinearLayout>
 
 

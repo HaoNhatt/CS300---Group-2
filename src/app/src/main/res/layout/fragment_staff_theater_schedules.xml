@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="120dp"
         android:layout_marginVertical="16dp"
+        android:background="@drawable/rounded_input"
         android:text="Add Showtime"
         android:textColor="@color/app_color_theme" />
 

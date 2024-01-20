@@ -52,8 +52,9 @@ class AddShowtimeFragment : Fragment() {
             val timePicker = binding.timePicker
             val time = "${timePicker.hour}h${timePicker.minute}"
 
-            viewModel.addSchedule(movieID, theaterID, date, time)
+            viewModel.addSchedule(movieID, theaterID, date, time) {
             findNavController().navigate(R.id.action_addShowtimeFragment_to_staffTheaterSchedulesFragment)
+            }
         }
 
     }

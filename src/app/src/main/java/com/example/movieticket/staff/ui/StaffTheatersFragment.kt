@@ -72,6 +72,7 @@ class StaffTheatersAdapter(private val viewModel: StaffViewModel): RecyclerView.
         holder.theaterNameView.text = viewModel.theatersList[position].name
         holder.itemView.setOnClickListener {
             viewModel.selectedTheaterIndex = position
+            Log.d("===Select Theater", "Theater ID: ${viewModel.theatersList[viewModel.selectedTheaterIndex].id}")
             it.findNavController().navigate(R.id.action_staffTheatersFragment_to_theaterDetailFragment)
         }
     }

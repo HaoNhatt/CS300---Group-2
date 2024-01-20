@@ -57,7 +57,7 @@ class FirestoreController {
         }
     }
 
-    fun addTheaterToDB(name: String, address: String): String {
+    fun addTheaterToDB(name: String, address: String, callback: (String) -> Unit) {
         val TAG = "Add theater"
         val theaterMapping = mapOf(
             "name" to name,
@@ -69,11 +69,11 @@ class FirestoreController {
             .addOnSuccessListener { documentReference ->
                 addedID = documentReference.id
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                callback.invoke(addedID)
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
-        return addedID
     }
 
     fun modifyTheaterInDB(id: String, name: String, address: String) {
@@ -141,7 +141,7 @@ class FirestoreController {
         }
     }
 
-    fun addMovieToDB(title: String, year: String, duration: Int, description: String): String {
+    fun addMovieToDB(title: String, year: String, duration: Int, description: String, callback: (String) -> Unit): String {
         val TAG = "Add movie"
         val movieMapping = mapOf(
             "title" to title,
@@ -155,6 +155,7 @@ class FirestoreController {
             .addOnSuccessListener { documentReference ->
                 addedID = documentReference.id
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                callback.invoke(addedID)
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -228,7 +229,7 @@ class FirestoreController {
         }
     }
 
-    fun addScheduleToDB(movieID: String, theaterID: String, date: String, startTime: String): String {
+    fun addScheduleToDB(movieID: String, theaterID: String, date: String, startTime: String, callback: (String) -> Unit): String {
         val TAG = "Add schedule"
         val scheduleMapping = mapOf(
             "movieID" to movieID,
@@ -242,6 +243,7 @@ class FirestoreController {
             .addOnSuccessListener { documentReference ->
                 addedID = documentReference.id
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                callback.invoke(addedID)
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
