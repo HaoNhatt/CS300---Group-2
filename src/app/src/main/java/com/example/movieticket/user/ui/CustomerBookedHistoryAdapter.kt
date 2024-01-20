@@ -38,7 +38,6 @@ class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): Recycl
         var ticketTitle = ""
         var ticketTheaterName = ""
         var ticketDateTime = ""
-        var ticketSeats = ""
         var movieID = ""
         var theaterID = ""
 
@@ -47,12 +46,6 @@ class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): Recycl
                 movieID = schedule.movieID
                 theaterID = schedule.theaterID
                 ticketDateTime = schedule.startTime + " : " + schedule.date
-            }
-        }
-        for (seat in viewModel.ticketsList[position].seatList) {
-            ticketSeats += seat.toString()
-            if (seat != viewModel.ticketsList[position].seatList.last()) {
-                ticketSeats += ", "
             }
         }
         for (theater in viewModel.theatersList) {
@@ -69,7 +62,7 @@ class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): Recycl
         holder.bookedTitleTypeView.text = ticketTitle
         holder.bookedTheaterTypeView.text = ticketTheaterName
         holder.bookedDateTimeTypeView.text = ticketDateTime
-        holder.bookedSeatsTypeView.text = ticketSeats
+        holder.bookedSeatsTypeView.text = viewModel.ticketsList[position].seatList
         "${viewModel.ticketsList[position].price}.000 VND".also { holder.bookedPriceTypeView.text = it }
 
         holder.itemView.setOnClickListener {

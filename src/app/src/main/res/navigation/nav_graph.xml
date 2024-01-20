@@ -253,7 +253,6 @@
             app:destination="@id/staffTheatersFragment"
             app:popUpTo="@id/staffTheatersFragment"
             app:popUpToInclusive="true" />
-            app:destination="@id/staffTheatersFragment" />
         <action
             android:id="@+id/action_theaterDetailFragment_to_staffTheaterSchedulesFragment"
             app:destination="@id/staffTheaterSchedulesFragment" />
@@ -351,7 +350,6 @@
             app:popExitAnim="@anim/slide_out_bottom"
             app:popUpTo="@id/customerMainMenuFragment"
             app:popUpToInclusive="true" />
-            app:destination="@id/staffMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/staffTheaterSchedulesFragment"
