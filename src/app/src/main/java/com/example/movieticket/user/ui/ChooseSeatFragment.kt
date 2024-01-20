@@ -1,7 +1,6 @@
 package com.example.movieticket.user.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,6 @@ import com.example.movieticket.R
 import com.example.movieticket.databinding.FragmentChooseSeatBinding
 import com.example.movieticket.user.data.SeatType
 import com.example.movieticket.user.data.UserViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListener {
     private val viewModel: UserViewModel by activityViewModels()
@@ -42,12 +37,15 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
             binding.scheduleDateInChooseSeat.text = it
         }
 
+        viewModel.seatSelectingList = mutableSetOf()
+
         binding.backArrow.setOnClickListener {
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerChooseScheduleFragment)
         }
 
         binding.continueButton.setOnClickListener {
             viewModel.exportTicket()
+            viewModel.seatSelectingList = mutableSetOf()
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerFinishBookingFragment)
         }
 

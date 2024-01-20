@@ -30,10 +30,18 @@ class CustomerBookedHistoryFragment : Fragment() {
             findNavController().navigate(R.id.action_customerBookedHistoryFragment_to_customerMainMenuFragment)
         }
 
-        val ticketsRecyclerView = binding.bookedTicketHistory
-        val adapter = CustomerBookedHistoryAdapter(viewModel)
-        ticketsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        ticketsRecyclerView.adapter = adapter
+        binding.announceNoBookedTicket.visibility = View.INVISIBLE
+
+        viewModel.getUserBookedHistory {
+            if (viewModel.userTicketsList.isEmpty()) {
+                binding.announceNoBookedTicket.visibility = View.VISIBLE
+            }
+
+            val ticketsRecyclerView = binding.bookedTicketHistory
+            val adapter = CustomerBookedHistoryAdapter(viewModel)
+            ticketsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            ticketsRecyclerView.adapter = adapter
+        }
     }
 
     companion object

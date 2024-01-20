@@ -144,6 +144,8 @@
         android:paddingTop="10sp"
         android:paddingEnd="30sp"
         android:paddingBottom="10sp"
-        android:text="@string/book_a_ticket" />
+        android:text="@string/book_a_ticket"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </RelativeLayout>

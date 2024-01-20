@@ -4,9 +4,9 @@
     android:id="@+id/movieItemBlock"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5sp"
     android:background="@drawable/rounded_input"
     android:padding="10sp"
-    android:layout_margin="5sp"
     tools:ignore="MissingDefaultResource">
 
     <ImageView
@@ -53,13 +53,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ticketMovieHistoryItemTitle"
-        android:text="@string/slash"
-        android:textColor="@android:color/holo_blue_light"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5sp"
         android:layout_marginBottom="5sp"
         android:layout_toEndOf="@id/ticketTheaterHistoryItemName"
-        android:textSize="12sp"/>
+        android:text="@string/slash"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/ticketDateTimeHistoryItemName"

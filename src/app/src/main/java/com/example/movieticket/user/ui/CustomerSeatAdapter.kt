@@ -1,14 +1,11 @@
 package com.example.movieticket.user.ui
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.drawable.toDrawable
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieticket.R
 import com.example.movieticket.user.data.SeatType
@@ -74,7 +71,6 @@ class CustomerSeatAdapter(private val viewModel: UserViewModel, private val list
                         holder.seatTypeView.setBackgroundResource(R.drawable.seat_choosing)
                         viewModel.seatSelectingList.add(seatName)
                         listener.onSeatSelected()
-                        Log.d("HaoNhat", viewModel.seatSelectingList.toString())
                     } else {
                         val errorMessage = "You need to select seats of the same type."
                         showMaxSeatsError(holder.itemView.context, errorMessage)

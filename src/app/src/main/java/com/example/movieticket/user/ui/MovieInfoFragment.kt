@@ -37,7 +37,7 @@ class MovieInfoFragment : Fragment() {
 
         binding.movieTitle.text = viewModel.moviesList[viewModel.selectedMovieIndex].title
         binding.movieDescription.text = viewModel.moviesList[viewModel.selectedMovieIndex].description
-        binding.movieYear.text = viewModel.moviesList[viewModel.selectedMovieIndex].year.toString()
+        binding.movieYear.text = viewModel.moviesList[viewModel.selectedMovieIndex].year
         "${viewModel.moviesList[viewModel.selectedMovieIndex].duration} min".also { binding.movieDuration.text = it }
     }
 

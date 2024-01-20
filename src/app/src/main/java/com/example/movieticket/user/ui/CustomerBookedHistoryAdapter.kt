@@ -1,17 +1,11 @@
 package com.example.movieticket.user.ui
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.graphics.drawable.toDrawable
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieticket.R
-import com.example.movieticket.user.data.SeatType
 import com.example.movieticket.user.data.UserViewModel
 
 class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): RecyclerView.Adapter<CustomerBookedHistoryAdapter.BookedTicketViewHolder>() {
@@ -32,7 +26,7 @@ class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): Recycl
         return BookedTicketViewHolder(layout)
     }
 
-    override fun getItemCount(): Int = viewModel.ticketsList.size
+    override fun getItemCount(): Int = viewModel.userTicketsList.size
 
     override fun onBindViewHolder(holder: BookedTicketViewHolder, position: Int) {
         var ticketTitle = ""
@@ -42,7 +36,7 @@ class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): Recycl
         var theaterID = ""
 
         for (schedule in viewModel.schedulesList) {
-            if (schedule.id == viewModel.ticketsList[position].scheduleID) {
+            if (schedule.id == viewModel.userTicketsList[position].scheduleID) {
                 movieID = schedule.movieID
                 theaterID = schedule.theaterID
                 ticketDateTime = schedule.startTime + " : " + schedule.date
@@ -62,8 +56,8 @@ class CustomerBookedHistoryAdapter(private val viewModel: UserViewModel): Recycl
         holder.bookedTitleTypeView.text = ticketTitle
         holder.bookedTheaterTypeView.text = ticketTheaterName
         holder.bookedDateTimeTypeView.text = ticketDateTime
-        holder.bookedSeatsTypeView.text = viewModel.ticketsList[position].seatList
-        "${viewModel.ticketsList[position].price}.000 VND".also { holder.bookedPriceTypeView.text = it }
+        holder.bookedSeatsTypeView.text = viewModel.userTicketsList[position].seatList
+        "${viewModel.userTicketsList[position].price}.000 VND".also { holder.bookedPriceTypeView.text = it }
 
         holder.itemView.setOnClickListener {
             viewModel.selectedTicketHistory = position

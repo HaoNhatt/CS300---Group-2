@@ -36,7 +36,7 @@ class NowPlayingFragment : Fragment() {
         }
 
         binding.customerBookedHistoryIcon.setOnClickListener {
-            findNavController().navigate(R.id.action_customerMainMenuFragment_to_customerBookedHistoryFragment)
+            findNavController().navigate(R.id.action_nowPlayingFragment_to_customerBookedHistoryFragment)
         }
 
         binding.groupUpcoming.setOnClickListener {

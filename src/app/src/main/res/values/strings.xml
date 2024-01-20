@@ -96,4 +96,6 @@
     <string name="a3_a4_a5_a6">A3, A4, A5, A6</string>
     <string name="booked_seats">Booked seats:</string>
     <string name="_400_000_vnd">400.000 VND</string>
+    <string name="there_is_no_available_schedule_for_this_movie_in_this_theater_please_try_again">There is no available schedule for this movie in this theater, please try again.</string>
+    <string name="you_do_not_have_any_booked_ticket_yet_come_to_book_a_ticket">You do not have any booked ticket yet, come to book a ticket.</string>
 </resources>

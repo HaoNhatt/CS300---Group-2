@@ -207,7 +207,7 @@ class UserFireStoreController {
         callback: (Pair<UserAuthInfo, Boolean>) -> Unit
     ) {
         var userAuth: UserAuthInfo? = null
-        var isUserExist: Boolean = false
+        var isUserExist = false
 
         db.collection("UserAuthInfo").whereEqualTo("username", username).get()
             .addOnSuccessListener { documents ->
@@ -258,7 +258,7 @@ class UserFireStoreController {
         username: String,
         callback: (Boolean) -> Unit
     ) {
-        var isUserExist: Boolean = false
+        var isUserExist = false
 
         db.collection("UserAuthInfo").whereEqualTo("username", username).get()
             .addOnSuccessListener { documents ->
@@ -285,7 +285,7 @@ class UserFireStoreController {
         db.collection("UserAuthInfo")
             .add(userAuthMapping)
             .addOnSuccessListener { documentReference ->
-//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -302,7 +302,7 @@ class UserFireStoreController {
         db.collection("UserProfiles")
             .add(userProfileMapping)
             .addOnSuccessListener { documentReference ->
-//                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -364,7 +364,7 @@ class UserFireStoreController {
         scheduleID: String,
         callback: (MutableList<Ticket>) -> Unit
     ) {
-        var ticketsList = mutableListOf<Ticket>()
+        val ticketsList = mutableListOf<Ticket>()
 
         db.collection("Tickets").whereEqualTo("scheduleID", scheduleID).get()
             .addOnSuccessListener { documents ->
@@ -378,7 +378,32 @@ class UserFireStoreController {
                     )
                     ticketsList.add(ticket)
                 }
-                Log.d("HaoNhat", ticketsList.toString())
+                callback.invoke(ticketsList)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("HaoNhat", "Error getting documents: ", exception)
+                callback.invoke(mutableListOf())
+            }
+    }
+
+    fun getTicketFromFireStoreByUsername(
+        username: String,
+        callback: (MutableList<Ticket>) -> Unit
+    ) {
+        val ticketsList = mutableListOf<Ticket>()
+
+        db.collection("Tickets").whereEqualTo("username", username).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val ticket = Ticket(
+                        document.id,
+                        document.data["username"].toString(),
+                        document.data["scheduleID"].toString(),
+                        document.data["seatList"].toString(),
+                        document.data["price"].toString().toInt(),
+                    )
+                    ticketsList.add(ticket)
+                }
                 callback.invoke(ticketsList)
             }
             .addOnFailureListener { exception ->

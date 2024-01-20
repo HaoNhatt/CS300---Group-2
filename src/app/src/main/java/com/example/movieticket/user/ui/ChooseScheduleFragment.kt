@@ -32,7 +32,15 @@ class ChooseScheduleFragment : Fragment() {
             findNavController().navigate(R.id.action_customerChooseScheduleFragment_to_customerChooseTheaterFragment)
         }
 
-        viewModel.filterSchedule(viewModel.moviesList[viewModel.selectedMovieIndex].id)
+        binding.announceNoSchedule.visibility = View.INVISIBLE
+
+        viewModel.filterSchedule(viewModel.moviesList[viewModel.selectedMovieIndex].id, viewModel.theatersList[viewModel.selectedTheaterIndex].id)
+
+        val message = "There is no available schedule for movie ${viewModel.moviesList[viewModel.selectedMovieIndex].title} in ${viewModel.theatersList[viewModel.selectedTheaterIndex].name}, please try again."
+        if (viewModel.filteredSchedulesList.isEmpty()) {
+            binding.announceNoSchedule.text = message
+            binding.announceNoSchedule.visibility = View.VISIBLE
+        }
 
         val schedulesRecyclerView = binding.listSchedules
         val adapter = CustomerScheduleAdapter(viewModel)
