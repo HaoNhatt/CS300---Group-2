@@ -155,21 +155,39 @@ class UserViewModel : ViewModel() {
     }
 
     fun exportTicket() {
-        val addedID = dbController.addTicketToFireStore(
+        val dateTime =
+            filteredSchedulesList[selectedScheduleIndex].startTime + " : " + filteredSchedulesList[selectedScheduleIndex].date
+        dbController.addTicketToFireStore(
             user.username,
-            schedulesList[selectedScheduleIndex].id,
+            filteredSchedulesList[selectedScheduleIndex].id,
+            filteredMoviesList[selectedMovieIndex].title,
+            theatersList[selectedTheaterIndex].name,
+            dateTime,
             seatSelectingList,
             totalSeatCost,
-        )
-        var seatListEdited = ""
-        for (seat in seatSelectingList) {
-            seatListEdited += seat
-            if (seatSelectingList.last() != seat) {
-                seatListEdited += ", "
+        ) { result ->
+            var seatListEdited = ""
+            for (seat in seatSelectingList) {
+                seatListEdited += seat
+                if (seatSelectingList.last() != seat) {
+                    seatListEdited += ", "
+                }
             }
+            userTicketsList.add(
+                Ticket(
+                    result,
+                    user.username,
+                    schedulesList[selectedScheduleIndex].id,
+                    filteredMoviesList[selectedMovieIndex].title,
+                    theatersList[selectedTheaterIndex].name,
+                    dateTime,
+                    seatListEdited,
+                    totalSeatCost
+                )
+            )
         }
+
 //        ticketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
-        userTicketsList.add(Ticket(addedID, user.username, schedulesList[selectedScheduleIndex].id, seatListEdited, totalSeatCost))
     }
 
     fun filterSeat(scheduleID: String, callback: (Int) -> Unit) {
@@ -227,7 +245,15 @@ class UserViewModel : ViewModel() {
         // Add new data
         for (schedule in this.schedulesList) {
             if (schedule.movieID == selectedMovieID && schedule.theaterID == selectedTheaterID) {
-                filteredSchedulesList.add(schedule)
+                for (movie in moviesList) {
+                    if (movie.id == selectedMovieID) {
+                        for (theater in theatersList) {
+                            if (theater.id == selectedTheaterID) {
+                                filteredSchedulesList.add(schedule)
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -330,9 +330,13 @@ class UserFireStoreController {
     fun addTicketToFireStore(
         username: String,
         scheduleID: String,
+        movieTitle: String,
+        theaterName: String,
+        scheduleDateTime: String,
         seatList: MutableSet<String>,
         price: Int,
-    ): String {
+        callback: (String) -> Unit
+    ) {
         val TAG = "HaoNhat"
         var seatListEdited = ""
         for (seat in seatList) {
@@ -344,6 +348,9 @@ class UserFireStoreController {
         val ticketMapping = mapOf(
             "username" to username,
             "scheduleID" to scheduleID,
+            "movieTitle" to movieTitle,
+            "theaterName" to theaterName,
+            "dateTime" to scheduleDateTime,
             "seatList" to seatListEdited,
             "price" to price,
         )
@@ -352,12 +359,12 @@ class UserFireStoreController {
             .add(ticketMapping)
             .addOnSuccessListener { documentReference ->
                 addedID = documentReference.id
+                callback.invoke(addedID)
 //                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
-        return addedID
     }
 
     fun getTicketFromFireStoreByScheduleID(
@@ -373,6 +380,9 @@ class UserFireStoreController {
                         document.id,
                         document.data["username"].toString(),
                         document.data["scheduleID"].toString(),
+                        document.data["movieTitle"].toString(),
+                        document.data["theaterName"].toString(),
+                        document.data["dateTime"].toString(),
                         document.data["seatList"].toString(),
                         document.data["price"].toString().toInt(),
                     )
@@ -399,6 +409,9 @@ class UserFireStoreController {
                         document.id,
                         document.data["username"].toString(),
                         document.data["scheduleID"].toString(),
+                        document.data["movieTitle"].toString(),
+                        document.data["theaterName"].toString(),
+                        document.data["dateTime"].toString(),
                         document.data["seatList"].toString(),
                         document.data["price"].toString().toInt(),
                     )

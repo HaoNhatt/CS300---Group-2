@@ -45,7 +45,7 @@ class ChooseSeatFragment : Fragment(), CustomerSeatAdapter.OnSeatSelectedListene
 
         binding.continueButton.setOnClickListener {
             viewModel.exportTicket()
-            viewModel.seatSelectedList.addAll(viewModel.seatSelectingList)
+            viewModel.seatSelectedList = mutableSetOf()
             viewModel.seatSelectingList = mutableSetOf()
             findNavController().navigate(R.id.action_customerChooseSeatFragment_to_customerFinishBookingFragment)
         }

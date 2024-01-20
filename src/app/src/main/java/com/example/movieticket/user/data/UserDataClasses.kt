@@ -47,6 +47,9 @@ data class Ticket(
     var id: String = "0",
     var username: String = "",
     var scheduleID: String = "0",
+    var movieTitle: String = "",
+    var theaterName: String = "",
+    var dateTime: String = "",
     var seatList: String = "",
     var price: Int = 0,
 )
